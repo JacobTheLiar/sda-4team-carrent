@@ -8,7 +8,7 @@ import java.util.Objects;
 public class RentHistory {
 
     @Id
-    private Long id;
+    private int id;
     @ManyToOne(targetEntity = Car.class)
     private Car car;
     @ManyToOne(targetEntity = Client.class)
@@ -32,7 +32,7 @@ public class RentHistory {
     @ManyToOne
     private Invoice invoice;
 
-    public RentHistory(Long id, Car car, Client client, Promotion promotion, RentPoint rentPointStart, RentPoint rentPointEnd, Employee employeeStart, Employee employeeEnd, LocalDate rentTimeStart, LocalDate rentTimeEnd, int counterStateStart, int counterStateEnd, String notesStart, String notesEnd, Invoice invoice) {
+    public RentHistory(int id, Car car, Client client, Promotion promotion, RentPoint rentPointStart, RentPoint rentPointEnd, Employee employeeStart, Employee employeeEnd, LocalDate rentTimeStart, LocalDate rentTimeEnd, int counterStateStart, int counterStateEnd, String notesStart, String notesEnd, Invoice invoice) {
         this.id = id;
         this.car = car;
         this.client = client;
@@ -50,11 +50,11 @@ public class RentHistory {
         this.invoice = invoice;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
