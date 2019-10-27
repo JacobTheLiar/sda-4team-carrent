@@ -4,6 +4,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -18,12 +19,12 @@ public class CarReview {
     private Car car;
 
     private int counterState;
-    Date reviewDate;
+    private LocalDate reviewDate;
 
     public CarReview() {
     }
 
-    public CarReview(Car car, int counterState, Date reviewDate) {
+    public CarReview(Car car, int counterState, LocalDate reviewDate) {
         this.car = car;
         this.counterState = counterState;
         this.reviewDate = reviewDate;
@@ -53,11 +54,11 @@ public class CarReview {
         this.counterState = counterState;
     }
 
-    public Date getReviewDate() {
+    public LocalDate getReviewDate() {
         return reviewDate;
     }
 
-    public void setReviewDate(Date reviewDate) {
+    public void setReviewDate(LocalDate reviewDate) {
         this.reviewDate = reviewDate;
     }
 

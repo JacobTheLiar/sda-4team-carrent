@@ -1,6 +1,7 @@
 package pl.team.carrent.model;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -15,7 +16,7 @@ public class Car {
     @ManyToOne(targetEntity = CarModel.class)
     private CarModel carModel;
 
-    private Date registrationDate;
+    private LocalDate registrationDate;
     private String plateNr;
     private String vin;
     private double pricePerDay;
@@ -23,7 +24,7 @@ public class Car {
     public Car() {
     }
 
-    public Car(CarModel carModel, Date registrationDate, String plateNr, String vin, double pricePerDay) {
+    public Car(CarModel carModel, LocalDate registrationDate, String plateNr, String vin, double pricePerDay) {
         this.carModel = carModel;
         this.registrationDate = registrationDate;
         this.plateNr = plateNr;
@@ -47,11 +48,11 @@ public class Car {
         this.carModel = carModel;
     }
 
-    public Date getRegistrationDate() {
+    public LocalDate getRegistrationDate() {
         return registrationDate;
     }
 
-    public void setRegistrationDate(Date registrationDate) {
+    public void setRegistrationDate(LocalDate registrationDate) {
         this.registrationDate = registrationDate;
     }
 
