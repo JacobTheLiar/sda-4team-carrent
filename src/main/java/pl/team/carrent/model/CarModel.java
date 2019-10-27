@@ -6,6 +6,15 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import java.util.Objects;
 
+/**
+ * @author: Maciej Kryger  [https://github.com/maciejkryger]
+ * @date : 27.10.2019 12:20
+ * *
+ * @className: CarModel
+ * *
+ * *
+ ******************************************************/
+
 @Entity
 public class CarModel {
 
