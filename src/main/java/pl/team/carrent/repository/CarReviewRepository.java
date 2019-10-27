@@ -7,6 +7,7 @@ import pl.team.carrent.model.CarReview;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author: Maciej Kryger  [https://github.com/maciejkryger]
@@ -18,8 +19,8 @@ import java.util.List;
  ******************************************************/
 public interface CarReviewRepository extends JpaRepository<CarReview, String> {
 
-    Car findByCar_PlateNr(String plateNr);
-    Car findByCar_VinAnd(String vin);
+    Optional<Car> findByCar_PlateNr(String plateNr);
+    Optional<Car> findByCar_VinAnd(String vin);
     List<Car> findByReviewDateBetween(LocalDate date1, LocalDate date2);
     List<Car> findByReviewDateBefore(LocalDate date);
     List<Car> findByReviewDateAfter(LocalDate date);

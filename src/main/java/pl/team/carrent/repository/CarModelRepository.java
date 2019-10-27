@@ -13,7 +13,7 @@ import java.util.List;
  * *
  * *
  ******************************************************/
-public interface CarModelRepository extends JpaRepository<CarModel, String> {
+public interface CarModelRepository extends JpaRepository<CarModel, Integer> {
 
     List<CarModel> findByMarkContains(String mark);
 

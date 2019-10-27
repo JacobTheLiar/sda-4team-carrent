@@ -5,6 +5,7 @@ import pl.team.carrent.model.Car;
 import pl.team.carrent.model.CarModel;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author: Maciej Kryger  [https://github.com/maciejkryger]
@@ -14,11 +15,11 @@ import java.util.List;
  * *
  * *
  ******************************************************/
-public interface CarRepository extends JpaRepository<Car, String> {
+public interface CarRepository extends JpaRepository<Car, Integer> {
 
     List<Car> findByModel(CarModel carModel);
 
-    Car findByPlateNr(String plateNr);
+    Optional<Car> findByPlateNr(String plateNr);
 
-    Car findByVin(String vin);
+    Optional<Car> findByVin(String vin);
 }
