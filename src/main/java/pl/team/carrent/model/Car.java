@@ -1,9 +1,20 @@
 package pl.team.carrent.model;
 
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
+
+/**
+ * @author: Maciej Kryger  [https://github.com/maciejkryger]
+ * @date : 27.10.2019 12:20
+ * *
+ * @className: Car
+ * *
+ * *
+ ******************************************************/
+
 
 @Entity
 public class Car {
