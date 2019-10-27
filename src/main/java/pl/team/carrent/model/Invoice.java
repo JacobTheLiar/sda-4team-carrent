@@ -27,17 +27,21 @@ public class Invoice{
     
     @Column(precision = 18, scale = 2)
     private BigDecimal value;
-    private LocalDate date;
+    private LocalDate invoiceDate;
+    private LocalDate paymentDate;
+    private LocalDate sellDate;
     
     
     public Invoice(){
     }
     
     
-    public Invoice(String number, BigDecimal value, LocalDate date){
+    public Invoice(String number, BigDecimal value, LocalDate invoiceDate, LocalDate paymentDate, LocalDate sellDate){
         this.number = number;
         this.value = value;
-        this.date = date;
+        this.invoiceDate = invoiceDate;
+        this.paymentDate = paymentDate;
+        this.sellDate = sellDate;
     }
     
     
@@ -67,19 +71,19 @@ public class Invoice{
     }
     
     
-    public LocalDate getDate(){
-        return date;
+    public LocalDate getInvoiceDate(){
+        return invoiceDate;
     }
     
     
-    public void setDate(LocalDate date){
-        this.date = date;
+    public void setInvoiceDate(LocalDate invoiceDate){
+        this.invoiceDate = invoiceDate;
     }
     
     
     @Override
     public String toString(){
-        return "Invoice{" + "id=" + id + ", number='" + number + '\'' + ", value=" + value + ", date=" + date + '}';
+        return "Invoice{" + "id=" + id + ", number='" + number + '\'' + ", value=" + value + ", invoiceDate=" + invoiceDate + ", paymentDate=" + paymentDate + ", sellDate=" + sellDate + '}';
     }
     
     
