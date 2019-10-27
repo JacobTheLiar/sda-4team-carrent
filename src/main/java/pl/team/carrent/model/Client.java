@@ -15,11 +15,9 @@ import java.util.Objects;
  * *
  ******************************************************/
 @Entity
-@Table(name = "client")
 public class Client{
     
     @Id
-    @Column(name = "idClient")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqClient")
     @SequenceGenerator(name = "seqClient", sequenceName = "seq_Client")
     private int id;
@@ -38,7 +36,7 @@ public class Client{
     }
     
     
-    public Client(@NotNull String name, String address, String postCode, String city, String taxNumber, String email, String telephoneNr){
+    public Client(String name, String address, String postCode, String city, String taxNumber, String email, String telephoneNr){
         this.name = name;
         this.address = address;
         this.postCode = postCode;
