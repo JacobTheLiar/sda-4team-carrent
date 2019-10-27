@@ -28,7 +28,8 @@ public class Rent {
     @ManyToOne(targetEntity = Client.class)
     private Client client;
 
-    private int promotionId;
+    @ManyToOne(targetEntity = Promotion.class)
+    private Promotion promotion;
 
     @ManyToOne(targetEntity = RentPoint.class)
     private RentPoint rentPointStart;
@@ -46,10 +47,10 @@ public class Rent {
     public Rent() {
     }
 
-    public Rent(Car car, Client client, int promotionId, RentPoint rentPointStart, LocalDate rentTimeStart, Employee employeeStart, int counterStateStart, String notes) {
+    public Rent(Car car, Client client, Promotion promotion, RentPoint rentPointStart, LocalDate rentTimeStart, Employee employeeStart, int counterStateStart, String notes) {
         this.car = car;
         this.client = client;
-        this.promotionId = promotionId;
+        this.promotion = promotion;
         this.rentPointStart = rentPointStart;
         this.rentTimeStart = rentTimeStart;
         this.employeeStart = employeeStart;
@@ -81,12 +82,12 @@ public class Rent {
         this.client = client;
     }
 
-    public int getPromotionId() {
-        return promotionId;
+    public Promotion getPromotion() {
+        return promotion;
     }
 
-    public void setPromotionId(int promotionId) {
-        this.promotionId = promotionId;
+    public void setPromotionId(Promotion promotion) {
+        this.promotion = promotion;
     }
 
     public RentPoint getRentPointStart() {
