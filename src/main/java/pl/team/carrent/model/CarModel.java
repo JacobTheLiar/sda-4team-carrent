@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import java.util.Objects;
 
 @Entity
 public class CarModel {
@@ -11,11 +12,11 @@ public class CarModel {
     @Id
     @GeneratedValue(generator = "carModelSeq")
     @SequenceGenerator(name = "carModelSeq", sequenceName = "car_model_seq",allocationSize = 1)
-    int idCarModel;
-    String mark;
-    String model;
-    String productionYear;
-    String reviewInterval;
+    private int id;
+    private String mark;
+    private String model;
+    private String productionYear;
+    private String reviewInterval;
 
     public CarModel() {
     }
@@ -27,12 +28,12 @@ public class CarModel {
         this.reviewInterval = reviewInterval;
     }
 
-    public int getIdCarModel() {
-        return idCarModel;
+    public int getId() {
+        return id;
     }
 
-    public void setIdCarModel(int idCarModel) {
-        this.idCarModel = idCarModel;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getMark() {
@@ -65,5 +66,18 @@ public class CarModel {
 
     public void setReviewInterval(String reviewInterval) {
         this.reviewInterval = reviewInterval;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CarModel carModel = (CarModel) o;
+        return id == carModel.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

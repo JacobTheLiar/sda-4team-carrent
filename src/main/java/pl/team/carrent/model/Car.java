@@ -1,10 +1,8 @@
 package pl.team.carrent.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 public class Car {
@@ -12,38 +10,41 @@ public class Car {
     @Id
     @GeneratedValue(generator = "carSeq")
     @SequenceGenerator(name = "carSeq", sequenceName = "car_seq",allocationSize = 1)
-    int idCar;
-    int carModelId;
-    Date registrationDate;
-    String plateNr;
-    String vin;
-    double pricePerDay;
+    private int id;
+
+    @ManyToOne(targetEntity = CarModel.class)
+    private CarModel carModel;
+
+    private Date registrationDate;
+    private String plateNr;
+    private String vin;
+    private double pricePerDay;
 
     public Car() {
     }
 
-    public Car(int carModelId, Date registrationDate, String plateNr, String vin, double pricePerDay) {
-        this.carModelId = carModelId;
+    public Car(CarModel carModel, Date registrationDate, String plateNr, String vin, double pricePerDay) {
+        this.carModel = carModel;
         this.registrationDate = registrationDate;
         this.plateNr = plateNr;
         this.vin = vin;
         this.pricePerDay = pricePerDay;
     }
 
-    public int getIdCar() {
-        return idCar;
+    public int getId() {
+        return id;
     }
 
-    public void setIdCar(int idCar) {
-        this.idCar = idCar;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getCarModelId() {
-        return carModelId;
+    public CarModel getCarModel() {
+        return carModel;
     }
 
-    public void setCarModelId(int carModelId) {
-        this.carModelId = carModelId;
+    public void setCarModel(CarModel carModel) {
+        this.carModel = carModel;
     }
 
     public Date getRegistrationDate() {
@@ -76,5 +77,18 @@ public class Car {
 
     public void setPricePerDay(double pricePerDay) {
         this.pricePerDay = pricePerDay;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return id == car.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
