@@ -20,7 +20,7 @@ public class CarModel {
 
     @Id
     @GeneratedValue(generator = "carModelSeq")
-    @SequenceGenerator(name = "carModelSeq", sequenceName = "car_model_seq",allocationSize = 1)
+    @SequenceGenerator(name = "carModelSeq", sequenceName = "car_model_seq", allocationSize = 1)
     private int id;
     private String mark;
     private String model;
