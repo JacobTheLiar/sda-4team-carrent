@@ -1,5 +1,6 @@
 package pl.team.carrent.model;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
@@ -13,7 +14,7 @@ import java.util.Objects;
  * *
  * *
  ******************************************************/
-
+@Entity
 public class RentPoint {
 
 

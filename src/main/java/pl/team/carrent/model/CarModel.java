@@ -24,13 +24,13 @@ public class CarModel {
     private int id;
     private String mark;
     private String model;
-    private String productionYear;
-    private String reviewInterval;
+    private int productionYear;
+    private int reviewInterval;
 
     public CarModel() {
     }
 
-    public CarModel(String mark, String model, String productionYear, String reviewInterval) {
+    public CarModel(String mark, String model, int productionYear, int reviewInterval) {
         this.mark = mark;
         this.model = model;
         this.productionYear = productionYear;
@@ -61,19 +61,19 @@ public class CarModel {
         this.model = model;
     }
 
-    public String getProductionYear() {
+    public int getProductionYear() {
         return productionYear;
     }
 
-    public void setProductionYear(String productionYear) {
+    public void setProductionYear(int productionYear) {
         this.productionYear = productionYear;
     }
 
-    public String getReviewInterval() {
+    public int getReviewInterval() {
         return reviewInterval;
     }
 
-    public void setReviewInterval(String reviewInterval) {
+    public void setReviewInterval(int reviewInterval) {
         this.reviewInterval = reviewInterval;
     }
 
