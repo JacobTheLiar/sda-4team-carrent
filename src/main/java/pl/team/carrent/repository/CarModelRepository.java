@@ -17,6 +17,8 @@ public interface CarModelRepository extends JpaRepository<CarModel, Integer> {
 
     List<CarModel> findByMarkContains(String mark);
 
+    List<CarModel> findByMark(String mark);
+
     List<CarModel> findByModelContains(String model);
 
     List<CarModel> findByProductionYear(int year);
