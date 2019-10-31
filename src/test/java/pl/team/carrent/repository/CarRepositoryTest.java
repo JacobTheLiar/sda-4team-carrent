@@ -54,29 +54,29 @@ public class CarRepositoryTest {
 
     @Test
     public void shouldFindByPlateNr() {
-        Optional car= carRepository.findByPlateNr("PO00003");
+        Optional<Car> car = carRepository.findByPlateNr("PO00003");
 
-        Assert.assertTrue("Optional Car should be present",car.isPresent());
+        Assert.assertTrue("Optional Car should be present", car.isPresent());
     }
 
     @Test
     public void shouldDontFindByPlateNr() {
-        Optional car= carRepository.findByPlateNr("PO10003");
+        Optional<Car> car = carRepository.findByPlateNr("PO10003");
 
-        Assert.assertTrue("Optional Car should not find any plate nr",!car.isPresent());
+        Assert.assertFalse("Optional Car should not find any plate nr", car.isPresent());
     }
 
     @Test
     public void shouldFindByVin() {
-        Optional car= carRepository.findByVin("VIN3");
+        Optional<Car> car = carRepository.findByVin("VIN3");
 
-        Assert.assertTrue("Optional Car should be present",car.isPresent());
+        Assert.assertTrue("Optional Car should be present", car.isPresent());
     }
 
     @Test
     public void shouldDontFindByVin() {
-        Optional car= carRepository.findByVin("VIN13");
+        Optional<Car> car = carRepository.findByVin("VIN13");
 
-        Assert.assertTrue("Optional car should not find any VIN",!car.isPresent());
+        Assert.assertFalse("Optional car should not find any VIN", car.isPresent());
     }
 }
