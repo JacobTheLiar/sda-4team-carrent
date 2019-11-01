@@ -44,13 +44,13 @@ public class CarReviewRepositoryTest {
         LocalDate localDate = LocalDate.of(1999, 9, 01);
         CarModel myCarModel1 = new CarModel("Skoda", "Fabia", 1999, 30000);
         carModelRepository.save(myCarModel1);
-        Car car1 = new Car(myCarModel1, localDate, "PO12345", "VIN1", 100.00);
+        Car car1 = new Car(myCarModel1, localDate, "PO12346", "VIN0", 100.00);
         carRepository.save(car1);
         CarReview carReview = new CarReview(car1, 30000, localDate);
         carReviewRepository.save(carReview);
 
         //when
-        Optional<Car> carReview1 = carReviewRepository.findByCar_PlateNr("PO12345");
+        Optional<CarReview> carReview1 = carReviewRepository.findByCar_PlateNr("PO12346");
 
         //then
         Assert.assertTrue("could find by plate 1 car", carReview1.isPresent());
@@ -58,7 +58,7 @@ public class CarReviewRepositoryTest {
 
     @Test
     public void shouldDontFindByCar_PlateNr() {
-        Optional carReviewToFound = carReviewRepository.findByCar_PlateNr("PO00001");
+        Optional<CarReview> carReviewToFound = carReviewRepository.findByCar_PlateNr("PO00001");
         Assert.assertFalse("couldn't find by plate any car", carReviewToFound.isPresent());
     }
 
@@ -68,13 +68,13 @@ public class CarReviewRepositoryTest {
         LocalDate localDate = LocalDate.of(1999, 9, 01);
         CarModel myCarModel1 = new CarModel("Skoda", "Fabia", 1999, 30000);
         carModelRepository.save(myCarModel1);
-        Car car1 = new Car(myCarModel1, localDate, "PO12345", "VIN1", 100.00);
+        Car car1 = new Car(myCarModel1, localDate, "PO1X345", "VIN10", 100.00);
         carRepository.save(car1);
         CarReview carReview = new CarReview(car1, 30000, localDate);
         carReviewRepository.save(carReview);
 
         //when
-        Optional<Car> carReviewToFound = carReviewRepository.findByCar_Vin("VIN1");
+        Optional<CarReview> carReviewToFound = carReviewRepository.findByCar_Vin("VIN10");
 
         //then
         Assert.assertTrue("could find by plate 1 car", carReviewToFound.isPresent());
@@ -83,10 +83,10 @@ public class CarReviewRepositoryTest {
     @Test
     public void shouldFindByReviewDateBetween() {
         //given
-        LocalDate localDate = LocalDate.of(1999, 9, 01);
-        LocalDate localDateReview = LocalDate.of(2001, 9, 01);
-        LocalDate localDateFrom = LocalDate.of(1900, 9, 01);
-        LocalDate localDateTo = LocalDate.of(2010, 9, 01);
+        LocalDate localDate = LocalDate.of(1900, 9, 01);
+        LocalDate localDateReview = LocalDate.of(1910, 9, 01);
+        LocalDate localDateFrom = LocalDate.of(1899, 9, 01);
+        LocalDate localDateTo = LocalDate.of(1911, 9, 01);
         CarModel myCarModel1 = new CarModel("Skoda", "Fabia", 1999, 30000);
         carModelRepository.save(myCarModel1);
         Car car1 = new Car(myCarModel1, localDate, "PO12345", "VIN1", 100.00);
@@ -95,18 +95,18 @@ public class CarReviewRepositoryTest {
         carReviewRepository.save(carReview);
 
         //when
-        List<Car> carReviewToFound = carReviewRepository.findByReviewDateBetween(localDateFrom, localDateTo);
+        List<CarReview> carReviewToFound = carReviewRepository.findByReviewDateBetween(localDateFrom, localDateTo);
 
         //then
-        Assert.assertEquals("could find by plate 1 car", carReviewToFound.size(), 1);
+        Assert.assertEquals("could find by plate 1 car", 1, carReviewToFound.size());
     }
 
     @Test
     public void shouldFindByReviewDateBefore() {
         //given
-        LocalDate localDate = LocalDate.of(1999, 9, 01);
-        LocalDate localDateReview = LocalDate.of(2001, 9, 01);
-        LocalDate localDateFrom = LocalDate.of(2012, 9, 01);
+        LocalDate localDate = LocalDate.of(1800, 9, 01);
+        LocalDate localDateReview = LocalDate.of(1801, 9, 01);
+        LocalDate localDateFrom = LocalDate.of(1850, 9, 01);
         CarModel myCarModel1 = new CarModel("Skoda", "Fabia", 1999, 30000);
         carModelRepository.save(myCarModel1);
         Car car1 = new Car(myCarModel1, localDate, "PO12345", "VIN1", 100.00);
@@ -115,18 +115,18 @@ public class CarReviewRepositoryTest {
         carReviewRepository.save(carReview);
 
         //when
-        List<Car> carReviewToFound = carReviewRepository.findByReviewDateBefore(localDateFrom);
+        List<CarReview> carReviewToFound = carReviewRepository.findByReviewDateBefore(localDateFrom);
 
         //then
-        Assert.assertEquals("could find by plate 1 car", carReviewToFound.size(), 1);
+        Assert.assertEquals("could find by plate 1 car", 1, carReviewToFound.size());
     }
 
     @Test
     public void shouldFindByReviewDateAfter() {
         //given
-        LocalDate localDate = LocalDate.of(1999, 9, 01);
-        LocalDate localDateReview = LocalDate.of(2001, 9, 01);
-        LocalDate localDateAfter = LocalDate.of(2000, 9, 01);
+        LocalDate localDate = LocalDate.of(2017, 9, 01);
+        LocalDate localDateReview = LocalDate.of(2018, 9, 01);
+        LocalDate localDateAfter = LocalDate.of(2016, 9, 01);
         CarModel myCarModel1 = new CarModel("Skoda", "Fabia", 1999, 30000);
         carModelRepository.save(myCarModel1);
         Car car1 = new Car(myCarModel1, localDate, "PO12345", "VIN1", 100.00);
@@ -135,7 +135,7 @@ public class CarReviewRepositoryTest {
         carReviewRepository.save(carReview);
 
         //when
-        List<Car> carReviewToFound = carReviewRepository.findByReviewDateAfter(localDateAfter);
+        List<CarReview> carReviewToFound = carReviewRepository.findByReviewDateAfter(localDateAfter);
 
         //then
         Assert.assertEquals("could find by plate 1 car", carReviewToFound.size(), 1);
