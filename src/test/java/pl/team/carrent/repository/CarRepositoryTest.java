@@ -11,10 +11,7 @@ import pl.team.carrent.model.CarModel;
 
 import javax.validation.constraints.AssertTrue;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -34,27 +31,52 @@ public class CarRepositoryTest {
 
     @Autowired
     CarRepository carRepository;
+    @Autowired
+    CarModelRepository carModelRepository;
+
 
     @Test
-    public void findByCarModel() {
+    public void shouldFindByCarModel() {
 
-        LocalDate localDate = LocalDate.of(1999,9,01);
-        CarModel myCarModel1 = new CarModel("Skoda","Fabia",1999,30000);
-        CarModel myCarModel2 = new CarModel("Renault","Megane",1999,30000);
-        Car car1 = new Car(myCarModel1,localDate,"PO12345","VIN1",100.00);
-        Car car2 = new Car(myCarModel2,localDate,"PO12346","VIN2",100.00);
+        LocalDate localDate = LocalDate.of(1999, 9, 01);
+        CarModel myCarModel1 = new CarModel("Skoda", "Fabia", 1999, 30000);
+        CarModel myCarModel2 = new CarModel("Renault", "Megane", 1999, 30000);
+        carModelRepository.saveAll(Arrays.asList(myCarModel1, myCarModel2));
 
+        Car car1 = new Car(myCarModel1, localDate, "PO12345", "VIN1", 100.00);
+        Car car2 = new Car(myCarModel2, localDate, "PO12346", "VIN2", 100.00);
+        carRepository.saveAll(Arrays.asList(car1, car2));
 
         List<Car> listCar = carRepository.findByCarModel(myCarModel1);
 
         assertThat(listCar).containsExactlyInAnyOrder(car1);
     }
-//
-//    @Test
-//    public void findByPlateNr() {
-//    }
-//
-//    @Test
-//    public void findByVin() {
-//    }
+
+    @Test
+    public void shouldFindByPlateNr() {
+        Optional<Car> car = carRepository.findByPlateNr("PO00003");
+
+        Assert.assertTrue("Optional Car should be present", car.isPresent());
+    }
+
+    @Test
+    public void shouldDontFindByPlateNr() {
+        Optional<Car> car = carRepository.findByPlateNr("PO10003");
+
+        Assert.assertFalse("Optional Car should not find any plate nr", car.isPresent());
+    }
+
+    @Test
+    public void shouldFindByVin() {
+        Optional<Car> car = carRepository.findByVin("VIN3");
+
+        Assert.assertTrue("Optional Car should be present", car.isPresent());
+    }
+
+    @Test
+    public void shouldDontFindByVin() {
+        Optional<Car> car = carRepository.findByVin("VIN13");
+
+        Assert.assertFalse("Optional car should not find any VIN", car.isPresent());
+    }
 }

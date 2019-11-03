@@ -19,9 +19,9 @@ import java.util.Optional;
  ******************************************************/
 public interface CarReviewRepository extends JpaRepository<CarReview, Integer> {
 
-    Optional<Car> findByCar_PlateNr(String plateNr);
-    Optional<Car> findByCar_Vin(String vin);
-    List<Car> findByReviewDateBetween(LocalDate date1, LocalDate date2);
-    List<Car> findByReviewDateBefore(LocalDate date);
-    List<Car> findByReviewDateAfter(LocalDate date);
+    Optional<CarReview> findByCar_PlateNr(String plateNr);
+    Optional<CarReview> findByCar_Vin(String vin);
+    List<CarReview> findByReviewDateBetween(LocalDate date1, LocalDate date2);
+    List<CarReview> findByReviewDateBefore(LocalDate date);
+    List<CarReview> findByReviewDateAfter(LocalDate date);
 }
