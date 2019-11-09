@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import pl.team.carrent.model.Client;
 
 import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -17,9 +18,9 @@ import java.util.List;
  ******************************************************/
 public interface ClientRepository extends JpaRepository<Client, Integer>{
     
-    List<Client> findByNameContainsIgnoreCase(String name);
-    List<Client> findByAddressContainsIgnoreCase(String address);
-    List<Client> findByTelephoneNrContainsIgnoreCase(String telephoneNr);
+    Set<Client> findByNameContainsIgnoreCase(String name);
+    Set<Client> findByAddressContainsIgnoreCase(String address);
+    Set<Client> findByTelephoneNrContainsIgnoreCase(String telephoneNr);
     
     
 }
