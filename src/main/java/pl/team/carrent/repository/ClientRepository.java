@@ -17,9 +17,9 @@ import java.util.List;
  ******************************************************/
 public interface ClientRepository extends JpaRepository<Client, Integer>{
     
-    List<Client> findByNameContains(String name);
-    List<Client> findByAddressContains(String address);
-    List<Client> findByTelephoneNrContains(String telephoneNr);
+    List<Client> findByNameContainsIgnoreCase(String name);
+    List<Client> findByAddressContainsIgnoreCase(String address);
+    List<Client> findByTelephoneNrContainsIgnoreCase(String telephoneNr);
     
     
 }
