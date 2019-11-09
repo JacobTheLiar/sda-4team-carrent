@@ -1,9 +1,6 @@
 package pl.team.carrent.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -15,6 +12,7 @@ import java.util.Objects;
  * *
  * *
  ******************************************************/
+@Entity
 public class Rent {
 
     @Id
