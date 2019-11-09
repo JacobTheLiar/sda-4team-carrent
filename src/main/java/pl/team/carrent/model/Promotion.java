@@ -10,7 +10,7 @@ import java.util.Objects;
 public class Promotion {
 
     @Id
-    @GeneratedValue(generator = "promoSeq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "promoSeq")
     @SequenceGenerator(name = "promoSeq", sequenceName = "promo_seq",
             allocationSize = 1)
     private int id;
@@ -23,7 +23,6 @@ public class Promotion {
     private LocalDate promoStart;
     @NotNull
     private LocalDate promoEnd;
-
 
     @ManyToMany(targetEntity = Car.class)
     private List<Car> cars;
@@ -47,6 +46,23 @@ public class Promotion {
         this.cars = cars;
         this.carModels = carModels;
         this.clients = clients;
+    }
+
+    public Promotion(String name, int discountPercentage, LocalDate promoStart, List<Car> cars, LocalDate promoEnd) {
+        this.name = name;
+        this.discountPercentage = discountPercentage;
+        this.promoStart = promoStart;
+        this.promoEnd = promoEnd;
+        this.cars = cars;
+    }
+
+    public Promotion(List<CarModel> carModels, String name, int discountPercentage, LocalDate promoStart, LocalDate promoEnd) {
+        this(name, discountPercentage, promoStart, promoEnd, null, carModels, null);
+    }
+
+    public Promotion(String name, int discountPercentage, LocalDate promoStart, LocalDate promoEnd,
+                     List<Client> clients) {
+        this(name, discountPercentage, promoStart, promoEnd, null, null, clients);
     }
 
     public int getId() {
