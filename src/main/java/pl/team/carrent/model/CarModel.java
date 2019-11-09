@@ -24,15 +24,19 @@ public class CarModel {
     private int id;
     private String mark;
     private String model;
+    private String segment;
+    private String type;
     private int productionYear;
     private int reviewInterval;
 
     public CarModel() {
     }
 
-    public CarModel(String mark, String model, int productionYear, int reviewInterval) {
+    public CarModel(String mark, String model, String segment, String type, int productionYear, int reviewInterval) {
         this.mark = mark;
         this.model = model;
+        this.segment = segment;
+        this.type = type;
         this.productionYear = productionYear;
         this.reviewInterval = reviewInterval;
     }
@@ -59,6 +63,22 @@ public class CarModel {
 
     public void setModel(String model) {
         this.model = model;
+    }
+
+    public String getSegment() {
+        return segment;
+    }
+
+    public void setSegment(String segment) {
+        this.segment = segment;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public int getProductionYear() {

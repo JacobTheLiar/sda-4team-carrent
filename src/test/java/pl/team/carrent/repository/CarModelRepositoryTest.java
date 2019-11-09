@@ -11,8 +11,6 @@ import pl.team.carrent.model.CarModel;
 import javax.transaction.Transactional;
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 /**
  * @author: Maciej Kryger  [https://github.com/maciejkryger]
  * @date : 30.10.2019 19:44
@@ -32,27 +30,27 @@ public class CarModelRepositoryTest {
 
     @Test
     public void shouldFindByMarkContains() {
-        CarModel carModel = new CarModel("test", "test", 1000, 100);
+        CarModel carModel = new CarModel("test", "test", "A","combi",1000, 100);
         carModelRepository.save(carModel);
-        List<CarModel> carModels = carModelRepository.findByMarkContains("est");
+        List<CarModel> carModels = carModelRepository.findByMarkContainsIgnoreCase("est");
         Assert.assertEquals(carModels.size(), 1);
     }
 
     @Test
     public void shouldDontFindByMarkContains() {
-        List<CarModel> carModels = carModelRepository.findByMarkContains("BMW");
+        List<CarModel> carModels = carModelRepository.findByMarkContainsIgnoreCase("BMW");
         Assert.assertNotEquals("should find 0 BMW in the Base", 2, carModels.size());
     }
 
     @Test
     public void shouldFindByModelContains() {
-        List<CarModel> carModels = carModelRepository.findByModelContains("orsa");
+        List<CarModel> carModels = carModelRepository.findByModelContainsIgnoreCase("orsa");
         Assert.assertEquals("should find one Opel Corsa in the base", 1, carModels.size());
     }
 
     @Test
     public void shouldDontFindByModelContains() {
-        List<CarModel> carModels = carModelRepository.findByModelContains("Polo");
+        List<CarModel> carModels = carModelRepository.findByModelContainsIgnoreCase("Polo");
         Assert.assertNotEquals("Should don't find any model VW Polo", 1, carModels.size());
     }
 
@@ -70,7 +68,7 @@ public class CarModelRepositoryTest {
 
     @Test
     public void findByMark() {
-        List<CarModel> models = carModelRepository.findByMark("Opel");
+        List<CarModel> models = carModelRepository.findByMarkIgnoreCase("Opel");
         Assert.assertEquals("", models.size(), 2);
     }
 }

@@ -37,8 +37,8 @@ public class PromotionRepositoryTest {
     @Test
     public void shouldBeAddedPromotionByCarModel() {
         //given
-        CarModel opelCorsa2001 = new CarModel("Opel", "Corsa", 2001, 30000);
-        CarModel renualtClio2019 = new CarModel("Reanualt", "Clio", 2019, 30000);
+        CarModel opelCorsa2001 = new CarModel("Opel", "Corsa","null","null", 2001, 30000);
+        CarModel renualtClio2019 = new CarModel("Reanualt", "Clio", "null","null",2019, 30000);
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, renualtClio2019));
         Promotion addedPromotion = new Promotion("Male 30%", 30,
                 LocalDate.now(), LocalDate.now().plusDays(30),
