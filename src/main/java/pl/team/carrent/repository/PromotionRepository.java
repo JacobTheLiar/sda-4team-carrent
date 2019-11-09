@@ -29,11 +29,4 @@ public interface PromotionRepository extends JpaRepository<Promotion, Integer> {
 
     List<Promotion> findAllByCars(Car car);
 
-
-
-
-
-    /**
-     *Czy potrzebna jest jeszcze jakś metoda?
-     * **/
 }

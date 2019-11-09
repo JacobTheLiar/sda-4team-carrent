@@ -34,7 +34,6 @@ public class PromotionRepositoryTest {
     @Autowired
     private PromotionRepository subject;
 
-
     @Test
     public void shouldBeAddedPromotionByCarModel() {
         //given
@@ -49,10 +48,8 @@ public class PromotionRepositoryTest {
         //when
         List<Promotion> byCarModels = subject.findByCarModels(opelCorsa2001);
 
-
-        //than
+        //then
         Assert.assertEquals("Male 30%", byCarModels.get(0).getName());
     }
-
 
 }

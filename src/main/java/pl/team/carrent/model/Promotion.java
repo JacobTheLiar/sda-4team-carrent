@@ -65,7 +65,6 @@ public class Promotion {
         this(name, discountPercentage, promoStart, promoEnd, null, null, clients);
     }
 
-
     public int getId() {
         return id;
     }
