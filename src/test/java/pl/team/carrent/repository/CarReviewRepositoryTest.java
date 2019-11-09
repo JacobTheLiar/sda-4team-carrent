@@ -10,6 +10,7 @@ import pl.team.carrent.model.Car;
 import pl.team.carrent.model.CarModel;
 import pl.team.carrent.model.CarReview;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
@@ -27,16 +28,17 @@ import static org.junit.Assert.*;
  ******************************************************/
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
+@Transactional
 public class CarReviewRepositoryTest {
 
     @Autowired
-    CarReviewRepository carReviewRepository;
+    private CarReviewRepository carReviewRepository;
 
     @Autowired
-    CarModelRepository carModelRepository;
+    private CarModelRepository carModelRepository;
 
     @Autowired
-    CarRepository carRepository;
+    private CarRepository carRepository;
 
     @Test
     public void shouldFindByCar_PlateNr() {

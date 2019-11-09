@@ -9,6 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import pl.team.carrent.model.Car;
 import pl.team.carrent.model.CarModel;
 
+import javax.transaction.Transactional;
 import javax.validation.constraints.AssertTrue;
 import java.time.LocalDate;
 import java.util.*;
@@ -26,13 +27,14 @@ import static org.assertj.core.api.Assertions.assertThat;
  ******************************************************/
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
+@Transactional
 public class CarRepositoryTest {
 
 
     @Autowired
-    CarRepository carRepository;
+    private CarRepository carRepository;
     @Autowired
-    CarModelRepository carModelRepository;
+    private CarModelRepository carModelRepository;
 
 
     @Test

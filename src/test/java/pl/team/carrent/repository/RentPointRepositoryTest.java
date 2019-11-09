@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import pl.team.carrent.model.RentPoint;
 
+import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,6 +23,7 @@ import static org.junit.Assert.*;
  ******************************************************/
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
+@Transactional
 public class RentPointRepositoryTest {
 
     @Autowired
