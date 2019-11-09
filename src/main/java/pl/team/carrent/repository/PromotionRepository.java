@@ -19,21 +19,19 @@ import java.util.Set;
  ******************************************************/
 public interface PromotionRepository extends JpaRepository<Promotion, Integer> {
 
-    List<Promotion> findByNameContains(String name);
+    List<Promotion> findByNameContainsIgnoreCase(String name);
 
     List<Promotion> findByPromoEndIsNull();
 
     List<Promotion> findByDiscountPercentage(int discountPercentage);
 
-//    List<Promotion> findAllByCar(CarModel carModel);
-//
-//    List<Promotion> findAllByCars(Car car);
+    List<Promotion> findByCarModels(CarModel carModel);
 
-    /**
-     * Czy to zadziała? czy powinno być carModel czy carModels?
-     **/
-    @Query("select p from Promotion p where p.CarModel = :carModel")
-    List<Promotion> searchByCarModel(CarModel carModel);
+    List<Promotion> findAllByCars(Car car);
+
+
+
+
 
     /**
      *Czy potrzebna jest jeszcze jakś metoda?
