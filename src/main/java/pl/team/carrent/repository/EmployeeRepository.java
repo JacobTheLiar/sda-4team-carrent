@@ -16,18 +16,28 @@ import java.util.List;
  ******************************************************/
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
-    List<Employee> findByFirstnameContains(String firstname);
-    List<Employee> findBySurnameContains(String surname);
+    List<Employee> findByFirstnameContainsIgnoreCase(String firstname);
+    List<Employee> findBySurnameContainsIgnoreCase(String surname);
+
+    //@Query("select e from Employee e where e.role.authority = :name")
+    List<Employee> findByRoleAuthorityContainsIgnoreCase(String name);
+    //@Query("select e from Employee e where e.rentPoint.name = :name")
+    List<Employee> findByRentPointNameContainsIgnoreCase(String name);
+    //@Query("select e from Employee e where e.rentPoint.address = :address")
+    List<Employee> findByRentPointAddressContainsIgnoreCase(String address);
+    //@Query("select e from Employee e where e.rentPoint.postCode = :postCode")
+    List<Employee> findByRentPointPostCodeContainsIgnoreCase(String postCode);
+    //@Query("select e from Employee e where e.rentPoint.city = :city")
+    List<Employee> findByRentPointCityContainsIgnoreCase(String city);
+
     List<Employee> findByEmploymentDate(LocalDate employmentDate);
+    List<Employee> findByEmploymentDateAfter(LocalDate employmentDate);
+    List<Employee> findByEmploymentDateBefore(LocalDate employmentDate);
+    List<Employee> findByEmploymentDateBetween(LocalDate employmentDate1, LocalDate employmentDate2);
+
     List<Employee> findByReleaseDate(LocalDate releaseDate);
-    @Query("select e from Employee e where e.role.authority = :name")
-    List<Employee> findByRoleName(String name);
-    @Query("select e from Employee e where e.rentPoint.name = :name")
-    List<Employee> findByRentPointName(String name);
-    @Query("select e from Employee e where e.rentPoint.address = :address")
-    List<Employee> findByRentPointAddress(String address);
-    @Query("select e from Employee e where e.rentPoint.postCode = :postCode")
-    List<Employee> findByRentPointPostCode(String postCode);
-    @Query("select e from Employee e where e.rentPoint.city = :city")
-    List<Employee> findByRentPointCity(String city);
+    List<Employee> findByReleaseDateAfter(LocalDate releaseDate);
+    List<Employee> findByReleaseDateBefore(LocalDate releaseDatee);
+    List<Employee> findByReleaseDateBetween(LocalDate releaseDate1, LocalDate releaseDate2);
+
 }

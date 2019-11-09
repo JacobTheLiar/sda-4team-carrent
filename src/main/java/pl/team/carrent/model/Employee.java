@@ -1,5 +1,7 @@
 package pl.team.carrent.model;
 
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -18,10 +20,21 @@ public class Employee {
     private String username;
     private String password;
     private LocalDate employmentDate;
+    @Nullable
     private LocalDate releaseDate;
 
     @ManyToOne(targetEntity = Role.class)
     private Role role;
+
+    public Employee(String firstname, String surname, RentPoint rentPoint, String username, LocalDate employmentDate, Role role) {
+        this.firstname = firstname;
+        this.surname = surname;
+        this.rentPoint = rentPoint;
+        this.username = username;
+        this.employmentDate = employmentDate;
+        this.releaseDate = null;
+        this.role = role;
+    }
 
     public int getId() {
         return id;
