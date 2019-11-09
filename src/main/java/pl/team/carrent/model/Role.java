@@ -28,6 +28,13 @@ public class Role {
         this.authority = authority;
     }
 
+    public Role() {
+    }
+
+    public Role(String authority) {
+        this.authority = authority;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

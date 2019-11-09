@@ -5,8 +5,8 @@ import org.springframework.data.jpa.repository.Query;
 import pl.team.carrent.model.*;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 /**
  * @author: Łukasz C.  [https://github.com/lukasz-ciupek]
@@ -19,23 +19,23 @@ import java.util.Set;
 public interface RentHistoryRepository extends JpaRepository<RentHistory, Integer> {
 
     @Query("select r from RentHistory r where r.car.carModel.mark = :name")
-    Set<RentHistory> findByCarModelName(String name);
+    List<RentHistory> findByCarModelName(String name);
     @Query("select r from RentHistory r where r.client.name = :name")
-    Set<RentHistory> findByClientName(String name);
+    List<RentHistory> findByClientName(String name);
     @Query("select r from RentHistory r where r.promotion.name = :name")
-    Set<RentHistory> findByPromotionName(String name);
+    List<RentHistory> findByPromotionName(String name);
     @Query("select r from RentHistory r where r.rentPointStart.name = :name")
-    Set<RentHistory> findByRentPointStartName(String name);
+    List<RentHistory> findByRentPointStartName(String name);
     @Query("select r from RentHistory r where r.rentPointEnd.name = :name")
-    Set<RentHistory> findByRentPointEndName(String name);
+    List<RentHistory> findByRentPointEndName(String name);
     @Query("select r from RentHistory r where r.employeeStart.surname = :surname")
-    Set<RentHistory> findByEmployeeStartSurname(String surname);
+    List<RentHistory> findByEmployeeStartSurname(String surname);
     @Query("select r from RentHistory r where r.employeeEnd = :surname")
-    Set<RentHistory> findByEmployeeEndSurname(String surname);
+    List<RentHistory> findByEmployeeEndSurname(String surname);
     @Query("select r from RentHistory r where r.invoice.number = :number")
     Optional<RentHistory> findByInvoiceNumber(String number);
 
-    Set<RentHistory> findByRentTimeStart(LocalDate rentTimeStart);
-    Set<RentHistory> findByRentTimeEnd(LocalDate rentTimeEnd);
+    List<RentHistory> findByRentTimeStart(LocalDate rentTimeStart);
+    List<RentHistory> findByRentTimeEnd(LocalDate rentTimeEnd);
 
 }

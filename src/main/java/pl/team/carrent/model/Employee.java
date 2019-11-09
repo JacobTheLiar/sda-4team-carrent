@@ -133,4 +133,7 @@ public class Employee {
         this.releaseDate = releaseDate;
         this.role = role;
     }
+
+    public Employee() {
+    }
 }
