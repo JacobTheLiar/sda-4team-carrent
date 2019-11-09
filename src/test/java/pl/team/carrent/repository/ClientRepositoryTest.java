@@ -12,8 +12,9 @@ import pl.team.carrent.model.Client;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Set;
 
-
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 /**
@@ -44,25 +45,25 @@ public class ClientRepositoryTest{
     
     @Test
     public void shouldFindByPartialName(){
-        List<Client> clients = clientRepository.findByNameContainsIgnoreCase("kowals");
-        Assert.assertEquals(clients.get(0).getName(), "Kowalsky");
+        Set<Client> clients = clientRepository.findByNameContainsIgnoreCase("kowals");
+        assertThat(clients.size()).isEqualTo(1);
     }
     
     @Test
     public void shouldFindByPartialAddress(){
-        List<Client> clients = clientRepository.findByAddressContainsIgnoreCase("street and fifth avenue");
+        Set<Client> clients = clientRepository.findByAddressContainsIgnoreCase("street and fifth avenue");
         Assert.assertEquals(4, clients.size());
     }
     
     @Test
     public void shouldFindByPartialNumber(){
-        List<Client> clients = clientRepository.findByTelephoneNrContainsIgnoreCase("6500");
+        Set<Client> clients = clientRepository.findByTelephoneNrContainsIgnoreCase("6500");
         Assert.assertEquals(2, clients.size());
     }
     
     @Test
     public void shouldBeNoFoundClient(){
-        List<Client> clients = clientRepository.findByNameContainsIgnoreCase("mietek");
+        Set<Client> clients = clientRepository.findByNameContainsIgnoreCase("mietek");
         Assert.assertEquals(0, clients.size());
     }
     

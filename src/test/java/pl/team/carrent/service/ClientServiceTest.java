@@ -1,6 +1,7 @@
 package pl.team.carrent.service;
 
 
+import org.assertj.core.util.Sets;
 import org.junit.Before;
 import org.junit.Test;
 import pl.team.carrent.client.ClientNotExistException;
@@ -26,8 +27,7 @@ import static pl.team.carrent.client.SearchClientOption.*;
  ******************************************************/
 public class ClientServiceTest{
     
-    private final ClientRepository clientRepository = mock(ClientRepository.class);
-    private       ClientService    clientService    = new ClientService(clientRepository);
+    private ClientService clientService;
     
     private static String FIND_NAME      = "kowal";
     private static String FIND_ADDRESS   = "rumia";
@@ -43,16 +43,25 @@ public class ClientServiceTest{
     private Client client4 = new Client(4, "Gąska", "Arachidowa 87", "00-003", "Warszawa", "PL3334445566",
                                         "noiwak@poczta.pl", "4822999887766");
     
+    
     @Before
     public void setUp() throws Exception{
+        this.clientService = new ClientService(getClientRepositoryMock());
+    }
+    
+    
+    private ClientRepository getClientRepositoryMock(){
+        ClientRepository mock = mock(ClientRepository.class);
         
-        when(clientRepository.findByNameContainsIgnoreCase(FIND_NAME)).thenReturn(Arrays.asList(client1, client2));
-        when(clientRepository.findByAddressContainsIgnoreCase(FIND_ADDRESS)).thenReturn(Arrays.asList(client2));
-        when(clientRepository.findByTelephoneNrContainsIgnoreCase(FIND_TELEPHONE)).thenReturn(
-                Arrays.asList(client2, client3));
-        when(clientRepository.findAll()).thenReturn(Arrays.asList(client1, client2, client3));
-        when(clientRepository.findById(1)).thenReturn(Optional.of(client1));
-        when(clientRepository.save(client4)).thenReturn(client4);
+        when(mock.findByNameContainsIgnoreCase(FIND_NAME)).thenReturn(Sets.newLinkedHashSet(client1, client2));
+        when(mock.findByAddressContainsIgnoreCase(FIND_ADDRESS)).thenReturn(Sets.newLinkedHashSet(client2));
+        when(mock.findByTelephoneNrContainsIgnoreCase(FIND_TELEPHONE)).thenReturn(
+                Sets.newLinkedHashSet(client2, client3));
+        when(mock.findAll()).thenReturn(Arrays.asList(client1, client2, client3));
+        when(mock.findById(1)).thenReturn(Optional.of(client1));
+        when(mock.save(client4)).thenReturn(client4);
+        
+        return mock;
     }
     
     
@@ -109,7 +118,8 @@ public class ClientServiceTest{
         Set<Client> actual = clientService.searchClients(FIND_NONE, BY_ADDRESS);
         assertThat(actual).isEmpty();
     }
-
+    
+    
     @Test
     public void shouldNotFindAnyClientByTelephoneSearch(){
         Set<Client> actual = clientService.searchClients(FIND_NONE, BY_TELEPHONE);
@@ -119,7 +129,7 @@ public class ClientServiceTest{
     
     @Test
     public void shouldAddClient(){
-        Client actual = clientService.addClient(client4);
+        Client actual = clientService.saveClient(client4);
         assertThat(actual).isEqualTo(client4);
     }
 }

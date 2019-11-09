@@ -22,7 +22,7 @@ import java.util.Set;
 @Service
 public class ClientService{
     
-    private ClientRepository clientRepository;
+    private final ClientRepository clientRepository;
     
     
     public ClientService(ClientRepository clientRepository){
@@ -39,11 +39,11 @@ public class ClientService{
         
         switch (searchClientOption) {
             case BY_NAME:
-                return new HashSet<>(clientRepository.findByNameContainsIgnoreCase(searchWhat));
+                return clientRepository.findByNameContainsIgnoreCase(searchWhat);
             case BY_ADDRESS:
-                return new HashSet<>(clientRepository.findByAddressContainsIgnoreCase(searchWhat));
+                return clientRepository.findByAddressContainsIgnoreCase(searchWhat);
             case BY_TELEPHONE:
-                return new HashSet<>(clientRepository.findByTelephoneNrContainsIgnoreCase(searchWhat));
+                return clientRepository.findByTelephoneNrContainsIgnoreCase(searchWhat);
         }
         
         return new HashSet<>();
@@ -55,7 +55,7 @@ public class ClientService{
                 .orElseThrow(() -> new ClientNotExistException("clientID: " + clientId));
     }
     
-    public Client addClient(Client client){
+    public Client saveClient(Client client){
         return clientRepository.save(client);
     }
 }
