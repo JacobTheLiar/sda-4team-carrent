@@ -47,6 +47,18 @@ public class Client{
     }
     
     
+    public Client(int id, String name, String address, String postCode, String city, String taxNumber, String email, String telephoneNr){
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.postCode = postCode;
+        this.city = city;
+        this.taxNumber = taxNumber;
+        this.email = email;
+        this.telephoneNr = telephoneNr;
+    }
+    
+    
     public int getId(){
         return id;
     }
