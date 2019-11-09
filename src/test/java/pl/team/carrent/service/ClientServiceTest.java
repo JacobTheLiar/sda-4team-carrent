@@ -2,7 +2,6 @@ package pl.team.carrent.service;
 
 
 import org.assertj.core.util.Sets;
-import org.junit.Before;
 import org.junit.Test;
 import pl.team.carrent.client.ClientNotExistException;
 import pl.team.carrent.model.Client;
@@ -27,8 +26,6 @@ import static pl.team.carrent.client.SearchClientOption.*;
  ******************************************************/
 public class ClientServiceTest{
     
-    private ClientService clientService;
-    
     private static String FIND_NAME      = "kowal";
     private static String FIND_ADDRESS   = "rumia";
     private static String FIND_TELEPHONE = "8776";
@@ -43,11 +40,6 @@ public class ClientServiceTest{
     private Client client4 = new Client(4, "Gąska", "Arachidowa 87", "00-003", "Warszawa", "PL3334445566",
                                         "noiwak@poczta.pl", "4822999887766");
     
-    
-    @Before
-    public void setUp() throws Exception{
-        this.clientService = new ClientService(getClientRepositoryMock());
-    }
     
     
     private ClientRepository getClientRepositoryMock(){
@@ -64,6 +56,8 @@ public class ClientServiceTest{
         return mock;
     }
     
+    
+    private ClientService clientService = new ClientService(getClientRepositoryMock());
     
     @Test
     public void shouldReturnAllClients(){
