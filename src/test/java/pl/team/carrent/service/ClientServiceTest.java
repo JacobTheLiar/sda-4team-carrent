@@ -40,7 +40,8 @@ public class ClientServiceTest{
                                         "kowalski2@poczta.pl", "4822118776344");
     private Client client3 = new Client(3, "Nowak", "Arachidowa 87", "00-003", "Warszawa", "PL3334445566",
                                         "noiwak@poczta.pl", "4822999887766");
-    
+    private Client client4 = new Client(4, "Gąska", "Arachidowa 87", "00-003", "Warszawa", "PL3334445566",
+                                        "noiwak@poczta.pl", "4822999887766");
     
     @Before
     public void setUp() throws Exception{
@@ -51,6 +52,7 @@ public class ClientServiceTest{
                 Arrays.asList(client2, client3));
         when(clientRepository.findAll()).thenReturn(Arrays.asList(client1, client2, client3));
         when(clientRepository.findById(1)).thenReturn(Optional.of(client1));
+        when(clientRepository.save(client4)).thenReturn(client4);
     }
     
     
@@ -112,5 +114,12 @@ public class ClientServiceTest{
     public void shouldNotFindAnyClientByTelephoneSearch(){
         Set<Client> actual = clientService.searchClients(FIND_NONE, BY_TELEPHONE);
         assertThat(actual).isEmpty();
+    }
+    
+    
+    @Test
+    public void shouldAddClient(){
+        Client actual = clientService.addClient(client4);
+        assertThat(actual).isEqualTo(client4);
     }
 }

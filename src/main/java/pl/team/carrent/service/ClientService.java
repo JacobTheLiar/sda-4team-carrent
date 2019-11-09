@@ -54,4 +54,8 @@ public class ClientService{
         return clientRepository.findById(clientId)
                 .orElseThrow(() -> new ClientNotExistException("clientID: " + clientId));
     }
+    
+    public Client addClient(Client client){
+        return clientRepository.save(client);
+    }
 }
