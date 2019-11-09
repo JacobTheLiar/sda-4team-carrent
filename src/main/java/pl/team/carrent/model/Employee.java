@@ -10,10 +10,11 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqEmployee")
     @SequenceGenerator(name = "seqEmployee", sequenceName = "seq_Employee")
-    private Long id;
+    private int id;
     private String firstname;
     private String surname;
-    private Integer rentPointId;
+    @ManyToOne(targetEntity = RentPoint.class)
+    private RentPoint rentPoint;
     private String username;
     private String password;
     private LocalDate employmentDate;
@@ -22,11 +23,11 @@ public class Employee {
     @ManyToOne(targetEntity = Role.class)
     private Role role;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -46,12 +47,12 @@ public class Employee {
         this.surname = surname;
     }
 
-    public Integer getRentPointId() {
-        return rentPointId;
+    public RentPoint getRentPoint() {
+        return rentPoint;
     }
 
-    public void setRentPointId(Integer rentPointId) {
-        this.rentPointId = rentPointId;
+    public void setRentPoint(RentPoint rentPoint) {
+        this.rentPoint = rentPoint;
     }
 
     public String getUsername() {
@@ -113,7 +114,7 @@ public class Employee {
                 "id=" + id +
                 ", firstname='" + firstname + '\'' +
                 ", surname='" + surname + '\'' +
-                ", rentPointId=" + rentPointId +
+                ", rentPoint=" + rentPoint +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", employmentDate=" + employmentDate +
@@ -122,14 +123,17 @@ public class Employee {
                 '}';
     }
 
-    public Employee(String firstname, String surname, Integer rentPointId, String username, String password, LocalDate employmentDate, LocalDate releaseDate, Role role) {
+    public Employee(String firstname, String surname, RentPoint rentPoint, String username, String password, LocalDate employmentDate, LocalDate releaseDate, Role role) {
         this.firstname = firstname;
         this.surname = surname;
-        this.rentPointId = rentPointId;
+        this.rentPoint = rentPoint;
         this.username = username;
         this.password = password;
         this.employmentDate = employmentDate;
         this.releaseDate = releaseDate;
         this.role = role;
+    }
+
+    public Employee() {
     }
 }
