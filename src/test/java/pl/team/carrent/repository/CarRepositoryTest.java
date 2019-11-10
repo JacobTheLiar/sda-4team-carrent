@@ -37,22 +37,6 @@ public class CarRepositoryTest {
     private CarModelRepository carModelRepository;
 
 
-    @Test
-    public void shouldFindByCarModel() {
-
-        LocalDate localDate = LocalDate.of(1999, 9, 01);
-        CarModel myCarModel1 = new CarModel("Skoda", "Fabia", 1999, 30000);
-        CarModel myCarModel2 = new CarModel("Renault", "Megane", 1999, 30000);
-        carModelRepository.saveAll(Arrays.asList(myCarModel1, myCarModel2));
-
-        Car car1 = new Car(myCarModel1, localDate, "PO12345", "VIN1", 100.00);
-        Car car2 = new Car(myCarModel2, localDate, "PO12346", "VIN2", 100.00);
-        carRepository.saveAll(Arrays.asList(car1, car2));
-
-        List<Car> listCar = carRepository.findByCarModel(myCarModel1);
-
-        assertThat(listCar).containsExactlyInAnyOrder(car1);
-    }
 
     @Test
     public void shouldFindByPlateNr() {

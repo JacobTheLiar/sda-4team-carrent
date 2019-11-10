@@ -15,11 +15,15 @@ import java.util.List;
  ******************************************************/
 public interface CarModelRepository extends JpaRepository<CarModel, Integer> {
 
-    List<CarModel> findByMarkContains(String mark);
+    List<CarModel> findByMarkContainsIgnoreCase(String mark);
 
-    List<CarModel> findByMark(String mark);
+    List<CarModel> findByMarkIgnoreCase(String mark);
 
-    List<CarModel> findByModelContains(String model);
+    List<CarModel> findByModelContainsIgnoreCase(String model);
 
     List<CarModel> findByProductionYear(int year);
+
+    List<CarModel> findBySegmentContains(char segment);
+
+    List<CarModel> findByTypeContainsIgnoreCase(String type);
 }

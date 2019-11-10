@@ -42,13 +42,13 @@ public class RentRepositoryTest {
     @Test
     public void findByCar_PlateNr() {
         //given
-        CarModel opelCorsa2001 = new CarModel("Opel", "Corsa", 2001, 30000);
-        CarModel operAstra2019 = new CarModel("Opel", "Astra", 2019, 30000);
+        CarModel opelCorsa2001 = new CarModel("Opel", "Corsa","B","hatchback", 2001, 30000);
+        CarModel operAstra2019 = new CarModel("Opel", "Astra", "C","hatchback",2019, 30000);
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, operAstra2019));
         Car car1 = new Car(opelCorsa2001
-                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", 500);
+                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101","red", 500);
         Car car2 = new Car(operAstra2019
-                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", 500);
+                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "yellow",500);
         carRepository.saveAll(Arrays.asList(car1, car2));
         RentPoint rentPoint = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
         rentPointRepository.save(rentPoint);
@@ -70,13 +70,13 @@ public class RentRepositoryTest {
     @Test
     public void findByCar_Vin() {
         //given
-        CarModel opelCorsa2001 = new CarModel("Opel", "Corsa", 2001, 30000);
-        CarModel operAstra2019 = new CarModel("Opel", "Astra", 2019, 30000);
+        CarModel opelCorsa2001 = new CarModel("Opel", "Corsa","B","hatchback", 2001, 30000);
+        CarModel operAstra2019 = new CarModel("Opel", "Astra","C","hatchback", 2019, 30000);
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, operAstra2019));
         Car car1 = new Car(opelCorsa2001
-                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", 500);
+                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101","red", 500);
         Car car2 = new Car(operAstra2019
-                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", 500);
+                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red",500);
         carRepository.saveAll(Arrays.asList(car1, car2));
         RentPoint rentPoint = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
         rentPointRepository.save(rentPoint);
@@ -98,13 +98,13 @@ public class RentRepositoryTest {
     @Test
     public void findByClient_Name() {
         //given
-        CarModel opelCorsa2001 = new CarModel("Opel", "Corsa", 2001, 30000);
-        CarModel operAstra2019 = new CarModel("Opel", "Astra", 2019, 30000);
+        CarModel opelCorsa2001 = new CarModel("Opel", "Corsa","B","hatchback", 2001, 30000);
+        CarModel operAstra2019 = new CarModel("Opel", "Astra","C","hatchback", 2019, 30000);
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, operAstra2019));
         Car car1 = new Car(opelCorsa2001
-                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", 500);
+                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101","red" ,500);
         Car car2 = new Car(operAstra2019
-                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", 500);
+                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102","red", 500);
         carRepository.saveAll(Arrays.asList(car1, car2));
         RentPoint rentPoint = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
         rentPointRepository.save(rentPoint);
@@ -126,13 +126,13 @@ public class RentRepositoryTest {
     @Test
     public void findByClient_Id() {
         //given
-        CarModel opelCorsa2001 = new CarModel("Opel", "Corsa", 2001, 30000);
-        CarModel operAstra2019 = new CarModel("Opel", "Astra", 2019, 30000);
+        CarModel opelCorsa2001 = new CarModel("Opel", "Corsa","B","hatchback", 2001, 30000);
+        CarModel operAstra2019 = new CarModel("Opel", "Astra","C","hatchback", 2019, 30000);
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, operAstra2019));
         Car car1 = new Car(opelCorsa2001
-                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", 500);
+                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101","red", 500);
         Car car2 = new Car(operAstra2019
-                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", 500);
+                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "yellow",500);
         carRepository.saveAll(Arrays.asList(car1, car2));
         RentPoint rentPoint = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
         rentPointRepository.save(rentPoint);
@@ -154,13 +154,13 @@ public class RentRepositoryTest {
     @Test
     public void findByClient_Email() {
         //given
-        CarModel opelCorsa2001 = new CarModel("Opel", "Corsa", 2001, 30000);
-        CarModel operAstra2019 = new CarModel("Opel", "Astra", 2019, 30000);
+        CarModel opelCorsa2001 = new CarModel("Opel", "Corsa","B","hatchback", 2001, 30000);
+        CarModel operAstra2019 = new CarModel("Opel", "Astra","C","hatchback", 2019, 30000);
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, operAstra2019));
         Car car1 = new Car(opelCorsa2001
-                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", 500);
+                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101","black", 500);
         Car car2 = new Car(operAstra2019
-                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", 500);
+                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102","red", 500);
         carRepository.saveAll(Arrays.asList(car1, car2));
         RentPoint rentPoint = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
         rentPointRepository.save(rentPoint);
@@ -182,13 +182,13 @@ public class RentRepositoryTest {
     @Test
     public void findByClient_TelephoneNr() {
         //given
-        CarModel opelCorsa2001 = new CarModel("Opel", "Corsa", 2001, 30000);
-        CarModel operAstra2019 = new CarModel("Opel", "Astra", 2019, 30000);
+        CarModel opelCorsa2001 = new CarModel("Opel", "Corsa","B","hatchback", 2001, 30000);
+        CarModel operAstra2019 = new CarModel("Opel", "Astra","C","hatchback", 2019, 30000);
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, operAstra2019));
         Car car1 = new Car(opelCorsa2001
-                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", 500);
+                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101","red", 500);
         Car car2 = new Car(operAstra2019
-                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", 500);
+                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102","red", 500);
         carRepository.saveAll(Arrays.asList(car1, car2));
         RentPoint rentPoint = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
         rentPointRepository.save(rentPoint);
@@ -210,13 +210,13 @@ public class RentRepositoryTest {
     @Test
     public void findByClient_TaxNumber() {
         //given
-        CarModel opelCorsa2001 = new CarModel("Opel", "Corsa", 2001, 30000);
-        CarModel operAstra2019 = new CarModel("Opel", "Astra", 2019, 30000);
+        CarModel opelCorsa2001 = new CarModel("Opel", "Corsa","B","hatchback", 2001, 30000);
+        CarModel operAstra2019 = new CarModel("Opel", "Astra","C","hatchback", 2019, 30000);
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, operAstra2019));
         Car car1 = new Car(opelCorsa2001
-                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", 500);
+                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101","red", 500);
         Car car2 = new Car(operAstra2019
-                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", 500);
+                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102","red", 500);
         carRepository.saveAll(Arrays.asList(car1, car2));
         RentPoint rentPoint = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
         rentPointRepository.save(rentPoint);
@@ -247,13 +247,13 @@ public class RentRepositoryTest {
     @Test
     public void findByRentPointStart_Id() {
         //given
-        CarModel opelCorsa2001 = new CarModel("Opel", "Corsa", 2001, 30000);
-        CarModel operAstra2019 = new CarModel("Opel", "Astra", 2019, 30000);
+        CarModel opelCorsa2001 = new CarModel("Opel", "Corsa","B","hatchback", 2001, 30000);
+        CarModel operAstra2019 = new CarModel("Opel", "Astra","C","hatchback", 2019, 30000);
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, operAstra2019));
         Car car1 = new Car(opelCorsa2001
-                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", 500);
+                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101","red", 500);
         Car car2 = new Car(operAstra2019
-                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", 500);
+                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red",500);
         carRepository.saveAll(Arrays.asList(car1, car2));
         RentPoint rentPoint = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
         rentPointRepository.save(rentPoint);
@@ -275,13 +275,13 @@ public class RentRepositoryTest {
     @Test
     public void findByRentPointStart_Name() {
         //given
-        CarModel opelCorsa2001 = new CarModel("Opel", "Corsa", 2001, 30000);
-        CarModel operAstra2019 = new CarModel("Opel", "Astra", 2019, 30000);
+        CarModel opelCorsa2001 = new CarModel("Opel", "Corsa","B","hatchback", 2001, 30000);
+        CarModel operAstra2019 = new CarModel("Opel", "Astra","C","hatchback", 2019, 30000);
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, operAstra2019));
         Car car1 = new Car(opelCorsa2001
-                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", 500);
+                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101","red", 500);
         Car car2 = new Car(operAstra2019
-                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", 500);
+                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red",500);
         carRepository.saveAll(Arrays.asList(car1, car2));
         RentPoint rentPoint = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
         rentPointRepository.save(rentPoint);
@@ -303,13 +303,13 @@ public class RentRepositoryTest {
     @Test
     public void findByRentTimeStartBetween() {
         //given
-        CarModel opelCorsa2001 = new CarModel("Opel", "Corsa", 2001, 30000);
-        CarModel operAstra2019 = new CarModel("Opel", "Astra", 2019, 30000);
+        CarModel opelCorsa2001 = new CarModel("Opel", "Corsa","B","hatchback", 2001, 30000);
+        CarModel operAstra2019 = new CarModel("Opel", "Astra","C","hatchback", 2019, 30000);
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, operAstra2019));
         Car car1 = new Car(opelCorsa2001
-                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", 500);
+                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101","red", 500);
         Car car2 = new Car(operAstra2019
-                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", 500);
+                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102","red" ,500);
         carRepository.saveAll(Arrays.asList(car1, car2));
         RentPoint rentPoint = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
         rentPointRepository.save(rentPoint);
@@ -331,13 +331,13 @@ public class RentRepositoryTest {
     @Test
     public void findByEmployeeStart_Username() {
         //given
-        CarModel opelCorsa2001 = new CarModel("Opel", "Corsa", 2001, 30000);
-        CarModel operAstra2019 = new CarModel("Opel", "Astra", 2019, 30000);
+        CarModel opelCorsa2001 = new CarModel("Opel", "Corsa","B","hatchback", 2001, 30000);
+        CarModel operAstra2019 = new CarModel("Opel", "Astra","C","hatchback", 2019, 30000);
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, operAstra2019));
         Car car1 = new Car(opelCorsa2001
-                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", 500);
+                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101","red", 500);
         Car car2 = new Car(operAstra2019
-                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", 500);
+                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102","red", 500);
         carRepository.saveAll(Arrays.asList(car1, car2));
         RentPoint rentPoint = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
         rentPointRepository.save(rentPoint);
@@ -359,13 +359,13 @@ public class RentRepositoryTest {
     @Test
     public void findByNotesContains() {
         //given
-        CarModel opelCorsa2001 = new CarModel("Opel", "Corsa", 2001, 30000);
-        CarModel operAstra2019 = new CarModel("Opel", "Astra", 2019, 30000);
+        CarModel opelCorsa2001 = new CarModel("Opel", "Corsa","B","hatchback", 2001, 30000);
+        CarModel operAstra2019 = new CarModel("Opel", "Astra","C","hatchback", 2019, 30000);
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, operAstra2019));
         Car car1 = new Car(opelCorsa2001
-                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", 500);
+                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101","red", 500);
         Car car2 = new Car(operAstra2019
-                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", 500);
+                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102","red" ,500);
         carRepository.saveAll(Arrays.asList(car1, car2));
         RentPoint rentPoint = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
         rentPointRepository.save(rentPoint);

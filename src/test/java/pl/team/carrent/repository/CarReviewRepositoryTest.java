@@ -44,9 +44,9 @@ public class CarReviewRepositoryTest {
     public void shouldFindByCar_PlateNr() {
         //given
         LocalDate localDate = LocalDate.of(1999, 9, 01);
-        CarModel myCarModel1 = new CarModel("Skoda", "Fabia", 1999, 30000);
+        CarModel myCarModel1 = new CarModel("Skoda", "Fabia", "A","combi",1999, 30000);
         carModelRepository.save(myCarModel1);
-        Car car1 = new Car(myCarModel1, localDate, "PO12346", "VIN0", 100.00);
+        Car car1 = new Car(myCarModel1, localDate, "PO12346", "VIN0", "black",100.00);
         carRepository.save(car1);
         CarReview carReview = new CarReview(car1, 30000, localDate);
         carReviewRepository.save(carReview);
@@ -68,9 +68,9 @@ public class CarReviewRepositoryTest {
     public void shouldFindByCar_Vin() {
         //given
         LocalDate localDate = LocalDate.of(1999, 9, 01);
-        CarModel myCarModel1 = new CarModel("Skoda", "Fabia", 1999, 30000);
+        CarModel myCarModel1 = new CarModel("Skoda", "Fabia", "A","combi",1999, 30000);
         carModelRepository.save(myCarModel1);
-        Car car1 = new Car(myCarModel1, localDate, "PO1X345", "VIN10", 100.00);
+        Car car1 = new Car(myCarModel1, localDate, "PO1X345", "VIN10","black", 100.00);
         carRepository.save(car1);
         CarReview carReview = new CarReview(car1, 30000, localDate);
         carReviewRepository.save(carReview);
@@ -89,9 +89,9 @@ public class CarReviewRepositoryTest {
         LocalDate localDateReview = LocalDate.of(1910, 9, 01);
         LocalDate localDateFrom = LocalDate.of(1899, 9, 01);
         LocalDate localDateTo = LocalDate.of(1911, 9, 01);
-        CarModel myCarModel1 = new CarModel("Skoda", "Fabia", 1999, 30000);
+        CarModel myCarModel1 = new CarModel("Skoda", "Fabia", "A","combi",1999, 30000);
         carModelRepository.save(myCarModel1);
-        Car car1 = new Car(myCarModel1, localDate, "PO12345", "VIN1", 100.00);
+        Car car1 = new Car(myCarModel1, localDate, "PO12345", "VIN1","black", 100.00);
         carRepository.save(car1);
         CarReview carReview = new CarReview(car1, 30000, localDateReview);
         carReviewRepository.save(carReview);
@@ -109,9 +109,9 @@ public class CarReviewRepositoryTest {
         LocalDate localDate = LocalDate.of(1800, 9, 01);
         LocalDate localDateReview = LocalDate.of(1801, 9, 01);
         LocalDate localDateFrom = LocalDate.of(1850, 9, 01);
-        CarModel myCarModel1 = new CarModel("Skoda", "Fabia", 1999, 30000);
+        CarModel myCarModel1 = new CarModel("Skoda", "Fabia","A","combi", 1999, 30000);
         carModelRepository.save(myCarModel1);
-        Car car1 = new Car(myCarModel1, localDate, "PO12345", "VIN1", 100.00);
+        Car car1 = new Car(myCarModel1, localDate, "PO12345", "VIN1","black", 100.00);
         carRepository.save(car1);
         CarReview carReview = new CarReview(car1, 30000, localDateReview);
         carReviewRepository.save(carReview);
@@ -129,9 +129,9 @@ public class CarReviewRepositoryTest {
         LocalDate localDate = LocalDate.of(2017, 9, 01);
         LocalDate localDateReview = LocalDate.of(2018, 9, 01);
         LocalDate localDateAfter = LocalDate.of(2016, 9, 01);
-        CarModel myCarModel1 = new CarModel("Skoda", "Fabia", 1999, 30000);
+        CarModel myCarModel1 = new CarModel("Skoda", "Fabia","A","combi", 1999, 30000);
         carModelRepository.save(myCarModel1);
-        Car car1 = new Car(myCarModel1, localDate, "PO12345", "VIN1", 100.00);
+        Car car1 = new Car(myCarModel1, localDate, "PO12345", "VIN1","black", 100.00);
         carRepository.save(car1);
         CarReview carReview = new CarReview(car1, 30000, localDateReview);
         carReviewRepository.save(carReview);
