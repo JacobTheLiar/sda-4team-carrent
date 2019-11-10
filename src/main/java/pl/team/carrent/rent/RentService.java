@@ -36,11 +36,11 @@ public class RentService {
             case BY_CAR_VIN:
                 return rentRepository.findByCar_Vin(findWhat);
             case BY_CLIENT_NAME:
-                return rentRepository.findByClient_NameContainsIgnoreCases(findWhat);
+                return rentRepository.findByClient_NameContainsIgnoreCase(findWhat);
             case BY_CLIENT_ID:
                 return rentRepository.findByClient_Id(Integer.valueOf(findWhat));
             case BY_CLIENT_EMAIL:
-                return rentRepository.findByClient_EmailContainsIgnoreCases(findWhat);
+                return rentRepository.findByClient_EmailContainsIgnoreCase(findWhat);
             case BY_CLIENT_PHONE:
                 return rentRepository.findByClient_TelephoneNr(findWhat);
             case BY_CLIENT_TAX_NUMBER:
@@ -48,18 +48,18 @@ public class RentService {
             case BY_PROMOTION_ID:
                 return rentRepository.findByPromotion_Id(Integer.valueOf(findWhat));
             case BY_PROMOTION_NAME:
-                return rentRepository.findByPromotion_NameContainsIgnoreCases(findWhat);
+                return rentRepository.findByPromotion_NameContainsIgnoreCase(findWhat);
             case BY_RENT_POINT_START_ID:
                 return rentRepository.findByRentPointStart_Id(Integer.valueOf(findWhat));
             case BY_RENT_POINT_START_NAME:
-                return rentRepository.findByRentPointStart_NameIgnoreCases(findWhat);
+                return rentRepository.findByRentPointStart_NameIgnoreCase(findWhat);
             case BY_RENT_NUMBER_OF_WEEKS:
                 LocalDate dateFrom = LocalDate.now().plusWeeks(-Integer.parseInt(findWhat));
                 return rentRepository.findByRentTimeStartBetween(dateFrom,LocalDate.now());
             case BY_EMPLOYEE_USERNAME_START:
-                return rentRepository.findByEmployeeStart_UsernameIgnoreCases(findWhat);
+                return rentRepository.findByEmployeeStart_UsernameIgnoreCase(findWhat);
             case BY_NOTES_START:
-                return rentRepository.findByNotesContainsIgnoreCases(findWhat);
+                return rentRepository.findByNotesContainsIgnoreCase(findWhat);
         }
         return Collections.emptyList();
     }

@@ -21,11 +21,11 @@ public interface RentRepository extends JpaRepository<Rent, Integer> {
 
     List<Rent> findByCar_Vin(String vin);
 
-    List<Rent> findByClient_NameContainsIgnoreCases(String name);
+    List<Rent> findByClient_NameContainsIgnoreCase(String name);
 
     List<Rent> findByClient_Id(int id);
 
-    List<Rent> findByClient_EmailContainsIgnoreCases(String email);
+    List<Rent> findByClient_EmailContainsIgnoreCase(String email);
 
     List<Rent> findByClient_TelephoneNr(String phone);
 
@@ -33,16 +33,16 @@ public interface RentRepository extends JpaRepository<Rent, Integer> {
 
     List<Rent> findByPromotion_Id(int id);
 
-    List<Rent> findByPromotion_NameContainsIgnoreCases(String name);
+    List<Rent> findByPromotion_NameContainsIgnoreCase(String name);
 
     List<Rent> findByRentPointStart_Id(int id);
 
-    List<Rent> findByRentPointStart_NameIgnoreCases(String name);
+    List<Rent> findByRentPointStart_NameIgnoreCase(String name);
 
     List<Rent> findByRentTimeStartBetween(LocalDate date1, LocalDate date2);
 
-    List<Rent> findByEmployeeStart_UsernameIgnoreCases(String username);
+    List<Rent> findByEmployeeStart_UsernameIgnoreCase(String username);
 
-    List<Rent> findByNotesContainsIgnoreCases(String note);
+    List<Rent> findByNotesContainsIgnoreCase(String note);
 
 }

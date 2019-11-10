@@ -119,7 +119,7 @@ public class RentRepositoryTest {
         rentRepository.saveAll(Arrays.asList(rent1, rent2));
 
         //when
-        List<Rent> rents = rentRepository.findByClient_NameContainsIgnoreCases("Krzak");
+        List<Rent> rents = rentRepository.findByClient_NameContainsIgnoreCase("Krzak");
 
         //then
         assertEquals(2, rents.size());
@@ -175,7 +175,7 @@ public class RentRepositoryTest {
         rentRepository.saveAll(Arrays.asList(rent1, rent2));
 
         //when
-        List<Rent> rents = rentRepository.findByClient_EmailContainsIgnoreCases("kowalski@wp.pl");
+        List<Rent> rents = rentRepository.findByClient_EmailContainsIgnoreCase("kowalski@wp.pl");
 
         //then
         assertEquals(2, rents.size());
@@ -289,7 +289,7 @@ public class RentRepositoryTest {
         rentRepository.saveAll(Arrays.asList(rent1, rent2));
 
         //when
-        List<Rent> rents = rentRepository.findByPromotion_NameContainsIgnoreCases("PROMO1");
+        List<Rent> rents = rentRepository.findByPromotion_NameContainsIgnoreCase("PROMO1");
 
         //then
         assertEquals(1, rents.size());
@@ -345,7 +345,7 @@ public class RentRepositoryTest {
         rentRepository.saveAll(Arrays.asList(rent1, rent2));
 
         //when
-        List<Rent> rents = rentRepository.findByRentPointStart_NameIgnoreCases("Punkt Test");
+        List<Rent> rents = rentRepository.findByRentPointStart_NameIgnoreCase("Punkt Test");
 
         //then
         assertEquals(2, rents.size());
@@ -401,7 +401,7 @@ public class RentRepositoryTest {
         rentRepository.saveAll(Arrays.asList(rent1, rent2));
 
         //when
-        List<Rent> rents = rentRepository.findByEmployeeStart_UsernameIgnoreCases("jnowak");
+        List<Rent> rents = rentRepository.findByEmployeeStart_UsernameIgnoreCase("jnowak");
 
         //then
         assertEquals(0, rents.size());
@@ -429,7 +429,7 @@ public class RentRepositoryTest {
         rentRepository.saveAll(Arrays.asList(rent1, rent2));
 
         //when
-        List<Rent> rents = rentRepository.findByNotesContainsIgnoreCases("search test 2");
+        List<Rent> rents = rentRepository.findByNotesContainsIgnoreCase("search test 2");
 
         //then
         assertEquals(1, rents.size());

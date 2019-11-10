@@ -44,17 +44,17 @@ public class RentServiceTest {
         when(mock.findByCar_Vin("VIN")).thenReturn(Arrays.asList(rent1, rent2));
         when(mock.findByCar_PlateNr("PO11111")).thenReturn(Arrays.asList(rent1));
         when(mock.findByClient_Id(client1.getId())).thenReturn(Arrays.asList(rent1, rent2));
-        when(mock.findByClient_NameContainsIgnoreCases("krzak")).thenReturn(Arrays.asList(rent2, rent1));
-        when(mock.findByClient_EmailContainsIgnoreCases("@test.pl")).thenReturn(Arrays.asList(rent1, rent2));
+        when(mock.findByClient_NameContainsIgnoreCase("krzak")).thenReturn(Arrays.asList(rent2, rent1));
+        when(mock.findByClient_EmailContainsIgnoreCase("@test.pl")).thenReturn(Arrays.asList(rent1, rent2));
         when(mock.findByClient_TelephoneNr("61 6666666")).thenReturn(Arrays.asList(rent1, rent2));
         when(mock.findByClient_TaxNumber("777-777-77-77")).thenReturn(Arrays.asList(rent1, rent2));
         when(mock.findByPromotion_Id(1)).thenReturn(Arrays.asList(rent1));
-        when(mock.findByPromotion_NameContainsIgnoreCases("promo")).thenReturn(Arrays.asList(rent1));
+        when(mock.findByPromotion_NameContainsIgnoreCase("promo")).thenReturn(Arrays.asList(rent1));
         when(mock.findByRentPointStart_Id(1)).thenReturn(Arrays.asList(rent1, rent2));
-        when(mock.findByRentPointStart_NameIgnoreCases(null)).thenReturn(Arrays.asList(rent1, rent2));
+        when(mock.findByRentPointStart_NameIgnoreCase(null)).thenReturn(Arrays.asList(rent1, rent2));
         when(mock.findByRentTimeStartBetween(LocalDate.now().plusDays(-14), LocalDate.now())).thenReturn(Arrays.asList(rent2));
-        when(mock.findByEmployeeStart_UsernameIgnoreCases("snowyman")).thenReturn(Arrays.asList(rent1, rent2));
-        when(mock.findByNotesContainsIgnoreCases("www")).thenReturn(Arrays.asList(rent2));
+        when(mock.findByEmployeeStart_UsernameIgnoreCase("snowyman")).thenReturn(Arrays.asList(rent1, rent2));
+        when(mock.findByNotesContainsIgnoreCase("www")).thenReturn(Arrays.asList(rent2));
         when(mock.save(rent3)).thenReturn(rent3);
         return mock;
     }
