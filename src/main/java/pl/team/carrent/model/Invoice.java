@@ -17,19 +17,19 @@ import java.util.Objects;
  ******************************************************/
 @Entity
 public class Invoice{
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqInvoice")
-    @SequenceGenerator(name = "seqInvoice", sequenceName = "seq_Invoice")
+    @SequenceGenerator(name = "seqInvoice", sequenceName = "seq_Invoice", allocationSize = 1)
     private int id;
     
     private String number;
     
     @Column(precision = 18, scale = 2)
     private BigDecimal value;
-    private LocalDate invoiceDate;
-    private LocalDate paymentDate;
-    private LocalDate sellDate;
+    private LocalDate  invoiceDate;
+    private LocalDate  paymentDate;
+    private LocalDate  sellDate;
     
     
     public Invoice(){
@@ -48,7 +48,6 @@ public class Invoice{
     public int getId(){
         return id;
     }
-    
     
     
     public String getNumber(){
