@@ -23,7 +23,9 @@ public interface CarModelRepository extends JpaRepository<CarModel, Integer> {
 
     List<CarModel> findByProductionYear(int year);
 
-    List<CarModel> findBySegmentContains(char segment);
+    List<CarModel> findByProductionYearBetween(int year1, int year2);
+
+    List<CarModel> findBySegmentContains(String segment);
 
     List<CarModel> findByTypeContainsIgnoreCase(String type);
 }
