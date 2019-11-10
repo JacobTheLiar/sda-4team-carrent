@@ -11,7 +11,7 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqEmployee")
-    @SequenceGenerator(name = "seqEmployee", sequenceName = "seq_Employee")
+    @SequenceGenerator(name = "seqEmployee", sequenceName = "seq_Employee", allocationSize = 1)
     private int id;
     private String firstname;
     private String surname;
@@ -32,7 +32,6 @@ public class Employee {
         this.rentPoint = rentPoint;
         this.username = username;
         this.employmentDate = employmentDate;
-        this.releaseDate = null;
         this.role = role;
     }
 

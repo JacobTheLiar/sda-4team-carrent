@@ -1,6 +1,7 @@
 package pl.team.carrent.repository;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,6 @@ import pl.team.carrent.model.Role;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
-
 
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -27,7 +27,8 @@ public class EmployeeRepositoryTest {
     @Autowired
     private RoleRepository roleRepository;
 
-    private void init() {
+    @Before
+    public void setUp() throws Exception {
         Role role = new Role("admin");
         LocalDate employmentDate = LocalDate.of(1999, 9, 1);
         RentPoint rentPoint = new RentPoint("POZ", "Zmigrodzka", "61-244", "Poznan");
@@ -42,161 +43,126 @@ public class EmployeeRepositoryTest {
 
     @Test
     public void shouldFindByFirstname() {
-        //given
-        init();
-
         //when
         List<Employee> employeeList = employeeRepository.findByFirstnameContainsIgnoreCase("luka");
-
         //then
         Assert.assertEquals(employeeList.get(0).getFirstname(), "Lukasz");
     }
 
     @Test
     public void shouldNotFindByFirstname() {
-        //given
-        init();
-
         //when
         List<Employee> employeeList = employeeRepository.findByFirstnameContainsIgnoreCase("Luki");
-
         //then
         Assert.assertEquals("employeeList size should be 0", 0, employeeList.size());
     }
 
     @Test
     public void shouldFindBySurname() {
-        //given
-        init();
-
+        //when
         List<Employee> employeeList = employeeRepository.findBySurnameContainsIgnoreCase("ciup");
-
         //then
         Assert.assertEquals(employeeList.get(0).getSurname(), "Ciupek");
     }
 
     @Test
     public void shouldFindByEmploymentDate() {
-        //given
-        init();
-
+        //when
         List<Employee> employeeList = employeeRepository.findByEmploymentDate(LocalDate.of(1999, 9, 1));
-
+        //then
         Assert.assertEquals(employeeList.get(0).getEmploymentDate(), LocalDate.of(1999, 9, 1));
     }
 
     @Test
     public void shouldNotFindByEmploymentDate() {
-        //given
-        init();
-
+        //when
         List<Employee> employeeList = employeeRepository.findByEmploymentDate(LocalDate.of(1999, 9, 10));
-
+        //then
         Assert.assertEquals("employeeList size should be 0", 0, employeeList.size());
     }
 
     @Test
     public void shouldFindByRoleName() {
-        //given
-        init();
-
+        //when
         List<Employee> employeeList = employeeRepository.findByRoleAuthorityContainsIgnoreCase("ad");
-
+        //then
         Assert.assertEquals(employeeList.get(0).getRole().getAuthority(), "admin");
     }
 
     @Test
     public void shouldFindByRentPointName() {
-        //given
-        init();
-
+        //when
         List<Employee> employeeList = employeeRepository.findByRentPointNameContainsIgnoreCase("pOz");
-
+        //then
         Assert.assertEquals(employeeList.get(0).getRentPoint().getName(), "POZ");
     }
 
     @Test
     public void shouldFindByRentPointAddress() {
-        //given
-        init();
-
+        //when
         List<Employee> employeeList = employeeRepository.findByRentPointAddressContainsIgnoreCase("zmigRodz");
-
+        //then
         Assert.assertEquals(employeeList.get(0).getRentPoint().getAddress(), "Zmigrodzka");
     }
 
     @Test
     public void shouldFindByRentPointPostCode() {
-        //given
-        init();
-
+        //when
         List<Employee> employeeList = employeeRepository.findByRentPointPostCodeContainsIgnoreCase("61-2");
-
+        //then
         Assert.assertEquals(employeeList.get(0).getRentPoint().getPostCode(), "61-244");
     }
 
     @Test
     public void shouldFindByRentPointCity() {
-        //given
-        init();
-
+        //when
         List<Employee> employeeList = employeeRepository.findByRentPointCityContainsIgnoreCase("Poznan");
-
+        //then
         Assert.assertEquals(employeeList.get(0).getRentPoint().getCity(), "Poznan");
         Assert.assertEquals(employeeList.get(1).getFirstname(), "Maciej");
     }
 
     @Test
     public void shouldFindByEmploymentDateAfter() {
-        //given
-        init();
-
+        //when
         List<Employee> employeeList = employeeRepository.findByEmploymentDateAfter(LocalDate.of(1999, 8, 1));
-
+        //then
         Assert.assertEquals(employeeList.get(0).getFirstname(), "Lukasz");
         Assert.assertEquals(employeeList.get(1).getFirstname(), "Maciej");
     }
 
     @Test
     public void shouldFindByEmploymentDateBefore() {
-        //given
-        init();
-
+        //when
         List<Employee> employeeList = employeeRepository.findByEmploymentDateBefore(LocalDate.of(1999, 10, 1));
-
+        //then
         Assert.assertEquals(employeeList.get(0).getFirstname(), "Lukasz");
         Assert.assertEquals(employeeList.get(1).getFirstname(), "Maciej");
     }
 
     @Test
     public void shouldFindByEmploymentDateBetween() {
-        //given
-        init();
-
+        //when
         List<Employee> employeeList = employeeRepository.findByEmploymentDateBetween(LocalDate.of(1999, 8, 1),LocalDate.of(1999,10, 1));
-
+        //then
         Assert.assertEquals(employeeList.get(0).getFirstname(), "Lukasz");
         Assert.assertEquals(employeeList.get(1).getFirstname(), "Maciej");
     }
 
     @Test
     public void shouldFindByReleaseDateBetween() {
-        //given
-        init();
-
+        //when
         List<Employee> employeeList = employeeRepository.findByReleaseDateBetween(LocalDate.of(1999, 8, 1),LocalDate.of(1999,10, 1));
-
+        //then
         Assert.assertNotEquals("employeeList size should not be 0", 0, employeeList.size());
         Assert.assertEquals(employeeList.get(0).getFirstname(), "Lukasz");
     }
 
     @Test
     public void shouldNotFindByReleaseDateBetween() {
-        //given
-        init();
-
+        //when
         List<Employee> employeeList = employeeRepository.findByReleaseDateBetween(LocalDate.of(1998, 8, 1),LocalDate.of(1998,10, 1));
-
+        //then
         Assert.assertEquals("employeeList size should be 0", 0, employeeList.size());
     }
 }
