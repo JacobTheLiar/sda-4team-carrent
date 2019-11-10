@@ -32,6 +32,9 @@ public class RentHistory {
     @ManyToOne
     private Invoice invoice;
 
+    public RentHistory() {
+    }
+
     public RentHistory(int id, Car car, Client client, Promotion promotion, RentPoint rentPointStart, RentPoint rentPointEnd, Employee employeeStart, Employee employeeEnd, LocalDate rentTimeStart, LocalDate rentTimeEnd, int counterStateStart, int counterStateEnd, String notesStart, String notesEnd, Invoice invoice) {
         this.id = id;
         this.car = car;

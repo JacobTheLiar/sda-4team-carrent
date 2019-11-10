@@ -8,7 +8,7 @@ public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqRole")
-    @SequenceGenerator(name = "seqRole", sequenceName = "seq_Role")
+    @SequenceGenerator(name = "seqRole", sequenceName = "seq_Role", allocationSize = 1)
     private int id;
     private String authority;
 
