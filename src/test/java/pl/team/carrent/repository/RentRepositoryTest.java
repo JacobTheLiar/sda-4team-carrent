@@ -253,7 +253,7 @@ public class RentRepositoryTest {
         LocalDate rentDate = LocalDate.of(2019, 11, 11);
         Client client = new Client("Krzak", "OBCH 111/11", "60-682", "Poznań", "777-77-77-777", "kowalski@wp.pl", "666 777 888");
         clientRepository.save(client);
-        Promotion promotion = new Promotion("PROMO1",30,rentDate,LocalDate.now(),null,Arrays.asList(opelCorsa2001),null);
+        Promotion promotion = new Promotion("PROMO1",30,rentDate,LocalDate.now(),Arrays.asList(car1),null);
         promotionRepository.save(promotion);
         Rent rent1 = new Rent(car1, client, promotion, rentPoint, rentDate, null, 10000, "search test 1");
         Rent rent2 = new Rent(car2, client, null, rentPoint, rentDate, null, 15000, "search test 2");
@@ -282,7 +282,7 @@ public class RentRepositoryTest {
         LocalDate rentDate = LocalDate.of(2019, 11, 11);
         Client client = new Client("Krzak", "OBCH 111/11", "60-682", "Poznań", "777-77-77-777", "kowalski@wp.pl", "666 777 888");
         clientRepository.save(client);
-        Promotion promotion = new Promotion("PROMO1",30,rentDate,LocalDate.now(),null,Arrays.asList(opelCorsa2001),null);
+        Promotion promotion = new Promotion("PROMO1",30,rentDate,LocalDate.now(),Arrays.asList(car1),null);
         promotionRepository.save(promotion);
         Rent rent1 = new Rent(car1, client, promotion, rentPoint, rentDate, null, 10000, "search test 1");
         Rent rent2 = new Rent(car2, client, null, rentPoint, rentDate, null, 15000, "search test 2");
