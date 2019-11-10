@@ -32,13 +32,13 @@ public class InvoiceServiceTest{
     private static String FIND_NONE   = "match draw";
     private static int    FIND_ID     = 1;
     
-    private Invoice invoice1 = new Invoice(1, "abc1", BigDecimal.valueOf(12.30), LocalDate.of(2019, 11, 9),
+    private Invoice invoice1 = new Invoice("abc1", BigDecimal.valueOf(12.30), LocalDate.of(2019, 11, 9),
                                            LocalDate.of(2019, 11, 9), LocalDate.of(2019, 11, 9));
-    private Invoice invoice2 = new Invoice(2, "abc2", BigDecimal.valueOf(23.40), LocalDate.of(2019, 10, 9),
+    private Invoice invoice2 = new Invoice("abc2", BigDecimal.valueOf(23.40), LocalDate.of(2019, 10, 9),
                                            LocalDate.of(2019, 11, 8), LocalDate.of(2019, 10, 8));
-    private Invoice invoice3 = new Invoice(3, "cde3", BigDecimal.valueOf(34.50), LocalDate.of(2019, 9, 9),
+    private Invoice invoice3 = new Invoice("cde3", BigDecimal.valueOf(34.50), LocalDate.of(2019, 9, 9),
                                            LocalDate.of(2019, 9, 10), LocalDate.of(2019, 9, 9));
-    private Invoice invoice4 = new Invoice(4, "cde4", BigDecimal.valueOf(45.60), LocalDate.of(2019, 9, 9),
+    private Invoice invoice4 = new Invoice("cde4", BigDecimal.valueOf(45.60), LocalDate.of(2019, 9, 9),
                                            LocalDate.of(2019, 9, 10), LocalDate.of(2019, 9, 9));
     
     
