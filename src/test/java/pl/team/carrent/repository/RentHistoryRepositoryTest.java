@@ -50,10 +50,10 @@ public class RentHistoryRepositoryTest {
     @Before
     public void setUp() throws Exception {
         LocalDate localDate = LocalDate.of(1999, 9, 1);
-        CarModel myCarModel = new CarModel("Skoda", "Fabia", 1999, 30000);
+        CarModel myCarModel = new CarModel("Skoda", "Fabia", "A", "Combi", 1999, 30000);
         carModelRepository.save(myCarModel);
 
-        Car car = new Car(myCarModel, localDate, "PO12345", "VIN1", 100.00);
+        Car car = new Car(myCarModel, localDate, "PO12345", "VIN1","brown",  100.00);
         carRepository.save(car);
 
         Client client = new Client("King Julien XIII", "64th Street and Sixth Avenue", "10021", "New York", "0000000000", "cpzinfo@wcs.org", "(212) 439-6550");
