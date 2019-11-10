@@ -63,6 +63,7 @@ public class EmployeeServiceTest {
         when(mock.findByReleaseDateAfter(FIND_RELEASE_DATE1)).thenReturn(Sets.newLinkedHashSet(employee2));
         when(mock.findByReleaseDateBefore(FIND_RELEASE_DATE2)).thenReturn(Sets.newLinkedHashSet(employee2));
         when(mock.findByReleaseDateBetween(FIND_RELEASE_DATE1,FIND_RELEASE_DATE2)).thenReturn(Lists.newArrayList(employee2));
+        when(mock.findByReleaseDateIsNull()).thenReturn(Sets.newLinkedHashSet(employee1,employee3,employee4));
         when(mock.findAll()).thenReturn(Arrays.asList(employee1, employee2, employee3));
         when(mock.findByUsername("ciupas")).thenReturn(Optional.of(employee1));
         when(mock.save(employee4)).thenReturn(employee4);
@@ -178,4 +179,12 @@ public class EmployeeServiceTest {
         Set<Employee> actual = employeeService.findEmployeesByReleaseDateBefore(FIND_RELEASE_DATE2);
         assertThat(actual).containsExactly(employee2);
     }
+
+    @Test
+    public void shouldReturnThreeActiveEmployees() {
+        Set<Employee> actual = employeeService.getActiveEmployees();
+        assertThat(actual).containsExactly(employee1,employee3,employee4);
+
+    }
+
 }

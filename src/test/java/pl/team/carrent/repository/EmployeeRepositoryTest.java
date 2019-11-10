@@ -166,4 +166,12 @@ public class EmployeeRepositoryTest {
         //then
         Assert.assertEquals("employeeList size should be 0", 0, employeeList.size());
     }
+
+    @Test
+    public void shouldFindActiveEmployees() {
+        //when
+        Set<Employee> employeeList = employeeRepository.findByReleaseDateIsNull();
+        //then
+        Assert.assertEquals(1, employeeList.size());
+    }
 }

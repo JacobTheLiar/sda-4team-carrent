@@ -7,7 +7,6 @@ import pl.team.carrent.repository.EmployeeRepository;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 public class EmployeeService {
@@ -36,11 +35,7 @@ public class EmployeeService {
     }
 
     public Set<Employee> getActiveEmployees() {
-        return employeeRepository
-                .findAll()
-                .stream()
-                .filter(employee -> employee.getReleaseDate() == null)
-                .collect(Collectors.toSet());
+        return employeeRepository.findByReleaseDateIsNull();
     }
 
     public Set<Employee> findEmployeesByFirstname (String firstname) {
