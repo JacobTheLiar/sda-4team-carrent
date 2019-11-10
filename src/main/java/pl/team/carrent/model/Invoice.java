@@ -17,7 +17,7 @@ import java.util.Objects;
  ******************************************************/
 @Entity
 public class Invoice{
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqInvoice")
     @SequenceGenerator(name = "seqInvoice", sequenceName = "seq_Invoice", allocationSize = 1)
@@ -27,9 +27,9 @@ public class Invoice{
     
     @Column(precision = 18, scale = 2)
     private BigDecimal value;
-    private LocalDate invoiceDate;
-    private LocalDate paymentDate;
-    private LocalDate sellDate;
+    private LocalDate  invoiceDate;
+    private LocalDate  paymentDate;
+    private LocalDate  sellDate;
     
     
     public Invoice(){
@@ -44,19 +44,10 @@ public class Invoice{
         this.sellDate = sellDate;
     }
     
-    public Invoice(int id, String number, BigDecimal value, LocalDate invoiceDate, LocalDate paymentDate, LocalDate sellDate){
-        this.id = id;
-        this.number = number;
-        this.value = value;
-        this.invoiceDate = invoiceDate;
-        this.paymentDate = paymentDate;
-        this.sellDate = sellDate;
-    }
     
     public int getId(){
         return id;
     }
-    
     
     
     public String getNumber(){

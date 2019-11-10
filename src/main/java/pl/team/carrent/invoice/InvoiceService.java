@@ -20,7 +20,7 @@ import java.util.Set;
 @Service
 public class InvoiceService{
     
-    private InvoiceRepository invoiceRepository;
+    private final InvoiceRepository invoiceRepository;
     
     
     public InvoiceService(InvoiceRepository invoiceRepository){
