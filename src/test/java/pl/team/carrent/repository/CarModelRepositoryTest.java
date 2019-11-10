@@ -69,7 +69,7 @@ public class CarModelRepositoryTest {
     @Test
     public void findByMark() {
         List<CarModel> models = carModelRepository.findByMarkIgnoreCase("Opel");
-        Assert.assertEquals("",  2,models.size());
+        Assert.assertEquals( 2,models.size());
     }
 
     @Test
