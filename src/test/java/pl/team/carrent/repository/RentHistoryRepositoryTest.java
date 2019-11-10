@@ -90,7 +90,7 @@ public class RentHistoryRepositoryTest {
         List<CarModel> carModels = Collections.singletonList(myCarModel);
         List<Client> clients = Collections.singletonList(client);
 
-        Promotion promotion = new Promotion("promo1",10,rentTimeStart.minusDays(2),rentTimeStart,cars,carModels,clients);
+        Promotion promotion = new Promotion("promo1",10,rentTimeStart.minusDays(2),rentTimeStart,cars,clients);
         promotionRepository.save(promotion);
 
         RentHistory rentHistory = new RentHistory(1,car,client,promotion,carRentPointStart,carRentPointEnd,employeeStart,employeeEnd,rentTimeStart,rentTimeEnd,counterStateStart,counterStateEnd,notesStart,notesEnd,invoice);

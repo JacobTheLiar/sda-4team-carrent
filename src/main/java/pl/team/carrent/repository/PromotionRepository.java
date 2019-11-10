@@ -25,8 +25,27 @@ public interface PromotionRepository extends JpaRepository<Promotion, Integer> {
 
     List<Promotion> findByDiscountPercentage(int discountPercentage);
 
-    List<Promotion> findByCarModels(CarModel carModel);
+    List<Promotion> findByCars(Car car);
 
-    List<Promotion> findAllByCars(Car car);
+   @Query(value = "select p.* from promotion p" +
+           " join promotion_cars pc on pc.promotion_id=p.id" +
+           " join car c on c.id=pc.cars_id " +
+           " join car_model cm on cm.id = c.car_model_id" +
+           " where cm.mark = :mark", nativeQuery = true)
+    List<Promotion> findPromotionByCarMark(String mark);
+
+    @Query(value = "select p.* from promotion p" +
+            " join promotion_cars pc on pc.promotion_id=p.id" +
+            " join car c on c.id=pc.cars_id " +
+            " join car_model cm on cm.id = c.car_model_id" +
+            " where cm.model = :model", nativeQuery = true)
+    List<Promotion> findPromotionByCarModel(String model);
+
+    @Query(value = "select p.* from promotion p" +
+            " join promotion_cars pc on pc.promotion_id=p.id" +
+            " join car c on c.id=pc.cars_id " +
+            " join car_model cm on cm.id = c.car_model_id" +
+            " where cm.segment = :segment", nativeQuery = true)
+    List<Promotion> findPromotionByCarSegment(String segment);
 
 }

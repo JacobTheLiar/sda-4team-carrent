@@ -5,6 +5,7 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Promotion {
@@ -27,9 +28,6 @@ public class Promotion {
     @ManyToMany(targetEntity = Car.class)
     private List<Car> cars;
 
-    @ManyToMany(targetEntity = CarModel.class)
-    private List<CarModel> carModels;
-
     @ManyToMany(targetEntity = Client.class)
     private List<Client> clients;
 
@@ -38,31 +36,24 @@ public class Promotion {
     }
 
     public Promotion(String name, int discountPercentage, LocalDate promoStart, LocalDate promoEnd,
-                     List<Car> cars, List<CarModel> carModels, List<Client> clients) {
+                     List<Car> cars, List<Client> clients) {
         this.name = name;
         this.discountPercentage = discountPercentage;
         this.promoStart = promoStart;
         this.promoEnd = promoEnd;
         this.cars = cars;
-        this.carModels = carModels;
         this.clients = clients;
     }
 
-    public Promotion(String name, int discountPercentage, LocalDate promoStart, List<Car> cars, LocalDate promoEnd) {
-        this.name = name;
-        this.discountPercentage = discountPercentage;
-        this.promoStart = promoStart;
-        this.promoEnd = promoEnd;
-        this.cars = cars;
+    public Promotion(String name, int discountPercentage, List<Car> cars,
+                     LocalDate promoStart, LocalDate promoEnd) {
+        this(name, discountPercentage, promoStart, promoEnd, cars, null);
     }
 
-    public Promotion(List<CarModel> carModels, String name, int discountPercentage, LocalDate promoStart, LocalDate promoEnd) {
-        this(name, discountPercentage, promoStart, promoEnd, null, carModels, null);
-    }
 
     public Promotion(String name, int discountPercentage, LocalDate promoStart, LocalDate promoEnd,
                      List<Client> clients) {
-        this(name, discountPercentage, promoStart, promoEnd, null, null, clients);
+        this(name, discountPercentage, promoStart, promoEnd, null,  clients);
     }
 
     public int getId() {
@@ -107,14 +98,6 @@ public class Promotion {
 
     public void setCars(List<Car> cars) {
         this.cars = cars;
-    }
-
-    public List<CarModel> getCarModels() {
-        return carModels;
-    }
-
-    public void setCarModels(List<CarModel> carModels) {
-        this.carModels = carModels;
     }
 
     public List<Client> getClients() {
