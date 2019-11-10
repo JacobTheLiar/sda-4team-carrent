@@ -10,7 +10,6 @@ import java.util.Objects;
 @Entity
 public class Employee {
 
-    private int id;
     private String firstname;
     private String surname;
     @ManyToOne(targetEntity = RentPoint.class)
@@ -33,14 +32,6 @@ public class Employee {
         this.username = username;
         this.employmentDate = employmentDate;
         this.role = role;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getFirstname() {
@@ -123,8 +114,7 @@ public class Employee {
     @Override
     public String toString() {
         return "Employee{" +
-                "id=" + id +
-                ", firstname='" + firstname + '\'' +
+                "firstname='" + firstname + '\'' +
                 ", surname='" + surname + '\'' +
                 ", rentPoint=" + rentPoint +
                 ", username='" + username + '\'' +
