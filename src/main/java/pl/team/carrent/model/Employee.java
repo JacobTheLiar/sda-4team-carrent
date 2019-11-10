@@ -3,20 +3,20 @@ package pl.team.carrent.model;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
 public class Employee {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqEmployee")
-    @SequenceGenerator(name = "seqEmployee", sequenceName = "seq_Employee", allocationSize = 1)
     private int id;
     private String firstname;
     private String surname;
     @ManyToOne(targetEntity = RentPoint.class)
     private RentPoint rentPoint;
+    @Id
+    @NotNull
     private String username;
     private String password;
     private LocalDate employmentDate;
@@ -112,12 +112,12 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return Objects.equals(id, employee.id);
+        return username.equals(employee.username);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(username);
     }
 
     @Override
@@ -128,9 +128,8 @@ public class Employee {
                 ", surname='" + surname + '\'' +
                 ", rentPoint=" + rentPoint +
                 ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
                 ", employmentDate=" + employmentDate +
-                ", releasetDate=" + releaseDate +
+                ", releaseDate=" + releaseDate +
                 ", role=" + role +
                 '}';
     }
