@@ -10,10 +10,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import pl.team.carrent.model.Employee;
 import pl.team.carrent.model.RentPoint;
 import pl.team.carrent.model.Role;
+
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
+@Transactional
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
 public class EmployeeRepositoryTest {
@@ -44,25 +48,25 @@ public class EmployeeRepositoryTest {
     @Test
     public void shouldFindByFirstname() {
         //when
-        List<Employee> employeeList = employeeRepository.findByFirstnameContainsIgnoreCase("luka");
+        Set<Employee> employeeList = employeeRepository.findByFirstnameContainsIgnoreCase("luka");
         //then
-        Assert.assertEquals(employeeList.get(0).getFirstname(), "Lukasz");
+        Assert.assertEquals(1, employeeList.size());
     }
 
     @Test
     public void shouldNotFindByFirstname() {
         //when
-        List<Employee> employeeList = employeeRepository.findByFirstnameContainsIgnoreCase("Luki");
+        Set<Employee> employeeList = employeeRepository.findByFirstnameContainsIgnoreCase("Luki");
         //then
-        Assert.assertEquals("employeeList size should be 0", 0, employeeList.size());
+        Assert.assertEquals(0, employeeList.size());
     }
 
     @Test
     public void shouldFindBySurname() {
         //when
-        List<Employee> employeeList = employeeRepository.findBySurnameContainsIgnoreCase("ciup");
+        Set<Employee> employeeList = employeeRepository.findBySurnameContainsIgnoreCase("ciup");
         //then
-        Assert.assertEquals(employeeList.get(0).getSurname(), "Ciupek");
+        Assert.assertEquals(1, employeeList.size());
     }
 
     @Test
@@ -84,60 +88,57 @@ public class EmployeeRepositoryTest {
     @Test
     public void shouldFindByRoleName() {
         //when
-        List<Employee> employeeList = employeeRepository.findByRoleAuthorityContainsIgnoreCase("ad");
+        Set<Employee> employeeList = employeeRepository.findByRoleAuthorityContainsIgnoreCase("ad");
         //then
-        Assert.assertEquals(employeeList.get(0).getRole().getAuthority(), "admin");
+        Assert.assertEquals(2, employeeList.size());
     }
 
     @Test
     public void shouldFindByRentPointName() {
         //when
-        List<Employee> employeeList = employeeRepository.findByRentPointNameContainsIgnoreCase("pOz");
+        Set<Employee> employeeList = employeeRepository.findByRentPointNameContainsIgnoreCase("pOz");
         //then
-        Assert.assertEquals(employeeList.get(0).getRentPoint().getName(), "POZ");
+        Assert.assertEquals(2, employeeList.size());
     }
 
     @Test
     public void shouldFindByRentPointAddress() {
         //when
-        List<Employee> employeeList = employeeRepository.findByRentPointAddressContainsIgnoreCase("zmigRodz");
+        Set<Employee> employeeList = employeeRepository.findByRentPointAddressContainsIgnoreCase("zmigRodz");
         //then
-        Assert.assertEquals(employeeList.get(0).getRentPoint().getAddress(), "Zmigrodzka");
+        Assert.assertEquals(1, employeeList.size());
     }
 
     @Test
     public void shouldFindByRentPointPostCode() {
         //when
-        List<Employee> employeeList = employeeRepository.findByRentPointPostCodeContainsIgnoreCase("61-2");
+        Set<Employee> employeeList = employeeRepository.findByRentPointPostCodeContainsIgnoreCase("61-2");
         //then
-        Assert.assertEquals(employeeList.get(0).getRentPoint().getPostCode(), "61-244");
+        Assert.assertEquals(2, employeeList.size());
     }
 
     @Test
     public void shouldFindByRentPointCity() {
         //when
-        List<Employee> employeeList = employeeRepository.findByRentPointCityContainsIgnoreCase("Poznan");
+        Set<Employee> employeeList = employeeRepository.findByRentPointCityContainsIgnoreCase("Poznan");
         //then
-        Assert.assertEquals(employeeList.get(0).getRentPoint().getCity(), "Poznan");
-        Assert.assertEquals(employeeList.get(1).getFirstname(), "Maciej");
+        Assert.assertEquals(2, employeeList.size());
     }
 
     @Test
     public void shouldFindByEmploymentDateAfter() {
         //when
-        List<Employee> employeeList = employeeRepository.findByEmploymentDateAfter(LocalDate.of(1999, 8, 1));
+        Set<Employee> employeeList = employeeRepository.findByEmploymentDateAfter(LocalDate.of(1999, 8, 1));
         //then
-        Assert.assertEquals(employeeList.get(0).getFirstname(), "Lukasz");
-        Assert.assertEquals(employeeList.get(1).getFirstname(), "Maciej");
+        Assert.assertEquals(2, employeeList.size());
     }
 
     @Test
     public void shouldFindByEmploymentDateBefore() {
         //when
-        List<Employee> employeeList = employeeRepository.findByEmploymentDateBefore(LocalDate.of(1999, 10, 1));
+        Set<Employee> employeeList = employeeRepository.findByEmploymentDateBefore(LocalDate.of(1999, 10, 1));
         //then
-        Assert.assertEquals(employeeList.get(0).getFirstname(), "Lukasz");
-        Assert.assertEquals(employeeList.get(1).getFirstname(), "Maciej");
+        Assert.assertEquals(2, employeeList.size());
     }
 
     @Test
@@ -164,5 +165,13 @@ public class EmployeeRepositoryTest {
         List<Employee> employeeList = employeeRepository.findByReleaseDateBetween(LocalDate.of(1998, 8, 1),LocalDate.of(1998,10, 1));
         //then
         Assert.assertEquals("employeeList size should be 0", 0, employeeList.size());
+    }
+
+    @Test
+    public void shouldFindActiveEmployees() {
+        //when
+        Set<Employee> employeeList = employeeRepository.findByReleaseDateIsNull();
+        //then
+        Assert.assertEquals(1, employeeList.size());
     }
 }
