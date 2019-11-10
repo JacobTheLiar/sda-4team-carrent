@@ -46,49 +46,49 @@ public class CarModelServiceTest {
     @Test
     public void shouldGetAllCarModels() {
         //when
-        List<CarModel> carModels= carModelService.getAllCarModels();
+        List<CarModel> carModels = carModelService.getAllCarModels();
         //then
-        Assert.assertEquals(3,carModels.size());
+        Assert.assertEquals(3, carModels.size());
     }
 
     @Test
     public void shouldSearchCarModelsByMark() {
         //when
-        List<CarModel> carModels= carModelService.searchCarModels("Ford",BY_MARK);
+        List<CarModel> carModels = carModelService.searchCarModels("Ford", BY_MARK);
         //then
-        Assert.assertEquals(3,carModels.size());
+        Assert.assertEquals(3, carModels.size());
     }
 
     @Test
     public void shouldSearchCarModelsByModel() {
         //when
-        List<CarModel> carModels= carModelService.searchCarModels("Ka",BY_MODEL);
+        List<CarModel> carModels = carModelService.searchCarModels("Ka", BY_MODEL);
         //then
-        Assert.assertEquals(1,carModels.size());
+        Assert.assertEquals(1, carModels.size());
     }
 
     @Test
     public void shouldSearchCarModelsBySegment() {
         //when
-        List<CarModel> carModels= carModelService.searchCarModels("B",BY_SEGMENT);
+        List<CarModel> carModels = carModelService.searchCarModels("B", BY_SEGMENT);
         //then
-        Assert.assertEquals(1,carModels.size());
+        Assert.assertEquals(1, carModels.size());
     }
 
     @Test
     public void shouldSearchCarModelsByProductionYear() {
         //when
-        List<CarModel> carModels= carModelService.searchCarModels("2000",BY_PRODUCTION_YEAR);
+        List<CarModel> carModels = carModelService.searchCarModels("2000", BY_PRODUCTION_YEAR);
         //then
-        Assert.assertEquals(2,carModels.size());
+        Assert.assertEquals(2, carModels.size());
     }
 
     @Test
     public void shouldSearchCarModelsByAge() {
         //when
-        List<CarModel> carModels= carModelService.searchCarModels("19",BY_AGE);
+        List<CarModel> carModels = carModelService.searchCarModels("19", BY_AGE);
         //then
-        Assert.assertEquals(2,carModels.size());
+        Assert.assertEquals(2, carModels.size());
     }
 
     @Test
@@ -96,7 +96,7 @@ public class CarModelServiceTest {
         //when
         CarModel actual = carModelService.addCarModel(carModel4);
         //then
-        Assert.assertEquals(carModel4,actual);
+        Assert.assertEquals(carModel4, actual);
     }
 
     @Test
@@ -105,6 +105,6 @@ public class CarModelServiceTest {
         carModel4.setType("hatchback");
         CarModel actual = carModelService.updateCarModel(carModel4);
         //then
-        Assert.assertNotEquals(carModel5.getType(),actual.getType());
+        Assert.assertNotEquals(carModel5.getType(), actual.getType());
     }
 }
