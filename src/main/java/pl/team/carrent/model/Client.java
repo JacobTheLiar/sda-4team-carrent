@@ -19,7 +19,7 @@ public class Client{
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqClient")
-    @SequenceGenerator(name = "seqClient", sequenceName = "seq_Client")
+    @SequenceGenerator(name = "seqClient", sequenceName = "seq_Client", allocationSize = 1)
     private int id;
     
     @NotNull
@@ -37,18 +37,6 @@ public class Client{
     
     
     public Client(String name, String address, String postCode, String city, String taxNumber, String email, String telephoneNr){
-        this.name = name;
-        this.address = address;
-        this.postCode = postCode;
-        this.city = city;
-        this.taxNumber = taxNumber;
-        this.email = email;
-        this.telephoneNr = telephoneNr;
-    }
-    
-    
-    public Client(int id, String name, String address, String postCode, String city, String taxNumber, String email, String telephoneNr){
-        this.id = id;
         this.name = name;
         this.address = address;
         this.postCode = postCode;

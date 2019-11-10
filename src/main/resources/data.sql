@@ -16,5 +16,20 @@ INSERT INTO client (id, name, address, post_code, city, tax_number, email, telep
 INSERT INTO client (id, name, address, post_code, city, tax_number, email, telephone_nr) values (nextval('seq_Client'), 'Rico', '64th Street and Fifth Avenue', '10021', 'New York', '0000000002', 'membership@wcs.org', '(212) 439-6500');
 INSERT INTO client (id, name, address, post_code, city, tax_number, email, telephone_nr) values (nextval('seq_Client'), 'Private', '64th Street and Fifth Avenue', '10021', 'New York', '0000000003', 'cpzinfo@wcs.org', '(718) 220-5111');
 
+INSERT INTO invoice (id, number, value, invoice_date, payment_date, sell_date) values (nextval('seq_Invoice'), '2018/1', 12.34, '2018-08-01', '2019-01-01', '2018-01-01');
+INSERT INTO invoice (id, number, value, invoice_date, payment_date, sell_date) values (nextval('seq_Invoice'), '2018/2', 23.45, '2018-09-21', '2018-12-31', '2018-09-20');
+INSERT INTO invoice (id, number, value, invoice_date, payment_date, sell_date) values (nextval('seq_Invoice'), '2019/1', 34.56, '2019-01-01', '2019-02-01', '2019-01-01');
+INSERT INTO invoice (id, number, value, invoice_date, payment_date, sell_date) values (nextval('seq_Invoice'), '2019/2', 45.67, '2019-02-01', '2019-03-01', '2019-02-01');
+INSERT INTO invoice (id, number, value, invoice_date, payment_date, sell_date) values (nextval('seq_Invoice'), '2019/3', 56.78, '2019-04-01', '2019-05-01', '2019-04-01');
+
+
+INSERT INTO rent_history (id, car_id, client_id, promotion_id, rent_point_start_id, rent_point_end_id, employee_start_id, employee_end_id, rent_time_start, rent_time_end, counter_state_start, counter_state_end, notes_start, notes_end, invoice_id)
+values                   (1 , 1     , 1        , null        , null               , null             , null             , null           , '2018-08-01'   , '2018-08-01' , 0                  , 100              , 'drive test','drive test end', 1);
+INSERT INTO rent_history (id, car_id, client_id, promotion_id, rent_point_start_id, rent_point_end_id, employee_start_id, employee_end_id, rent_time_start, rent_time_end, counter_state_start, counter_state_end, notes_start, notes_end, invoice_id)
+values                   (2 , 2     , 1        , null        , null               , null             , null             , null           , '2018-08-01'   , '2018-08-01' , 0                  , 100              , 'drive test','drive test end', 2);
+INSERT INTO rent_history (id, car_id, client_id, promotion_id, rent_point_start_id, rent_point_end_id, employee_start_id, employee_end_id, rent_time_start, rent_time_end, counter_state_start, counter_state_end, notes_start, notes_end, invoice_id)
+values                   (3 , 3     , 2        , null        , null               , null             , null             , null           , '2018-08-01'   , '2018-08-01' , 0                  , 100              , 'drive test','drive test end', 3);
+INSERT INTO rent_history (id, car_id, client_id, promotion_id, rent_point_start_id, rent_point_end_id, employee_start_id, employee_end_id, rent_time_start, rent_time_end, counter_state_start, counter_state_end, notes_start, notes_end, invoice_id)
+values                   (4 , 4     , 3        , null        , null               , null             , null             , null           , '2018-08-01'   , '2018-08-01' , 0                  , 100              , 'drive test','drive test end', 4);
 
 commit;

@@ -31,13 +31,13 @@ public class ClientServiceTest{
     private static String FIND_TELEPHONE = "8776";
     private static String FIND_NONE      = "abra cadabra";
     
-    private Client client1 = new Client(1, "Kowalski", "Łubinowa 4", "00-001", "Warszawa", "PL1112223344",
+    private Client client1 = new Client("Kowalski", "Łubinowa 4", "00-001", "Warszawa", "PL1112223344",
                                         "kowalski@poczta.pl", "4822111223344");
-    private Client client2 = new Client(2, "Kowalski", "Rumiankowa 4", "00-002", "Warszawa", "PL2223334455",
+    private Client client2 = new Client("Kowalski", "Rumiankowa 4", "00-002", "Warszawa", "PL2223334455",
                                         "kowalski2@poczta.pl", "4822118776344");
-    private Client client3 = new Client(3, "Nowak", "Arachidowa 87", "00-003", "Warszawa", "PL3334445566",
+    private Client client3 = new Client("Nowak", "Arachidowa 87", "00-003", "Warszawa", "PL3334445566",
                                         "noiwak@poczta.pl", "4822999887766");
-    private Client client4 = new Client(4, "Gąska", "Arachidowa 87", "00-003", "Warszawa", "PL3334445566",
+    private Client client4 = new Client("Gąska", "Arachidowa 87", "00-003", "Warszawa", "PL3334445566",
                                         "noiwak@poczta.pl", "4822999887766");
     
     
