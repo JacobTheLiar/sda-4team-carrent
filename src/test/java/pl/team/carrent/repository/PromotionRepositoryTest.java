@@ -38,9 +38,6 @@ public class PromotionRepositoryTest {
     @Autowired
     private PromotionRepository subject;
 
-    private String mark = "Opel";
-    private String model = "Corsa";
-    private String segment = "C";
 
     private CarModel opelCorsa2001 = new CarModel("Opel", "Corsa",
             "B","null", 2001, 30000);
@@ -60,6 +57,22 @@ public class PromotionRepositoryTest {
     public void setUp() throws Exception {
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, renualtClio2019, opelAstra2005));
         carRepository.saveAll(Arrays.asList(newCar1,newCar2, newCar3));
+    }
+
+    @Test
+    public void shouldFindPromotionByName() {
+        //given
+        Promotion addedPromotion = new Promotion("Srednie 30%", 30,
+                LocalDate.now(), LocalDate.now().plusDays(30),
+                Arrays.asList(newCar3, newCar2), null);
+        subject.save(addedPromotion);
+
+        //when
+        String name = "Srednie 30%";
+        List<Promotion> byPromotionName = subject.findByNameContainsIgnoreCase(name);
+
+        //then
+        Assert.assertEquals("Srednie 30%", byPromotionName.get(0).getName());
     }
 
     @Test
@@ -86,6 +99,7 @@ public class PromotionRepositoryTest {
         subject.save(addedPromotion);
 
         //when
+        String mark = "Opel";
         List<Promotion> byCarMark = subject.findPromotionByCarMark(mark);
 
         //then
@@ -100,6 +114,7 @@ public class PromotionRepositoryTest {
         subject.save(addedPromotion);
 
         //when
+        String model = "Corsa";
         List<Promotion> byCarModel = subject.findPromotionByCarModel(model);
 
         //then
@@ -114,9 +129,11 @@ public class PromotionRepositoryTest {
         subject.save(addedPromotion);
 
         //when
+        String segment = "C";
         List<Promotion> byCarSegment = subject.findPromotionByCarSegment(segment);
 
         //then
         Assert.assertEquals("Opel 30%", byCarSegment.get(0).getName());
     }
+
 }
