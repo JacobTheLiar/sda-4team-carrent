@@ -8,6 +8,7 @@ import pl.team.carrent.repository.CarRepository;
 
 import javax.smartcardio.CardNotPresentException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,7 +23,7 @@ import java.util.Optional;
 @Service
 public class CarService {
 
-    private CarRepository carRepository;
+    private final CarRepository carRepository;
 
     public CarService(CarRepository carRepository) {
         this.carRepository = carRepository;
@@ -49,7 +50,7 @@ public class CarService {
             case BY_COLOR:
                 return carRepository.findByColorContainsIgnoreCaseAndActiveEquals(searchWhat, true);
             default:
-                return new ArrayList<Car>();
+                return Collections.emptyList();
         }
     }
 
@@ -66,7 +67,7 @@ public class CarService {
             case BY_COLOR:
                 return carRepository.findByColorContainsIgnoreCase(searchWhat);
             default:
-                return new ArrayList<Car>();
+                return Collections.emptyList();
         }
     }
 
@@ -90,6 +91,7 @@ public class CarService {
         if (carOptional.isPresent()) {
             Car car = carOptional.get();
             car.setActive(false);
+            carRepository.save(car);
         }
     }
 
