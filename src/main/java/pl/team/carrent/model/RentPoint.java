@@ -78,17 +78,19 @@ public class RentPoint {
     public void setCity(String city) {
         this.city = city;
     }
-
+    
+    
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o){
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RentPoint rentPoint = (RentPoint) o;
-        return id == rentPoint.id;
+        return id == rentPoint.id && name.equals(rentPoint.name);
     }
-
+    
+    
     @Override
-    public int hashCode() {
-        return Objects.hash(id);
+    public int hashCode(){
+        return Objects.hash(id, name);
     }
 }
