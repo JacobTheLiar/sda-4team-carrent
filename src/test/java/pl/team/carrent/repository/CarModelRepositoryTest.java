@@ -69,6 +69,18 @@ public class CarModelRepositoryTest {
     @Test
     public void findByMark() {
         List<CarModel> models = carModelRepository.findByMarkIgnoreCase("Opel");
-        Assert.assertEquals("", models.size(), 2);
+        Assert.assertEquals("",  2,models.size());
+    }
+
+    @Test
+    public void findBySegmentContains() {
+        List<CarModel> models = carModelRepository.findBySegmentContains("B");
+        Assert.assertEquals(2,models.size());
+    }
+
+    @Test
+    public void findByTypeContainsIgnoreCase() {
+        List<CarModel> models = carModelRepository.findByTypeContainsIgnoreCase("hatchback");
+        Assert.assertEquals(5,models.size());
     }
 }

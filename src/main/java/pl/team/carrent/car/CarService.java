@@ -1,13 +1,9 @@
 package pl.team.carrent.car;
 
-import com.sun.jndi.ldap.LdapCtxFactory;
-import com.sun.org.apache.bcel.internal.generic.SWITCH;
 import org.springframework.stereotype.Service;
 import pl.team.carrent.model.Car;
 import pl.team.carrent.repository.CarRepository;
 
-import javax.smartcardio.CardNotPresentException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
