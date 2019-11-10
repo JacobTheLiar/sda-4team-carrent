@@ -19,7 +19,7 @@ public class Client{
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqClient")
-    @SequenceGenerator(name = "seqClient", sequenceName = "seq_Client")
+    @SequenceGenerator(name = "seqClient", sequenceName = "seq_Client", allocationSize = 1)
     private int id;
     
     @NotNull

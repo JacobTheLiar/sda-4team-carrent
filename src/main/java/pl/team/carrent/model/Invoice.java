@@ -20,7 +20,7 @@ public class Invoice{
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqInvoice")
-    @SequenceGenerator(name = "seqInvoice", sequenceName = "seq_Invoice")
+    @SequenceGenerator(name = "seqInvoice", sequenceName = "seq_Invoice", allocationSize = 1)
     private int id;
     
     private String number;
@@ -44,6 +44,14 @@ public class Invoice{
         this.sellDate = sellDate;
     }
     
+    public Invoice(int id, String number, BigDecimal value, LocalDate invoiceDate, LocalDate paymentDate, LocalDate sellDate){
+        this.id = id;
+        this.number = number;
+        this.value = value;
+        this.invoiceDate = invoiceDate;
+        this.paymentDate = paymentDate;
+        this.sellDate = sellDate;
+    }
     
     public int getId(){
         return id;
