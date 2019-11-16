@@ -20,7 +20,6 @@ import pl.team.carrent.service.ClientService;
 @RequestMapping("/client")
 public class ClientController{
     
-    
     private final ClientService clientService;
     
     
@@ -51,19 +50,21 @@ public class ClientController{
     
     
     @GetMapping("/add")
-    public  ModelAndView geaAddClientForm(){
+    public ModelAndView getAddClientForm(){
         ModelAndView model = new ModelAndView("clientDetail");
         model.addObject("client", new Client());
         return model;
     }
     
+    
     @PostMapping(value = {"/add", "/{id}"})
     public String saveClient(@ModelAttribute Client client, @PathVariable(required = false) Integer id){
-        if (id!=null)
+        if (id != null) {
             client.setId(id);
+        }
+        
         clientService.saveClient(client);
         
         return "redirect:/client";
     }
-    
 }
