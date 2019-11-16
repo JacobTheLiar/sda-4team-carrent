@@ -11,6 +11,25 @@ package pl.team.carrent.client;
  ******************************************************/
 public enum SearchClientOption{
     
-    BY_NAME, BY_ADDRESS, BY_TELEPHONE;
+    BY_NAME("po nazwie"), BY_ADDRESS("po adresie"), BY_TELEPHONE("po numerze telefonu");
+    
+    
+    private String description;
+    
+    
+    SearchClientOption(String description){
+        this.description = description;
+    }
+    
+    
+    public String getDescription(){
+        return description;
+    }
+    
+    
+    @Override
+    public String toString(){
+        return description;
+    }
     
 }
