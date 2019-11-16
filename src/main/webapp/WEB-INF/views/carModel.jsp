@@ -83,8 +83,8 @@
             <th>Przegląd co km</th>
         </tr>
 
-        <c:forEach items="${carModels}" var="item" varStatus="status">
-            <form method="post" action="${pageContext.request.contextPath}/car/model/${item.id}">
+        <c:forEach items="${carModels}" var="item" >
+
                 <tr>
                     <td>${item.mark}</td>
                     <td>${item.model}</td>
@@ -93,11 +93,10 @@
                     <td>${item.productionYear}</td>
                     <td>${item.reviewInterval}</td>
                     <td>
-                        <input type="hidden" value="${item.id}" name="id">
-                        <input type="submit" value="edytuj" class="w3-button w3-theme"/>
+                        <a  class="w3-button w3-theme" href="${pageContext.request.contextPath}/car/model/${item.id}">edytuj</a>
                     </td>
                 </tr>
-            </form>
+
         </c:forEach>
 
     </table>

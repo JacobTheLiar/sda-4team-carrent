@@ -46,7 +46,7 @@ public class CarModelController {
     }
 
 
-    @PostMapping(value = "/{id}")
+    @GetMapping(value = "/{id}")
     public ModelAndView postCarModelEditModel(@PathVariable int id) {
         ModelAndView modelAndViewToAddAndEdit = new ModelAndView("carModelAddUpdate");
         modelAndViewToAddAndEdit.addObject("update", true);
