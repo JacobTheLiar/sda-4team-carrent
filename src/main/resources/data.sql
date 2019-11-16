@@ -9,6 +9,7 @@ INSERT INTO car (id, car_model_id, registration_Date, plate_Nr, vin, color, pric
 INSERT INTO car (id, car_model_id, registration_Date, plate_Nr, vin, color, price_Per_Day, active) VALUES (nextval('car_seq'), '3', '2015-07-27', 'PO00003','VIN3','black','100','true');
 INSERT INTO car (id, car_model_id, registration_Date, plate_Nr, vin, color, price_Per_Day, active) VALUES (nextval('car_seq'), '2', '2011-05-27', 'PO00004','VIN4','black','100','true');
 INSERT INTO car (id, car_model_id, registration_Date, plate_Nr, vin, color, price_Per_Day, active) VALUES (nextval('car_seq'), '1', '2001-01-27', 'PO00005','WIN5','black','100','true');
+INSERT INTO car (id, car_model_id, registration_Date, plate_Nr, vin, color, price_Per_Day, active) VALUES (nextval('car_seq'), '1', '2001-01-27', 'PO00006','WIN5','black','100','false');
 
 
 INSERT INTO client (id, name, address, post_code, city, tax_number, email, telephone_nr) values (nextval('seq_Client'), 'Skipper', '64th Street and Fifth Avenue', '10021', 'New York', '0000000000', 'cpzinfo@wcs.org', '(212) 439-6500');

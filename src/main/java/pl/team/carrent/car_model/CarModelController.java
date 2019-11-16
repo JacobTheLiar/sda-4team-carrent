@@ -25,7 +25,7 @@ public class CarModelController {
 
     @GetMapping(value = "/")
     public ModelAndView getCarModelPage(@RequestParam(required = false) String searchWhat, @RequestParam(required = false) String searchBy) {
-        ModelAndView modelAndView = new ModelAndView("carModel");
+        ModelAndView modelAndView = new ModelAndView("carModelList");
         modelAndView.addObject("searchByOptions", SearchCarModelOption.values());
         if (searchWhat == null || searchBy == null || searchWhat.isEmpty() || searchBy.isEmpty()) {
             modelAndView.addObject("isFiltered", false);
@@ -40,7 +40,7 @@ public class CarModelController {
 
     @GetMapping(value = "/add")
     public ModelAndView getCarModelAddNewModel() {
-        ModelAndView modelAndViewToAddAndEdit = new ModelAndView("carModelAddUpdate");
+        ModelAndView modelAndViewToAddAndEdit = new ModelAndView("carModelDetail");
         modelAndViewToAddAndEdit.addObject("update", false);
         return modelAndViewToAddAndEdit;
     }
@@ -48,7 +48,7 @@ public class CarModelController {
 
     @GetMapping(value = "/{id}")
     public ModelAndView postCarModelEditModel(@PathVariable int id) {
-        ModelAndView modelAndViewToAddAndEdit = new ModelAndView("carModelAddUpdate");
+        ModelAndView modelAndViewToAddAndEdit = new ModelAndView("carModelDetail");
         modelAndViewToAddAndEdit.addObject("update", true);
         modelAndViewToAddAndEdit.addObject("carModel", carModelService.getCarModelById(id));
         return modelAndViewToAddAndEdit;

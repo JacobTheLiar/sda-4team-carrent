@@ -2,6 +2,7 @@ package pl.team.carrent.car;
 
 import org.springframework.stereotype.Service;
 import pl.team.carrent.model.Car;
+import pl.team.carrent.model.CarModel;
 import pl.team.carrent.repository.CarRepository;
 
 import java.util.Collections;
@@ -35,16 +36,18 @@ public class CarService {
 
     public List<Car> searchActiveCars(String searchWhat, SearchCarOption searchCarOption) {
         switch (searchCarOption) {
+            case BY_CAR_MODEL:
+                return carRepository.findByCarModel_ModelContainsIgnoreCase(searchWhat);
             case BY_PLATE_NR:
-                return carRepository.findByPlateNrContainsIgnoreCaseAndActiveContains(searchWhat, true);
+                return carRepository.findByPlateNrContainsIgnoreCaseAndActiveIs(searchWhat, true);
             case BY_VIN:
-                return carRepository.findByVinContainsIgnoreCaseAndActiveContains(searchWhat, true);
+                return carRepository.findByVinContainsIgnoreCaseAndActiveIs(searchWhat, true);
             case BY_SEGMENT:
-                return carRepository.findByCarModelSegmentContainsIgnoreCaseAndActiveEquals(searchWhat, true);
+                return carRepository.findByCarModelSegmentContainsIgnoreCaseAndActiveIs(searchWhat, true);
             case BY_TYPE:
-                return carRepository.findByCarModelTypeContainsIgnoreCaseAndActiveEquals(searchWhat, true);
+                return carRepository.findByCarModelTypeContainsIgnoreCaseAndActiveIs(searchWhat, true);
             case BY_COLOR:
-                return carRepository.findByColorContainsIgnoreCaseAndActiveEquals(searchWhat, true);
+                return carRepository.findByColorContainsIgnoreCaseAndActiveIs(searchWhat, true);
             default:
                 return Collections.emptyList();
         }
@@ -78,7 +81,7 @@ public class CarService {
     }
 
 
-    public Car addCar(Car car) {
+    public Car addOrUpdateCar(Car car) {
         return carRepository.save(car);
     }
 
@@ -91,4 +94,7 @@ public class CarService {
         }
     }
 
+    public Car getCarById(int id) {
+        return carRepository.findById(id).orElseThrow(()->new CarNotExistException("carId "+id));
+    }
 }
