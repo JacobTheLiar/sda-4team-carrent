@@ -14,7 +14,7 @@
 
 
         <!-- tytuł -->
-        <h2 class="w3-bar w3-border w3-center w3-theme">zarządzaj klientami</h2>
+        <h2 class="w3-bar w3-border w3-center w3-theme">klienci</h2>
 
         <!-- dodatkowe opcje i szukanie -->
         <div class="w3-bar w3-light-grey w3-border">
@@ -54,9 +54,9 @@
                 <td>${client.email}</td>
                 <td>${client.telephoneNr}</td>
 
-                <td><a href="${pageContext.request.contextPath}/client/${client.id}" class="w3-button w3-theme">edytuj</a>
+                <td><a href="${pageContext.request.contextPath}/client/${client.id}" class="w3-button w3-theme w3-tiny">edytuj</a>
 
-                    <a href="${pageContext.request.contextPath}/client/${client.id}/invoices" class="w3-button w3-theme">faktury</a></td>
+                    <a href="${pageContext.request.contextPath}/client/${client.id}/invoices" class="w3-button w3-theme w3-tiny">faktury</a></td>
             </tr>
             </c:forEach>
         </table>
