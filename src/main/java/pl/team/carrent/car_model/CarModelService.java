@@ -51,7 +51,7 @@ public class CarModelService {
     }
 
     public CarModel getCarModelById(int id) {
-        return carModelRepository.findById(id).get();
+        return carModelRepository.findById(id).orElseThrow(() -> new CarModelNotExistException("carModelId: " + id));
     }
 
     public CarModel addCarModel(CarModel carModel) {

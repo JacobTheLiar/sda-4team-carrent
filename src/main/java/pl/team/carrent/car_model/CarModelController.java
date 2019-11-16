@@ -23,46 +23,41 @@ public class CarModelController {
         this.carModelService = carModelService;
     }
 
-    ModelAndView modelAndView = new ModelAndView("carModel");
-    ModelAndView modelAndViewToAddAndEdit = new ModelAndView("carModelAddUpdate");
-
     @GetMapping(value = "/")
-    public ModelAndView getCarModelPage() {
-        modelAndView.addObject("carModels", carModelService.getAllCarModels());
+    public ModelAndView getCarModelPage(@RequestParam(required = false) String searchWhat, @RequestParam(required = false) String searchBy) {
+        ModelAndView modelAndView = new ModelAndView("carModel");
+        modelAndView.addObject("searchByOptions", SearchCarModelOption.values());
+        if (searchWhat == null || searchBy == null || searchWhat.isEmpty() || searchBy.isEmpty()) {
+            modelAndView.addObject("isFiltered", false);
+            modelAndView.addObject("carModels", carModelService.getAllCarModels());
+        } else {
+            modelAndView.addObject("isFiltered", true);
+            modelAndView.addObject("carModels", carModelService.searchCarModels(searchWhat, SearchCarModelOption.valueOf(searchBy)));
+        }
         return modelAndView;
     }
 
-    @PostMapping(value = "/")
-    public ModelAndView postSearchCarModels(@RequestParam String searchWhat, @RequestParam String searchBy) {
-        modelAndView.addObject("carModels", carModelService.searchCarModels(searchWhat, SearchCarModelOption.valueOf(searchBy)));
-        return modelAndView;
-    }
 
     @GetMapping(value = "/add")
     public ModelAndView getCarModelAddNewModel() {
-        modelAndViewToAddAndEdit.addObject("update",false);
+        ModelAndView modelAndViewToAddAndEdit = new ModelAndView("carModelAddUpdate");
+        modelAndViewToAddAndEdit.addObject("update", false);
         return modelAndViewToAddAndEdit;
     }
 
-    @PostMapping(value = "/add")
-    public ModelAndView postCarModelAddNewModel(@RequestParam String mark, @RequestParam String model,
-                                                @RequestParam String segment, @RequestParam String type,
-                                                @RequestParam String productionYear, @RequestParam String reviewInterval) {
-        carModelService.addCarModel(new CarModel(mark, model, segment, type, Integer.valueOf(productionYear), Integer.valueOf(reviewInterval)));
-        return modelAndView;
-    }
 
-    @PostMapping(value = "/edit")
-    public ModelAndView postCarModelEditModel(@RequestParam int id) {
-        modelAndViewToAddAndEdit.addObject("update",true);
+    @PostMapping(value = "/{id}")
+    public ModelAndView postCarModelEditModel(@PathVariable int id) {
+        ModelAndView modelAndViewToAddAndEdit = new ModelAndView("carModelAddUpdate");
+        modelAndViewToAddAndEdit.addObject("update", true);
         modelAndViewToAddAndEdit.addObject("carModel", carModelService.getCarModelById(id));
         return modelAndViewToAddAndEdit;
     }
 
     @PostMapping(value = "/save")
-    public ModelAndView postCarModelSaveModel(@ModelAttribute CarModel carModel) {
+    public String postCarModelSaveModel(@ModelAttribute CarModel carModel) {
         carModelService.updateCarModel(carModel);
-        return modelAndView;
+        return "redirect:/car/model/";
     }
 }
 

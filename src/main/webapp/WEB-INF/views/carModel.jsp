@@ -49,20 +49,24 @@
         <a href="${pageContext.request.contextPath}" class="w3-bar-item w3-button w3-theme-d3">wróć</a>
         <a href="${pageContext.request.contextPath}/car/model/add" class="w3-bar-item w3-button w3-green">dodaj</a>
 
-        <form method="post" class="w3-bar-item w3-input w3-theme-l2 w3-right"
-              action="${pageContext.request.contextPath}/car/model/">
+        <c:if test="${isFiltered}">
+        <a href="${pageContext.request.contextPath}/car/model/" class="w3-bar-item w3-button w3-theme-l2 w3-right">usuń
+            filtr</a>
+        </c:if>
+
+        <form method="get" class="w3-bar-item w3-input w3-theme-l2 w3-right" action="${pageContext.request.contextPath}/car/model/">
             <input type="submit" class="w3-bar-item w3-option w3-theme-l2 w3-right" value="filtruj">
-            <select name="searchBy">
-                <option value="BY_MARK">po marce</option>
-                <option value="BY_MODEL">po modelu</option>
-                <option value="BY_SEGMENT">po segmencie</option>
-                <option value="BY_TYPE">po typie</option>
-                <option value="BY_PRODUCTION_YEAR">po roku proukcji</option>
-                <option value="BY_AGE">po wieku</option>
+            <select name="searchBy" class="w3-bar-item w3-input w3-right">
+                <c:forEach items="${searchByOptions}" var="item" varStatus="status">
+                    <option value="${item.name()}">${item.description}</option>
+                </c:forEach>
             </select>
-            <input type="text" class="w3-bar-item w3-input w3-right" name="searchWhat" placeholder="wartość filtru...">
+            <input type="text" class="w3-bar-item w3-input w3-right" name="searchWhat"
+                   placeholder="wartość filtru...">
 
         </form>
+        <br><br>
+
 
     </div>
 
@@ -78,8 +82,9 @@
             <th>Rok produkcji</th>
             <th>Przegląd co km</th>
         </tr>
-        <form method="post" action="${pageContext.request.contextPath}/car/model/edit">
-            <c:forEach items="${carModels}" var="item" varStatus="status">
+
+        <c:forEach items="${carModels}" var="item" varStatus="status">
+            <form method="post" action="${pageContext.request.contextPath}/car/model/${item.id}">
                 <tr>
                     <td>${item.mark}</td>
                     <td>${item.model}</td>
@@ -92,8 +97,9 @@
                         <input type="submit" value="edytuj" class="w3-button w3-theme"/>
                     </td>
                 </tr>
-            </c:forEach>
-        </form>
+            </form>
+        </c:forEach>
+
     </table>
     ​
     ​
@@ -102,7 +108,7 @@
 <footer class="w3-container w3-theme-l4"
         style="margin-left:25%; position: fixed; right: 0; bottom: 0; left: 0; padding: 1rem; background-color: #efefef; text-align: center;">
     <h5>Made by 4team © 2019</h5>
-    <p>Projekt na zakończenie naluki w Software Development Academy</p>
+    <p>Projekt na zakończenie nauki w Software Development Academy</p>
 </footer>
 ​
 </body>

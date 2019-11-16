@@ -65,9 +65,9 @@
         </tr>
 
 
-        <c:if test="${update==false}">
+        <c:if test="${!update}">
             <tr>
-                <form method="post" action="${pageContext.request.contextPath}/car/model/add">
+                <form method="post" action="${pageContext.request.contextPath}/car/model/save" modelAttribute="carModel">
                     <td><input type="text" name="mark" placeholder="wpisz markę"></td>
                     <td><input type="text" name="model" placeholder="wpisz model"></td>
                     <td><input type="text" name="segment" placeholder="wpisz segment"></td>
@@ -80,7 +80,7 @@
                 </form>
             </tr>
         </c:if>
-        <c:if test="${update==true}">
+        <c:if test="${update}">
             <tr>
                 <form method="post" action="${pageContext.request.contextPath}/car/model/save" modelAttribute="carModel">
                     <input type="hidden" name="id" value="${carModel.id}">
@@ -105,7 +105,7 @@
 <footer class="w3-container w3-theme-l4"
         style="margin-left:25%; position: fixed; right: 0; bottom: 0; left: 0; padding: 1rem; background-color: #efefef; text-align: center;">
     <h5>Made by 4team © 2019</h5>
-    <p>Projekt na zakończenie naluki w Software Development Academy</p>
+    <p>Projekt na zakończenie nauki w Software Development Academy</p>
 </footer>
 ​
 </body>
