@@ -7,6 +7,7 @@ import pl.team.carrent.repository.CarModelRepository;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author: Maciej Kryger  [https://github.com/maciejkryger]
@@ -25,12 +26,12 @@ public class CarModelService {
         this.carModelRepository = carModelRepository;
     }
 
-    public List<CarModel> getAllCarModels(){
+    public List<CarModel> getAllCarModels() {
         return carModelRepository.findAll();
     }
 
-    public List<CarModel> searchCarModels(String searchWhat, SearchCarModelOption findBy){
-        switch (findBy){
+    public List<CarModel> searchCarModels(String searchWhat, SearchCarModelOption findBy) {
+        switch (findBy) {
             case BY_MARK:
                 return carModelRepository.findByMarkContainsIgnoreCase(searchWhat);
             case BY_MODEL:
@@ -43,17 +44,21 @@ public class CarModelService {
                 return carModelRepository.findByProductionYear(Integer.parseInt(searchWhat));
             case BY_AGE:
                 int todayYear = LocalDate.now().getYear();
-                return carModelRepository.findByProductionYearBetween(todayYear-Integer.parseInt(searchWhat),todayYear);
+                return carModelRepository.findByProductionYearBetween(todayYear - Integer.parseInt(searchWhat), todayYear);
             default:
                 return Collections.emptyList();
         }
     }
 
-    public CarModel addCarModel(CarModel carModel){
+    public CarModel getCarModelById(int id) {
+        return carModelRepository.findById(id).orElseThrow(() -> new CarModelNotExistException("carModelId: " + id));
+    }
+
+    public CarModel addCarModel(CarModel carModel) {
         return carModelRepository.save(carModel);
     }
 
-    public CarModel updateCarModel(CarModel carModel){
+    public CarModel updateCarModel(CarModel carModel) {
         return carModelRepository.save(carModel);
     }
 }
