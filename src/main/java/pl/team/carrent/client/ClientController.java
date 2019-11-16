@@ -2,11 +2,9 @@ package pl.team.carrent.client;
 
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import pl.team.carrent.model.Client;
 import pl.team.carrent.service.ClientService;
 
 
@@ -55,7 +53,17 @@ public class ClientController{
     @GetMapping("/add")
     public  ModelAndView geaAddClientForm(){
         ModelAndView model = new ModelAndView("clientDetail");
+        model.addObject("client", new Client());
         return model;
+    }
+    
+    @PostMapping(value = {"/add", "/{id}"})
+    public String saveClient(@ModelAttribute Client client, @PathVariable(required = false) Integer id){
+        if (id!=null)
+            client.setId(id);
+        clientService.saveClient(client);
+        
+        return "redirect:/client";
     }
     
 }
