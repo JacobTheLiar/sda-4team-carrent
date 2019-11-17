@@ -24,6 +24,16 @@
             <p>${message}</p>
         </div>
 
+        <p>
+        <button class="w3-button w3-light-green" onclick="goBack()">wróć na poprzednią stronę</button>
+        <a href="/" class="w3-button w3-light-blue w3-right">wróć na stronę główną</a>
+        <script>
+        function goBack() {
+          window.history.back();
+        }
+        </script>
+        </p>
+
 	</div>
         ​
         ​
