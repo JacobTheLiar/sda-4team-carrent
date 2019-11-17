@@ -15,7 +15,7 @@ import java.util.Set;
  * *
  * *
  ******************************************************/
-public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
+public interface EmployeeRepository extends JpaRepository<Employee, String> {
 
     Optional<Employee> findByUsername(String username);
     Set<Employee> findByFirstnameContainsIgnoreCase(String firstname);

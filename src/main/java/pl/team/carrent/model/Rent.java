@@ -1,5 +1,7 @@
 package pl.team.carrent.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -32,6 +34,7 @@ public class Rent {
     @ManyToOne(targetEntity = RentPoint.class)
     private RentPoint rentPointStart;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate rentTimeStart;
 
     @ManyToOne(targetEntity = Employee.class)

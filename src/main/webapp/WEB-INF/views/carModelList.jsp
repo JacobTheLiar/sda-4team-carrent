@@ -58,7 +58,7 @@
             <td>${carModel.productionYear}</td>
             <td>${carModel.reviewInterval}</td>
             <td>
-                <a  class="w3-button w3-theme w3-tiny" href=""${pageContext.request.contextPath}/car/model/${carModel.id}">edytuj</a>
+                <a class="w3-button w3-theme w3-tiny" href="${pageContext.request.contextPath}/car/model/${carModel.id}">edytuj</a>
             </td>
         </tr>
 

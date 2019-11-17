@@ -61,8 +61,13 @@ public class CarController {
 
     @PostMapping("/save")
     public String saveCarDetails(@RequestParam int carModelId, @RequestParam String plateNr, @RequestParam String registrationDate,
-                                 @RequestParam String vin, @RequestParam String color, @RequestParam double pricePerDay){
-        carService.addOrUpdateCar(new Car(carModelService.getCarModelById(carModelId), LocalDate.parse(registrationDate), plateNr, vin, color, pricePerDay));
+                                 @RequestParam String vin, @RequestParam String color, @RequestParam double pricePerDay,
+                                 @RequestParam(required = false) Integer id){
+        Car car = new Car(carModelService.getCarModelById(carModelId), LocalDate.parse(registrationDate), plateNr, vin, color, pricePerDay);
+        if(id!=null){
+            car.setId(id);
+        }
+        carService.addOrUpdateCar(car);
         return "redirect:/car/";
     }
 

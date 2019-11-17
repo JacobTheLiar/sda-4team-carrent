@@ -5,6 +5,7 @@ import pl.team.carrent.model.Rent;
 import pl.team.carrent.repository.RentRepository;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -32,9 +33,9 @@ public class RentService {
     public List<Rent> searchRents(String findWhat, SearchRentOption findBy) {
         switch (findBy) {
             case BY_CAR_PLATE_NR:
-                return rentRepository.findByCar_PlateNr(findWhat);
+                return Arrays.asList(rentRepository.findByCar_PlateNr(findWhat));
             case BY_CAR_VIN:
-                return rentRepository.findByCar_Vin(findWhat);
+                return Arrays.asList(rentRepository.findByCar_Vin(findWhat));
             case BY_CLIENT_NAME:
                 return rentRepository.findByClient_NameContainsIgnoreCase(findWhat);
             case BY_CLIENT_ID:
@@ -68,4 +69,11 @@ public class RentService {
         return rentRepository.save(rent);
     }
 
+    public Rent getRentById(Integer id) {
+        return rentRepository.findById(id).orElseThrow(()->new RentNotExistException("Brak wypożyczenia o numerze id: "+id));
+    }
+
+    public Rent getRentByPlateNr(String plateNr) {
+        return rentRepository.findByCar_PlateNr(plateNr);
+    }
 }

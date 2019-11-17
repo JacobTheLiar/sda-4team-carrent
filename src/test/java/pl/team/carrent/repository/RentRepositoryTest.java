@@ -59,14 +59,14 @@ public class RentRepositoryTest {
         clientRepository.save(client);
 //        Employee employee = new Employee("Jan", "Nowak", 1, "jnowak", "qwerty123", LocalDate.of(2001, 9, 16), null, new Role());
         Rent rent1 = new Rent(car1, client, null, rentPoint, rentDate, null, 10000, "search test 1");
-        Rent rent2 = new Rent(car2, client, null, rentPoint, rentDate, null, 15000, "search test 2");
-        rentRepository.saveAll(Arrays.asList(rent1, rent2));
+
+        rentRepository.save(rent1);
 
         //when
-        List<Rent> rents = rentRepository.findByCar_PlateNr("PO11111");
+        Rent rent = rentRepository.findByCar_PlateNr("PO11111");
 
         //then
-        assertEquals(1, rents.size());
+        assertEquals(rent1, rent);
     }
 
     @Test
@@ -87,14 +87,13 @@ public class RentRepositoryTest {
         clientRepository.save(client);
 //        Employee employee = new Employee("Jan", "Nowak", 1, "jnowak", "qwerty123", LocalDate.of(2001, 9, 16), null, new Role());
         Rent rent1 = new Rent(car1, client, null, rentPoint, rentDate, null, 10000, "search test 1");
-        Rent rent2 = new Rent(car2, client, null, rentPoint, rentDate, null, 15000, "search test 2");
-        rentRepository.saveAll(Arrays.asList(rent1, rent2));
+        rentRepository.save(rent1);
 
         //when
-        List<Rent> rents = rentRepository.findByCar_Vin("VIN102");
+        Rent rent = rentRepository.findByCar_Vin("VIN101");
 
         //then
-        assertEquals(1, rents.size());
+        assertEquals(rent1, rent);
     }
 
     @Test
