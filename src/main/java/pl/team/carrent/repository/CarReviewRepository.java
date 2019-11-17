@@ -28,4 +28,6 @@ public interface CarReviewRepository extends JpaRepository<CarReview, Integer> {
     List<CarReview> findByReviewDateBefore(LocalDate date);
 
     List<CarReview> findByReviewDateAfter(LocalDate date);
+
+    List<CarReview> findByCar_Id(int carId);
 }

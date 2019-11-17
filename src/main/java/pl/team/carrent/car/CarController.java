@@ -28,7 +28,7 @@ public class CarController {
         this.carModelService=carModelService;
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public ModelAndView getCars(@RequestParam(required = false) String searchWhat, @RequestParam(required = false) String searchBy) {
         ModelAndView modelAndView = new ModelAndView("carList");
         modelAndView.addObject("searchByOptions", SearchCarOption.values());
