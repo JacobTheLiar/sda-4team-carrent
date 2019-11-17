@@ -27,7 +27,7 @@
     </c:if>
     <form>
         <input type="submit" class="w3-bar-item w3-button w3-theme w3-right" value="szukaj">
-        <input type="text" class="w3-bar-item w3-input w3-right" placeholder="szukaj..." name="searchWhat">
+        <input type="text" class="w3-bar-item w3-input w3-right" placeholder="szukaj..." name="searchWhat" value="${param.searchWhat}>
         <select class="w3-bar-item w3-input w3-right" name="searchBy">
             <c:forEach var="option" items="${searchByOptions}">
                 <option value="${option.name()}">${option.description}</option>
