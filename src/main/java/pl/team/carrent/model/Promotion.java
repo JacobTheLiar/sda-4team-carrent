@@ -120,4 +120,8 @@ public class Promotion {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }
