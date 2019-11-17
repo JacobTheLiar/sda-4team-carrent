@@ -24,7 +24,7 @@ public class RentPointController {
         this.rentPointService=rentPointService;
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public ModelAndView getRentPoint(){
         ModelAndView modelAndView = new ModelAndView("rentPointList");
         modelAndView.addObject("rentPoints",rentPointService.getAllRentPoints());

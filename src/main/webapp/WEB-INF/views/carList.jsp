@@ -48,6 +48,7 @@
         <th>kolor</th>
         <th>stawka za dzień</th>
         <th>czy aktywny</th>
+        <th>opcje</th>
     </tr>
     <c:forEach var="car" items="${cars}">
         <tr class="w3-center">
@@ -61,8 +62,10 @@
             <td>${car.pricePerDay}</td>
             <td>${car.active}</td>
 
-            <td><a href="${pageContext.request.contextPath}/car/${car.id}" class="w3-button w3-theme">edytuj</a>
-
+            <td><a href="${pageContext.request.contextPath}/car/${car.id}" class="w3-button w3-theme w3-tiny">edytuj</a>
+                <a href="${pageContext.request.contextPath}/carReview/add/${car.id}" class="w3-button w3-theme w3-tiny">dodaj przegląd</a>
+                <a href="${pageContext.request.contextPath}/carReview/${car.id}" class="w3-button w3-theme w3-tiny">Lista przeglądów</a>
+            </td>
         </tr>
     </c:forEach>
 </table>

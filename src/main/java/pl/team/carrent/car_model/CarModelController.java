@@ -23,7 +23,7 @@ public class CarModelController {
         this.carModelService = carModelService;
     }
 
-    @GetMapping(value = "/")
+    @GetMapping(value = "")
     public ModelAndView getCarModelPage(@RequestParam(required = false) String searchWhat, @RequestParam(required = false) String searchBy) {
         ModelAndView modelAndView = new ModelAndView("carModelList");
         modelAndView.addObject("searchByOptions", SearchCarModelOption.values());

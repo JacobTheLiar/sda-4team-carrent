@@ -16,33 +16,31 @@
 
 
 <!-- tytuł -->
-<h2 class="w3-bar w3-border w3-center w3-theme">wykaz punktów wypożyczalni Rent Car</h2>
+<h2 class="w3-bar w3-border w3-center w3-theme">wykaz przeglądu samochodu</h2>
 
 <!-- dodatkowe opcje i szukanie -->
 <div class="w3-bar w3-light-grey w3-border">
 
-    <a href="${pageContext.request.contextPath}/rentPoint/add" class="w3-bar-item w3-button w3-green">dodaj</a>
-
+    <a href="${pageContext.request.contextPath}/car/" class="w3-bar-item w3-button w3-green">wróć</a>
+    <a href="${pageContext.request.contextPath}/carReview/add/${carId}" class="w3-bar-item w3-button w3-green">dodaj</a>
 </div>
 
 ​<!-- dane -->
 <table class="w3-table w3-bordered w3-striped">
     <tr class="w3-theme-d4">
-        <th>nazwa</th>
-        <th>adres</th>
-        <th>kod pocztowy</th>
-        <th>miasto</th>
+        <th>samochód</th>
+        <th>stan licznika</th>
+        <th>data przeglądu</th>
         <th>opcje</th>
 
     </tr>
-    <c:forEach var="rentPoint" items="${rentPoints}">
+    <c:forEach var="carReview" items="${carReviews}">
         <tr class="w3-center">
-            <td>${rentPoint.name}</td>
-            <td>${rentPoint.address}</td>
-            <td>${rentPoint.postCode}</td>
-            <td>${rentPoint.city}</td>
+            <td>${carReview.car}</td>
+            <td>${carReview.counterState}</td>
+            <td>${carReview.reviewDate}</td>
 
-            <td><a href="${pageContext.request.contextPath}/rentPoint/${rentPoint.id}" class="w3-button w3-theme w3-tiny">edytuj</a>
+            <td><a href="${pageContext.request.contextPath}/carReview/edit/${carReview.id}" class="w3-button w3-theme w3-tiny">edytuj</a>
 
         </tr>
     </c:forEach>

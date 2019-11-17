@@ -18,29 +18,29 @@ import java.util.Set;
  * *
  ******************************************************/
 @Service
-public class RentPointService{
-    
+public class RentPointService {
+
     private final RentPointRepository rentPointRepository;
-    
-    
-    public RentPointService(RentPointRepository rentPointRepository){
+
+
+    public RentPointService(RentPointRepository rentPointRepository) {
         this.rentPointRepository = rentPointRepository;
     }
-    
-    
-    public Set<RentPoint> getAllRentPoints(){
+
+
+    public Set<RentPoint> getAllRentPoints() {
         return new HashSet<>(rentPointRepository.findAll());
     }
-    
-    
-    public RentPoint getRentPointById(int rentPointId){
-        
+
+
+    public RentPoint getRentPointById(int rentPointId) {
+
         return rentPointRepository.findById(rentPointId)
                 .orElseThrow(() -> new RentPointNotExistException("rentPointId:" + rentPointId));
     }
-    
-    
-    public RentPoint saveOrUpdateRentPoint(RentPoint rentPoint){
+
+
+    public RentPoint saveOrUpdateRentPoint(RentPoint rentPoint) {
         return rentPointRepository.save(rentPoint);
     }
 }

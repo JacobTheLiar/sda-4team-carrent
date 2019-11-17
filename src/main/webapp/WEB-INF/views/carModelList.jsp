@@ -39,12 +39,13 @@
 ​<!-- dane -->
 <table class="w3-table w3-bordered w3-striped">
     <tr class="w3-theme-d4">
-        <th>Marka</th>
-        <th>Model</th>
-        <th>Segment</th>
-        <th>Type</th>
-        <th>Rok produkcji</th>
-        <th>Przegląd co km</th>
+        <th>marka</th>
+        <th>model</th>
+        <th>segment</th>
+        <th>typ</th>
+        <th>rok produkcji</th>
+        <th>przegląd co km</th>
+        <th>opcje</th>
     </tr>
 
     <c:forEach items="${carModels}" var="carModel">
@@ -57,7 +58,7 @@
             <td>${carModel.productionYear}</td>
             <td>${carModel.reviewInterval}</td>
             <td>
-                <a  class="w3-button w3-theme" href="./${carModel.id}">edytuj</a>
+                <a  class="w3-button w3-theme w3-tiny" href=""${pageContext.request.contextPath}/car/model/${carModel.id}">edytuj</a>
             </td>
         </tr>
 
