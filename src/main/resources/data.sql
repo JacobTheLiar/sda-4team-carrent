@@ -33,4 +33,7 @@ values                   (3 , 3     , 2        , null        , null             
 INSERT INTO rent_history (id, car_id, client_id, promotion_id, rent_point_start_id, rent_point_end_id, employee_start_username, employee_end_username, rent_time_start, rent_time_end, counter_state_start, counter_state_end, notes_start, notes_end, invoice_id)
 values                   (4 , 4     , 3        , null        , null               , null             , null             , null           , '2018-08-01'   , '2018-08-01' , 0                  , 100              , 'drive test','drive test end', 4);
 
+INSERT INTO rent_point (id, name, address, post_code, city) values (nextval('car_rent_point_seq'), '4team Rent Point Poznań', 'Samochodowa 1','60-682', 'Poznań');
+INSERT INTO rent_point (id, name, address, post_code, city) values (nextval('car_rent_point_seq'), '4team Rent Point Warszawa', 'Poznańska 1','02-823', 'Warszawa');
+
 commit;
