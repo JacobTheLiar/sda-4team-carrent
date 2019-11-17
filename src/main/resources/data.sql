@@ -36,4 +36,8 @@ values                   (4 , 4     , 3        , null        , null             
 INSERT INTO rent_point (id, name, address, post_code, city) values (nextval('car_rent_point_seq'), '4team Rent Point Poznań', 'Samochodowa 1','60-682', 'Poznań');
 INSERT INTO rent_point (id, name, address, post_code, city) values (nextval('car_rent_point_seq'), '4team Rent Point Warszawa', 'Poznańska 1','02-823', 'Warszawa');
 
+INSERT INTO role (id, authority) values (nextval('seq_Role'), 'user');
+
+INSERT INTO employee (firstname, surname, rent_point_id, username, password, employment_date, release_date, role_id) values ('Jan', 'Pracownik', 1, 'pracownik', '123', '2018-09-01',null,1 );
+
 commit;
