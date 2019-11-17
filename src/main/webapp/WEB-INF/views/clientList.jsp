@@ -26,7 +26,7 @@
 			<select class="w3-bar-item w3-select w3-border w3-right" name="searchBy">
 			    <c:forEach var="option" items="${options}">
 			        <option value="${option.name()}"${option.name()==param.searchBy ? ' selected' : ''}>${option.description}</option>
-			    </c:forEach>
+                </c:forEach>
 			</select>
             <input type="text" class="w3-bar-item w3-input w3-border w3-right w3-margin-left" placeholder="szukaj..." name="searchWhat" value="${param.searchWhat}">
 			</form>

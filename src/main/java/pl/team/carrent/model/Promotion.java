@@ -1,5 +1,7 @@
 package pl.team.carrent.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -21,8 +23,10 @@ public class Promotion {
     @NotNull
     private int discountPercentage;
     @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate promoStart;
     @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate promoEnd;
 
     @ManyToMany(targetEntity = Car.class)

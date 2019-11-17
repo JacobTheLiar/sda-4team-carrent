@@ -1,13 +1,12 @@
 package pl.team.carrent.promotion;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import pl.team.carrent.car.CarService;
 import pl.team.carrent.model.Promotion;
+import pl.team.carrent.service.ClientService;
 import pl.team.carrent.service.PromotionService;
-
-import javax.jws.WebParam;
 
 
 /******************************************************
@@ -23,9 +22,13 @@ import javax.jws.WebParam;
 public class PromotionController {
 
     private final PromotionService promotionService;
+    private final CarService carService;
+    private final ClientService clientService;
 
-    public PromotionController(PromotionService promotionService) {
+    public PromotionController(PromotionService promotionService, CarService carService, ClientService clientService) {
         this.promotionService = promotionService;
+        this.carService = carService;
+        this.clientService = clientService;
     }
 
     @GetMapping
@@ -45,12 +48,16 @@ public class PromotionController {
     public ModelAndView getPromotionDetails(@PathVariable int id) {
         ModelAndView model = new ModelAndView("promotionDetail");
         model.addObject("promotion", promotionService.getPromotion(id));
+        model.addObject("cars", carService.getAllActiveCars());
+        model.addObject("clients", clientService.getAllClients());
         return model;
     }
 
     @GetMapping("/add")
     public ModelAndView getAddPromotionForm() {
         ModelAndView model = new ModelAndView("promotionDetail");
+        model.addObject("cars", carService.getAllActiveCars());
+        model.addObject("clients", clientService.getAllClients());
         model.addObject("promotion", new Promotion());
         return model;
     }

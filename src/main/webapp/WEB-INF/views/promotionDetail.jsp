@@ -20,7 +20,7 @@
 <!-- menu po lewej -->
 <%@include file='menu.html'%>
 
-​<form method="post" class="w3-container w3-margin w3-card w3-border w3-theme-l4">
+​<form method="post" class="w3-container w3-margin w3-card w3-border w3-theme-l4"  id="promotionform">
     <!-- tytuł -->
     <div class="w3-container w3-theme w3-margin-top w3-center">
         <h2>${empty promotion.name ? 'dodaj promocje' : 'edytuj promocje'}</h2>
@@ -37,19 +37,29 @@
     </p>
     <p>
         <label><b>Auto</b></label>
-        <input type="text" name="cars" placeholder="auto" class="w3-input w3-border"  value="${promotion.cars}">
+
+        <select name="cars" multiple form="promotionform">
+        <c:forEach var="car" items="${cars}">
+            <option value="${car.id}">${car}</option>
+        </c:forEach>
+        </select>
+
     </p>
     <p>
         <label><b>Klient</b></label>
-        <input type="text" name="clients" placeholder="klient" class="w3-input w3-border"  value="${promotion.clients}">
+        <select name="clients" multiple form="promotionform">
+            <c:forEach var="client" items="${clients}">
+                <option value="${client.id}">${client}</option>
+            </c:forEach>
+        </select>
     </p>
     <p>
         <label><b>Start Promocji</b></label>
-        <input type="datetime-local" name="promoStart" placeholder="startpromocji" min="2019-10-01T00:00" class="w3-input w3-border" value="${promotion.promoStart}">
+        <input type="date" name="promoStart" placeholder="startpromocji" min="2019-10-01T00:00" class="w3-input w3-border" value="${promotion.promoStart}">
     </p>
     <p>
         <label><b>Koniec Promocji</b></label>
-        <input type="datetime-local" name="promoEnd" placeholder="koniecpromocji" max="2050-10-01T00:00" class="w3-input w3-border" value="${promotion.promoEnd}">
+        <input type="date" name="promoEnd" placeholder="koniecpromocji" max="2050-10-01T00:00" class="w3-input w3-border" value="${promotion.promoEnd}">
     </p>
 
     <p>
