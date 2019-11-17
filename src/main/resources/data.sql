@@ -40,4 +40,18 @@ INSERT INTO role (id, authority) values (nextval('seq_Role'), 'user');
 
 INSERT INTO employee (firstname, surname, rent_point_id, username, password, employment_date, release_date, role_id) values ('Jan', 'Pracownik', 1, 'pracownik', '123', '2018-09-01',null,1 );
 
+INSERT INTO promotion (id, name, discount_percentage, promo_start, promo_end) values (nextval('promo_Seq'), 'Opel 30%', 30, '2019-10-01', '2019-12-05');
+INSERT INTO promotion (id, name, discount_percentage, promo_start, promo_end) values (nextval('promo_Seq'), 'Segment B 20%', 20, '2019-10-15', '2019-12-15');
+INSERT INTO promotion (id, name, discount_percentage, promo_start, promo_end) values (nextval('promo_Seq'), 'Segment C 10%', 10, '2019-10-12', '2019-12-20');
+
+
+INSERT INTO promotion_cars(promotion_id, cars_id) values (1, 3);
+INSERT INTO promotion_cars(promotion_id, cars_id) values (1, 5);
+INSERT INTO promotion_cars(promotion_id, cars_id) values (2, 1);
+INSERT INTO promotion_cars(promotion_id, cars_id) values (2, 5);
+INSERT INTO promotion_cars(promotion_id, cars_id) values (2, 6);
+INSERT INTO promotion_cars(promotion_id, cars_id) values (3, 2);
+INSERT INTO promotion_cars(promotion_id, cars_id) values (3, 3);
+INSERT INTO promotion_cars(promotion_id, cars_id) values (3, 4);
+
 commit;
