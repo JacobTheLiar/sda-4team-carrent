@@ -22,25 +22,27 @@ public interface CarRepository extends JpaRepository<Car, Integer> {
 
     List<Car> findByPlateNrContainsIgnoreCase(String plateNr);
 
-    List<Car> findByPlateNrContainsIgnoreCaseAndActiveContains(String plateNr, boolean active);
+    List<Car> findByPlateNrContainsIgnoreCaseAndActiveIs(String plateNr, boolean active);
 
     Optional<Car> findByVin(String vin);
 
     List<Car> findByVinContainsIgnoreCase(String vin);
 
-    List<Car> findByVinContainsIgnoreCaseAndActiveContains(String vin, boolean active);
+    List<Car> findByVinContainsIgnoreCaseAndActiveIs(String vin, boolean active);
 
     List<Car> findByActiveEquals(boolean active);
 
     List<Car> findByColorContainsIgnoreCase(String color);
 
-    List<Car> findByColorContainsIgnoreCaseAndActiveEquals(String color, boolean active);
+    List<Car> findByColorContainsIgnoreCaseAndActiveIs(String color, boolean active);
 
     List<Car> findByCarModelTypeContainsIgnoreCase(String type);
 
-    List<Car> findByCarModelTypeContainsIgnoreCaseAndActiveEquals(String type, boolean active);
+    List<Car> findByCarModelTypeContainsIgnoreCaseAndActiveIs(String type, boolean active);
 
     List<Car> findByCarModelSegmentContains(String segment);
 
-    List<Car> findByCarModelSegmentContainsIgnoreCaseAndActiveEquals(String segment, boolean active);
+    List<Car> findByCarModelSegmentContainsIgnoreCaseAndActiveIs(String segment, boolean active);
+
+    List<Car> findByCarModel_ModelContainsIgnoreCase(String model);
 }

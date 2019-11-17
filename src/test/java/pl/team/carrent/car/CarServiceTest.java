@@ -40,17 +40,17 @@ public class CarServiceTest {
         when(mock.findByActiveEquals(true)).thenReturn(Arrays.asList(car1));
         when(mock.findByPlateNr("PO12345")).thenReturn(Optional.of(car1));
         when(mock.findByPlateNrContainsIgnoreCase("PO1234")).thenReturn(Arrays.asList(car1, car2));
-        when(mock.findByPlateNrContainsIgnoreCaseAndActiveContains("PO1234", true)).thenReturn(Arrays.asList(car1));
+        when(mock.findByPlateNrContainsIgnoreCaseAndActiveIs("PO1234", true)).thenReturn(Arrays.asList(car1));
         when(mock.findByVin("VIN1")).thenReturn(Optional.of(car1));
         when(mock.findByVinContainsIgnoreCase("VIN")).thenReturn(Arrays.asList(car1, car2));
-        when(mock.findByVinContainsIgnoreCaseAndActiveContains("VIN", true)).thenReturn(Arrays.asList(car1));
+        when(mock.findByVinContainsIgnoreCaseAndActiveIs("VIN", true)).thenReturn(Arrays.asList(car1));
         when(mock.findByActiveEquals(false)).thenReturn(Arrays.asList(car2));
         when(mock.findByColorContainsIgnoreCase("black")).thenReturn(Arrays.asList(car2));
-        when(mock.findByColorContainsIgnoreCaseAndActiveEquals("black", true)).thenReturn(Arrays.asList());
+        when(mock.findByColorContainsIgnoreCaseAndActiveIs("black", true)).thenReturn(Arrays.asList());
         when(mock.findByCarModelTypeContainsIgnoreCase("hatchback")).thenReturn(Arrays.asList(car1, car2));
-        when(mock.findByCarModelTypeContainsIgnoreCaseAndActiveEquals("hatchback", true)).thenReturn(Arrays.asList(car1));
+        when(mock.findByCarModelTypeContainsIgnoreCaseAndActiveIs("hatchback", true)).thenReturn(Arrays.asList(car1));
         when(mock.findByCarModelSegmentContains("A")).thenReturn(Arrays.asList(car1, car2));
-        when(mock.findByCarModelSegmentContainsIgnoreCaseAndActiveEquals("A", true)).thenReturn(Arrays.asList(car1));
+        when(mock.findByCarModelSegmentContainsIgnoreCaseAndActiveIs("A", true)).thenReturn(Arrays.asList(car1));
         when(mock.save(car3)).thenReturn(car3);
         when(mock.findById(3)).thenReturn(Optional.of(car3));
         return mock;
@@ -173,7 +173,7 @@ public class CarServiceTest {
     @Test
     public void shouldAddCar() {
         //when
-        Car actual = carService.addCar(car3);
+        Car actual = carService.addOrUpdateCar(car3);
         //then
         assertThat(actual).isEqualTo(car3);
     }
