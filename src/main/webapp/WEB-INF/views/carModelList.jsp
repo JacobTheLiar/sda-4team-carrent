@@ -21,9 +21,9 @@
 <!-- dodatkowe opcje i szukanie -->
 <div class="w3-bar w3-light-grey w3-border">
 
-    <a href="./add" class="w3-bar-item w3-button w3-green">dodaj</a>
+    <a href="${pageContext.request.contextPath}/car/model//add" class="w3-bar-item w3-button w3-green">dodaj</a>
     <c:if test="${isFiltered}">
-        <a href="." class="w3-bar-item w3-button w3-theme-l2  w3-right">usuń filtr</a>
+        <a href="${pageContext.request.contextPath}/car/model/" class="w3-bar-item w3-button w3-theme-l2  w3-right">usuń filtr</a>
     </c:if>
     <form>
         <input type="submit" class="w3-bar-item w3-button w3-theme w3-right" value="szukaj">
