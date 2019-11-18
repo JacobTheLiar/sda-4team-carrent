@@ -16,7 +16,7 @@
 
 
 <!-- tytuł -->
-<h2 class="w3-bar w3-border w3-center w3-theme">zarządzanie samochodami</h2>
+<h2 class="w3-bar w3-border w3-center w3-theme">bieżąca lista wypożyczonych samochodów</h2>
 
 <!-- dodatkowe opcje i szukanie -->
 <div class="w3-bar w3-light-grey w3-border">
@@ -52,10 +52,11 @@
     <c:forEach var="rent" items="${rents}">
         <tr class="w3-center">
             <td>${rent.car}</td>
-            <td>${rent.client}</td>
-            <td>${rent.promotion}</td>
-            <td>${rent.employeeStart}</td>
-            <td>${rent.rentPointStart}</td>
+            <td>${rent.client.name}</td>
+            <td>${rent.promotion.name}</td>
+            <td>${rent.rentPointStart.name}</td>
+            <td>${rent.employeeStart.username}</td>
+            <td>${rent.rentTimeStart}</td>
             <td>${rent.counterStateStart}</td>
             <td>${rent.notes}</td>
 

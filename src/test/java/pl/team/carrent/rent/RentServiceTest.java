@@ -41,8 +41,8 @@ public class RentServiceTest {
     public RentRepository getRentRepositoryMock() {
         RentRepository mock = mock(RentRepository.class);
         when(mock.findAll()).thenReturn(Arrays.asList(rent1, rent2));
-        when(mock.findByCar_Vin("VIN")).thenReturn(Arrays.asList(rent1, rent2));
-        when(mock.findByCar_PlateNr("PO11111")).thenReturn(Arrays.asList(rent1));
+        when(mock.findByCar_Vin("VIN")).thenReturn(rent1);
+        when(mock.findByCar_PlateNr("PO11111")).thenReturn(rent1);
         when(mock.findByClient_Id(client1.getId())).thenReturn(Arrays.asList(rent1, rent2));
         when(mock.findByClient_NameContainsIgnoreCase("krzak")).thenReturn(Arrays.asList(rent2, rent1));
         when(mock.findByClient_EmailContainsIgnoreCase("@test.pl")).thenReturn(Arrays.asList(rent1, rent2));
@@ -76,7 +76,7 @@ public class RentServiceTest {
     @Test
     public void shouldSearchRentsByCarVin() {
         List<Rent> rents = rentService.searchRents("VIN", BY_CAR_VIN);
-        assertEquals(2, rents.size());
+        assertEquals(1, rents.size());
     }
 
     @Test

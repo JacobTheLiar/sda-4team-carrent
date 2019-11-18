@@ -17,9 +17,9 @@ import java.util.List;
 public interface RentRepository extends JpaRepository<Rent, Integer> {
 
 
-    List<Rent> findByCar_PlateNr(String plateNr);
+    Rent findByCar_PlateNr(String plateNr);
 
-    List<Rent> findByCar_Vin(String vin);
+    Rent findByCar_Vin(String vin);
 
     List<Rent> findByClient_NameContainsIgnoreCase(String name);
 
