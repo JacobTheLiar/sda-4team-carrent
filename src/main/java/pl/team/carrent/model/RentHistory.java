@@ -1,5 +1,7 @@
 package pl.team.carrent.model;
 
+import pl.team.carrent.invoice.Invoice;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -29,7 +31,8 @@ public class RentHistory {
     private int counterStateEnd;
     private String notesStart;
     private String notesEnd;
-    @ManyToOne
+    @ManyToOne(targetEntity = Invoice.class)
+    @JoinColumn(name = "invoice_id")
     private Invoice invoice;
 
     public RentHistory() {
