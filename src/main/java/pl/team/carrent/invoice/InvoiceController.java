@@ -2,6 +2,8 @@ package pl.team.carrent.invoice;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,21 +20,30 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("invoice")
 public class InvoiceController{
 
-    private InvoiceService invoiceService;
+    
+    private InvoiceViewItemService invoiceViewItemService;
     
     
-    public InvoiceController(InvoiceService invoiceService){
-        this.invoiceService = invoiceService;
+    public InvoiceController(InvoiceViewItemService invoiceViewItemService){
+        this.invoiceViewItemService = invoiceViewItemService;
     }
     
     
-    
+    @GetMapping
     public ModelAndView getAllInvoices(){
-        
         ModelAndView allInvoices = new ModelAndView("invoiceList.jsp");
-        
+        allInvoices.addObject("invoices", invoiceViewItemService.getAllInvoices());
         return allInvoices;
-        
     }
+    
+    
+    @GetMapping("/client/{clientId}")
+    public ModelAndView getAllClientInvoices(@PathVariable Integer clientId){
+        ModelAndView allClientInvoices = new ModelAndView("invoiceList.jsp");
+        allClientInvoices.addObject("invoices", invoiceViewItemService.getAllClientInvoices(clientId));
+        return allClientInvoices;
+    
+    }
+    
     
 }

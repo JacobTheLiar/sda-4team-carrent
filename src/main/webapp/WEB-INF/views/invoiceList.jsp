@@ -35,28 +35,27 @@
         ​<!-- dane -->
         <table class="w3-table w3-bordered w3-striped">
             <tr class="w3-theme-d4">
-                <th>nazwa</th>
-                <th>adres</th>
-                <th>kod pocztowy</th>
-                <th>miasto</th>
-                <th>nip</th>
-                <th>e-mail</th>
-                <th>nr telefonu</th>
-                <th>opcje</th>
+                <th>nazwa klienta</th>
+                <th>nr faktury</th>
+                <th>data faktury</th>
+                <th>liczba wypożyczeń</th>
+                <th>wartość wypożyczenia</th>
+                <th>liczba zniżek</th>
+                <th>wartość po zniżkach</th>
+                <th>do zapłaty</th>
             </tr>
-            <c:forEach var="client" items="${clients}">
+            <c:forEach var="invoice" items="${invoices}">
             <tr class="w3-center">
-                <td>${client.name}</td>
-                <td>${client.address}</td>
-                <td>${client.postCode}</td>
-                <td>${client.city}</td>
-                <td>${client.taxNumber}</td>
-                <td>${client.email}</td>
-                <td>${client.telephoneNr}</td>
+                <td>${invoice.client.name}</td>
+                <td>${invoice.number}</td>
+                <td>${invoice.invoiceDate}</td>
+                <td>${invoice.rentCount}</td>
+                <td>${invoice.rentValue}</td>
+                <td>${invoice.discounts}</td>
+                <td>${invoice.value}</td>
+                <td>${invoice.toPay}</td>
 
-                <td><a href="${pageContext.request.contextPath}/client/${client.id}" class="w3-button w3-theme w3-tiny">edytuj</a>
-
-                    <a href="${pageContext.request.contextPath}/client/${client.id}/invoices" class="w3-button w3-theme w3-tiny">faktury</a></td>
+                <td><a href="${pageContext.request.contextPath}/client/${invoice.id}" class="w3-button w3-theme w3-tiny">podgląd</a>
             </tr>
             </c:forEach>
         </table>

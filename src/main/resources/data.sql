@@ -23,16 +23,6 @@ INSERT INTO invoice (id, number, value, invoice_date, payment_date, sell_date) v
 INSERT INTO invoice (id, number, value, invoice_date, payment_date, sell_date) values (nextval('seq_Invoice'), '2019/2', 45.67, '2019-02-01', '2019-03-01', '2019-02-01');
 INSERT INTO invoice (id, number, value, invoice_date, payment_date, sell_date) values (nextval('seq_Invoice'), '2019/3', 56.78, '2019-04-01', '2019-05-01', '2019-04-01');
 
-
-INSERT INTO rent_history (id, car_id, client_id, promotion_id, rent_point_start_id, rent_point_end_id, employee_start_username, employee_end_username, rent_time_start, rent_time_end, counter_state_start, counter_state_end, notes_start , notes_end      , invoice_id)
-values                   (1 , 1     , 1        , null        , null               , null             , null                   , null                 , '2018-08-01'   , '2018-08-01' , 0                  , 100              , 'drive test','drive test end', 1);
-INSERT INTO rent_history (id, car_id, client_id, promotion_id, rent_point_start_id, rent_point_end_id, employee_start_username, employee_end_username, rent_time_start, rent_time_end, counter_state_start, counter_state_end, notes_start , notes_end      , invoice_id)
-values                   (2 , 2     , 1        , null        , null               , null             , null                   , null                 , '2018-08-01'   , '2018-08-01' , 0                  , 100              , 'drive test','drive test end', 2);
-INSERT INTO rent_history (id, car_id, client_id, promotion_id, rent_point_start_id, rent_point_end_id, employee_start_username, employee_end_username, rent_time_start, rent_time_end, counter_state_start, counter_state_end, notes_start , notes_end      , invoice_id)
-values                   (3 , 3     , 2        , null        , null               , null             , null                   , null                 , '2018-08-01'   , '2018-08-01' , 0                  , 100              , 'drive test','drive test end', 2);
-INSERT INTO rent_history (id, car_id, client_id, promotion_id, rent_point_start_id, rent_point_end_id, employee_start_username, employee_end_username, rent_time_start, rent_time_end, counter_state_start, counter_state_end, notes_start , notes_end      , invoice_id)
-values                   (4 , 4     , 3        , null        , null               , null             , null                   , null                 , '2018-08-01'   , '2018-08-01' , 0                  , 100              , 'drive test','drive test end', null);
-
 INSERT INTO rent_point (id, name, address, post_code, city) values (nextval('car_rent_point_seq'), '4team Rent Point Poznań', 'Samochodowa 1','60-682', 'Poznań');
 INSERT INTO rent_point (id, name, address, post_code, city) values (nextval('car_rent_point_seq'), '4team Rent Point Warszawa', 'Poznańska 1','02-823', 'Warszawa');
 
@@ -53,5 +43,42 @@ INSERT INTO promotion_cars(promotion_id, cars_id) values (2, 6);
 INSERT INTO promotion_cars(promotion_id, cars_id) values (3, 2);
 INSERT INTO promotion_cars(promotion_id, cars_id) values (3, 3);
 INSERT INTO promotion_cars(promotion_id, cars_id) values (3, 4);
+
+
+INSERT INTO rent_history (id, car_id, client_id, promotion_id, rent_point_start_id, rent_point_end_id, employee_start_username, employee_end_username, rent_time_start, rent_time_end, counter_state_start, counter_state_end, notes_start , notes_end      , invoice_id)
+values                   (1 , 1     , 1        , 1           , null               , null             , null                   , null                 , '2018-08-01'   , '2018-08-01' , 0                  , 100              , 'drive test','drive test end', 1);
+INSERT INTO rent_history (id, car_id, client_id, promotion_id, rent_point_start_id, rent_point_end_id, employee_start_username, employee_end_username, rent_time_start, rent_time_end, counter_state_start, counter_state_end, notes_start , notes_end      , invoice_id)
+values                   (2 , 2     , 1        , null        , null               , null             , null                   , null                 , '2018-08-01'   , '2018-08-01' , 0                  , 100              , 'drive test','drive test end', 1);
+INSERT INTO rent_history (id, car_id, client_id, promotion_id, rent_point_start_id, rent_point_end_id, employee_start_username, employee_end_username, rent_time_start, rent_time_end, counter_state_start, counter_state_end, notes_start , notes_end      , invoice_id)
+values                   (3 , 3     , 2        , null        , null               , null             , null                   , null                 , '2018-08-01'   , '2018-08-01' , 0                  , 100              , 'drive test','drive test end', 2);
+INSERT INTO rent_history (id, car_id, client_id, promotion_id, rent_point_start_id, rent_point_end_id, employee_start_username, employee_end_username, rent_time_start, rent_time_end, counter_state_start, counter_state_end, notes_start , notes_end      , invoice_id)
+values                   (4 , 4     , 3        , null        , null               , null             , null                   , null                 , '2018-08-01'   , '2018-08-01' , 0                  , 100              , 'drive test','drive test end', null);
+
+
+-- invoice list view @JacobTheLiar
+create view view_invoices as
+    select
+        i.id,
+        cli.id as client_id,
+        cli.name,
+        i.number,
+        i.invoice_date,
+        count(*) as rent_count,
+        sum((datediff(day, rent_time_start, rent_time_end)+1) * c.price_per_day) as rent_value,
+        count(distinct p.id) as discounts,
+        sum((datediff(day, rent_time_start, rent_time_end)+1) * c.price_per_day * (100-ifNull(p.discount_percentage, 0))/100) as value,
+        i.value as to_pay
+    from invoice i
+        join rent_history rh
+            on rh.invoice_id = i.id
+        join car c
+            on c.id=rh.car_id
+        left join promotion p
+            on p.id=rh.promotion_id
+        join client cli
+            on cli.id = rh.client_id
+    group by
+        i.id, cli.id, cli.name, i.number, i.invoice_date;
+
 
 commit;

@@ -56,7 +56,7 @@
 
                 <td><a href="${pageContext.request.contextPath}/client/${client.id}" class="w3-button w3-theme w3-tiny">edytuj</a>
 
-                    <a href="${pageContext.request.contextPath}/client/${client.id}/invoices" class="w3-button w3-theme w3-tiny">faktury</a></td>
+                    <a href="${pageContext.request.contextPath}/invoice/client/${client.id}" class="w3-button w3-theme w3-tiny">faktury</a></td>
             </tr>
             </c:forEach>
         </table>
