@@ -22,7 +22,7 @@ public interface InvoiceViewItemRepository extends JpaRepository<InvoiceViewItem
     @Query(value = "select i.* from view_invoices i where i.client_id = :id", nativeQuery = true)
     Set<InvoiceViewItem> findByClientId(@Param("id") int clientId);
     
-    @Query(value = "select i.* from view_invoices i;", nativeQuery = true)
+    @Query(value = "select i.* from view_invoices i", nativeQuery = true)
     Set<InvoiceViewItem> findAllInvoices();
     
     

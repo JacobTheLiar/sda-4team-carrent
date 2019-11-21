@@ -84,29 +84,29 @@ create view view_invoices as
 
 drop table view_avail_invoices if exists;
 create view view_avail_invoices as
-select
-    rh.id,
-    c.id as client_id,
-    c.name as clien_name,
-    rh.rent_time_start,
-    (datediff(day, rent_time_start, rent_time_end)+1) as rent_days,
-    rh.rent_time_end,
-    rh.counter_state_end-rh.counter_state_start as distance,
-    ifnull(p.name, '') as promotion_name,
-    cm.mark||' '||cm.model||' ('||cr.plate_nr||')' as car,
-    (datediff(day, rent_time_start, rent_time_end)+1) * cr.price_per_day as rent_value,
-    (datediff(day, rent_time_start, rent_time_end)+1) * cr.price_per_day * (100-ifNull(p.discount_percentage, 0))/100 as value
-from rent_history rh
-    left join invoice i
-        on rh.invoice_id = i.id
-    join client c
-        on c.id=rh.client_id
-    left join promotion p
-        on p.id = rh.promotion_id
-    join car cr
-        on cr.id = rh.car_id
-    join car_model cm
-        on cm.id=cr.car_model_id
-where invoice_id is null
+    select
+        rh.id,
+        c.id as client_id,
+        c.name as client_name,
+        rh.rent_time_start,
+        (datediff(day, rent_time_start, rent_time_end)+1) as rent_days,
+        rh.rent_time_end,
+        rh.counter_state_end-rh.counter_state_start as distance,
+        ifnull(p.name, '') as promotion_name,
+        cm.mark||' '||cm.model||' ('||cr.plate_nr||')' as car,
+        (datediff(day, rent_time_start, rent_time_end)+1) * cr.price_per_day as rent_value,
+        (datediff(day, rent_time_start, rent_time_end)+1) * cr.price_per_day * (100-ifNull(p.discount_percentage, 0))/100 as value
+    from rent_history rh
+        left join invoice i
+            on rh.invoice_id = i.id
+        join client c
+            on c.id=rh.client_id
+        left join promotion p
+            on p.id = rh.promotion_id
+        join car cr
+            on cr.id = rh.car_id
+        join car_model cm
+            on cm.id=cr.car_model_id
+    where rh.invoice_id is null;
 
 commit;

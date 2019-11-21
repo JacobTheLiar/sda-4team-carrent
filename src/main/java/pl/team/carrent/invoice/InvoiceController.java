@@ -22,11 +22,12 @@ public class InvoiceController{
 
     
     private InvoiceViewItemService invoiceViewItemService;
+    private AvailableInvoiceService availableInvoiceService;
     
     
-    
-    public InvoiceController(InvoiceViewItemService invoiceViewItemService){
+    public InvoiceController(InvoiceViewItemService invoiceViewItemService, AvailableInvoiceService availableInvoiceService){
         this.invoiceViewItemService = invoiceViewItemService;
+        this.availableInvoiceService = availableInvoiceService;
     }
     
     
@@ -42,6 +43,14 @@ public class InvoiceController{
     public ModelAndView getAllClientInvoices(@PathVariable Integer clientId){
         ModelAndView allClientInvoices = new ModelAndView("invoiceList");
         allClientInvoices.addObject("invoices", invoiceViewItemService.getAllClientInvoices(clientId));
+        allClientInvoices.addObject("clientId", clientId);
+        return allClientInvoices;
+    }
+    @GetMapping("available/{clientId}")
+    public ModelAndView getAllClientAvailableInvoices(@PathVariable Integer clientId){
+        ModelAndView allClientInvoices = new ModelAndView("availableInvoiceList");
+        allClientInvoices.addObject("available", availableInvoiceService.getAllClientInvoices(clientId));
+        allClientInvoices.addObject("clientId", clientId);
         return allClientInvoices;
     }
     

@@ -23,7 +23,7 @@ public class AvailableInvoice{
     @Id
     private int id;
     private int client_id;
-    private String client_name;
+    private String clientName;
     private LocalDate rentTimeStart;
     private int rentDays;
     private LocalDate rentTimeEnd;
@@ -48,8 +48,8 @@ public class AvailableInvoice{
     }
     
     
-    public String getClient_name(){
-        return client_name;
+    public String getClientName(){
+        return clientName;
     }
     
     

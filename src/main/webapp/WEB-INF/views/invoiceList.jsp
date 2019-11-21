@@ -19,7 +19,7 @@
         <!-- dodatkowe opcje i szukanie -->
         <div class="w3-bar w3-light-grey w3-border">
 
-            <a href="${pageContext.request.contextPath}/client/add" class="w3-bar-item w3-button w3-green">dodaj</a>
+            <a href="${pageContext.request.contextPath}/invoice/available/${clientId}" class="w3-bar-item w3-button w3-green">wystaw fakturę</a>
             <a href="${pageContext.request.contextPath}/client" class="w3-bar-item w3-button w3-theme-l2 w3-right w3-margin-left">usuń filtr</a>
             <form >
             <input type="submit" class="w3-bar-item w3-button w3-theme w3-right w3-margin-left" value="szukaj">
