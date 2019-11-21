@@ -25,4 +25,6 @@ public interface InvoiceViewItemRepository extends JpaRepository<InvoiceViewItem
     @Query(value = "select i.* from view_invoices i;", nativeQuery = true)
     Set<InvoiceViewItem> findAllInvoices();
     
+    
+    
 }
