@@ -1,13 +1,14 @@
 package pl.team.carrent.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import pl.team.carrent.client.Client;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
+
 
 @Entity
 public class Promotion {

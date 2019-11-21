@@ -43,10 +43,11 @@
                 <th>liczba zniżek</th>
                 <th>wartość po zniżkach</th>
                 <th>do zapłaty</th>
+                <th>opcje</th>
             </tr>
             <c:forEach var="invoice" items="${invoices}">
             <tr class="w3-center">
-                <td>${invoice.client.name}</td>
+                <td>${invoice.clientName}</td>
                 <td>${invoice.number}</td>
                 <td>${invoice.invoiceDate}</td>
                 <td>${invoice.rentCount}</td>
@@ -55,7 +56,7 @@
                 <td>${invoice.value}</td>
                 <td>${invoice.toPay}</td>
 
-                <td><a href="${pageContext.request.contextPath}/client/${invoice.id}" class="w3-button w3-theme w3-tiny">podgląd</a>
+                <td><a href="${pageContext.request.contextPath}/invoice/${invoice.id}" class="w3-button w3-theme w3-tiny">podgląd</a>
             </tr>
             </c:forEach>
         </table>

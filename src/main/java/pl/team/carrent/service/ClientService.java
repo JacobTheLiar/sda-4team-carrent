@@ -3,7 +3,7 @@ package pl.team.carrent.service;
 
 import org.springframework.stereotype.Service;
 import pl.team.carrent.client.ClientNotExistException;
-import pl.team.carrent.model.Client;
+import pl.team.carrent.client.Client;
 import pl.team.carrent.repository.ClientRepository;
 import pl.team.carrent.client.SearchClientOption;
 

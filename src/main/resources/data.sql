@@ -56,11 +56,12 @@ values                   (4 , 4     , 3        , null        , null             
 
 
 -- invoice list view @JacobTheLiar
+drop table view_invoices if exists;
 create view view_invoices as
     select
         i.id,
         cli.id as client_id,
-        cli.name,
+        cli.name as client_name,
         i.number,
         i.invoice_date,
         count(*) as rent_count,

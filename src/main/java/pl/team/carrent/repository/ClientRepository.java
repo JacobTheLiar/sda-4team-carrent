@@ -2,9 +2,8 @@ package pl.team.carrent.repository;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.team.carrent.model.Client;
+import pl.team.carrent.client.Client;
 
-import java.util.List;
 import java.util.Set;
 
 

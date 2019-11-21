@@ -28,12 +28,12 @@ public class InvoiceViewItemService{
     
     
     public Set<InvoiceViewItem> getAllInvoices(){
-        return new HashSet<>(invoiceViewItemRepository.findAll());
+        return invoiceViewItemRepository.findAllInvoices();
     }
     
     
-    public Set<InvoiceViewItem> getAllClientInvoices(int clienId){
-        return new HashSet<>(invoiceViewItemRepository.findAll());
+    public Set<InvoiceViewItem> getAllClientInvoices(int clientId){
+        return invoiceViewItemRepository.findByClientId(clientId);
     }
     
 }

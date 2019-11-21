@@ -1,5 +1,6 @@
 package pl.team.carrent.model;
 
+import pl.team.carrent.client.Client;
 import pl.team.carrent.invoice.Invoice;
 
 import javax.persistence.*;

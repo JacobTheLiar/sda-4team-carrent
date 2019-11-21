@@ -1,11 +1,8 @@
 package pl.team.carrent.invoice;
 
 
-import pl.team.carrent.model.Client;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -25,8 +22,7 @@ public class InvoiceViewItem{
     
     @Id
     private int id;
-    @ManyToOne(targetEntity = Client.class)
-    private Client client;
+    private int client_id;
     private String clientName;
     private String number;
     private LocalDate invoiceDate;
@@ -46,8 +42,8 @@ public class InvoiceViewItem{
     }
     
     
-    public Client getClient(){
-        return client;
+    public int getClientId(){
+        return client_id;
     }
     
     

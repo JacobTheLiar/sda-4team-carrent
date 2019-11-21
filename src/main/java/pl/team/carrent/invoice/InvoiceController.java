@@ -24,6 +24,7 @@ public class InvoiceController{
     private InvoiceViewItemService invoiceViewItemService;
     
     
+    
     public InvoiceController(InvoiceViewItemService invoiceViewItemService){
         this.invoiceViewItemService = invoiceViewItemService;
     }
@@ -31,7 +32,7 @@ public class InvoiceController{
     
     @GetMapping
     public ModelAndView getAllInvoices(){
-        ModelAndView allInvoices = new ModelAndView("invoiceList.jsp");
+        ModelAndView allInvoices = new ModelAndView("invoiceList");
         allInvoices.addObject("invoices", invoiceViewItemService.getAllInvoices());
         return allInvoices;
     }
@@ -39,10 +40,9 @@ public class InvoiceController{
     
     @GetMapping("/client/{clientId}")
     public ModelAndView getAllClientInvoices(@PathVariable Integer clientId){
-        ModelAndView allClientInvoices = new ModelAndView("invoiceList.jsp");
+        ModelAndView allClientInvoices = new ModelAndView("invoiceList");
         allClientInvoices.addObject("invoices", invoiceViewItemService.getAllClientInvoices(clientId));
         return allClientInvoices;
-    
     }
     
     

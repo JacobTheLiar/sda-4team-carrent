@@ -1,6 +1,7 @@
 package pl.team.carrent.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import pl.team.carrent.client.Client;
 
 import javax.persistence.*;
 import java.time.LocalDate;
