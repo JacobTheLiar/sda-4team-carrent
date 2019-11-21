@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.team.carrent.car.CarService;
 import pl.team.carrent.model.Promotion;
-import pl.team.carrent.service.ClientService;
+import pl.team.carrent.client.ClientService;
 import pl.team.carrent.service.PromotionService;
 
 

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import pl.team.carrent.client.Client;
+import pl.team.carrent.client.ClientRepository;
 import pl.team.carrent.model.*;
 
 import javax.transaction.Transactional;
@@ -29,13 +30,13 @@ import static org.junit.Assert.*;
 public class RentRepositoryTest {
 
     @Autowired
-    private RentRepository rentRepository;
+    private RentRepository      rentRepository;
     @Autowired
-    private CarRepository carRepository;
+    private CarRepository       carRepository;
     @Autowired
-    private CarModelRepository carModelRepository;
+    private CarModelRepository  carModelRepository;
     @Autowired
-    private ClientRepository clientRepository;
+    private ClientRepository    clientRepository;
     @Autowired
     private RentPointRepository rentPointRepository;
     @Autowired

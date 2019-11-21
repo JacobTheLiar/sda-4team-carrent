@@ -6,11 +6,10 @@ import org.springframework.web.servlet.ModelAndView;
 import pl.team.carrent.car.CarService;
 import pl.team.carrent.model.Rent;
 import pl.team.carrent.rent_point.RentPointService;
-import pl.team.carrent.service.ClientService;
+import pl.team.carrent.client.ClientService;
 import pl.team.carrent.service.EmployeeService;
 import pl.team.carrent.service.PromotionService;
 
-import javax.jws.WebParam;
 import java.time.LocalDate;
 
 /**

@@ -5,7 +5,8 @@ import org.assertj.core.util.Sets;
 import org.junit.Test;
 import pl.team.carrent.client.ClientNotExistException;
 import pl.team.carrent.client.Client;
-import pl.team.carrent.repository.ClientRepository;
+import pl.team.carrent.client.ClientService;
+import pl.team.carrent.client.ClientRepository;
 
 import java.util.Arrays;
 import java.util.Optional;

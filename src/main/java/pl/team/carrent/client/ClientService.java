@@ -1,11 +1,7 @@
-package pl.team.carrent.service;
+package pl.team.carrent.client;
 
 
 import org.springframework.stereotype.Service;
-import pl.team.carrent.client.ClientNotExistException;
-import pl.team.carrent.client.Client;
-import pl.team.carrent.repository.ClientRepository;
-import pl.team.carrent.client.SearchClientOption;
 
 import java.util.HashSet;
 import java.util.Set;
