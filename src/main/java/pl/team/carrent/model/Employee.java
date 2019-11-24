@@ -1,29 +1,40 @@
 package pl.team.carrent.model;
 
 import org.springframework.lang.Nullable;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Objects;
 
 @Entity
-public class Employee {
+public class Employee implements UserDetails {
 
     private String firstname;
     private String surname;
+
     @ManyToOne(targetEntity = RentPoint.class)
     private RentPoint rentPoint;
+
     @Id
     @NotNull
     private String username;
     private String password;
     private LocalDate employmentDate;
+
     @Nullable
     private LocalDate releaseDate;
 
     @ManyToOne(targetEntity = Role.class)
     private Role role;
+
+
+    public Employee() {
+    }
 
     public Employee(String firstname, String surname, RentPoint rentPoint, String username, LocalDate employmentDate, Role role) {
         this.firstname = firstname;
@@ -32,6 +43,46 @@ public class Employee {
         this.username = username;
         this.employmentDate = employmentDate;
         this.role = role;
+    }
+
+    public Employee(String firstname, String surname, RentPoint rentPoint, String username, String password, LocalDate employmentDate, LocalDate releaseDate, Role role) {
+        this.firstname = firstname;
+        this.surname = surname;
+        this.rentPoint = rentPoint;
+        this.username = username;
+        this.password = password;
+        this.employmentDate = employmentDate;
+        this.releaseDate = releaseDate;
+        this.role = role;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.singletonList(role);
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getFirstname() {
@@ -60,10 +111,6 @@ public class Employee {
 
     public String getUsername() {
         return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getPassword() {
@@ -103,7 +150,7 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return username.equals(employee.username);
+        return Objects.equals(username, employee.username);
     }
 
     @Override
@@ -122,19 +169,5 @@ public class Employee {
                 ", releaseDate=" + releaseDate +
                 ", role=" + role +
                 '}';
-    }
-
-    public Employee(String firstname, String surname, RentPoint rentPoint, String username, String password, LocalDate employmentDate, LocalDate releaseDate, Role role) {
-        this.firstname = firstname;
-        this.surname = surname;
-        this.rentPoint = rentPoint;
-        this.username = username;
-        this.password = password;
-        this.employmentDate = employmentDate;
-        this.releaseDate = releaseDate;
-        this.role = role;
-    }
-
-    public Employee() {
     }
 }

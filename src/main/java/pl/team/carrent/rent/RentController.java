@@ -10,7 +10,6 @@ import pl.team.carrent.service.ClientService;
 import pl.team.carrent.service.EmployeeService;
 import pl.team.carrent.service.PromotionService;
 
-import javax.jws.WebParam;
 import java.time.LocalDate;
 
 /**

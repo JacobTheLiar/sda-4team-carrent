@@ -56,7 +56,7 @@ public class RentPointRepositoryTest {
         rentPointRepository.saveAll(Arrays.asList(rentPoint1,rentPoint2));
         List<RentPoint> rentPoints = rentPointRepository.findByPostCode("02-823");
 
-        assertEquals(1,rentPoints.size());
+        assertEquals(2,rentPoints.size());
     }
 
     @Test
@@ -66,6 +66,6 @@ public class RentPointRepositoryTest {
         rentPointRepository.saveAll(Arrays.asList(rentPoint1,rentPoint2));
         List<RentPoint> rentPoints = rentPointRepository.findByCityContains("Poz");
 
-        assertEquals(1,rentPoints.size());
+        assertEquals(2,rentPoints.size());
     }
 }
