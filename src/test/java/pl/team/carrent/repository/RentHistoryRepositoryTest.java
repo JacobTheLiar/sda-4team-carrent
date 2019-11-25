@@ -14,6 +14,7 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 @SpringBootTest
 @Transactional
@@ -56,7 +57,7 @@ public class RentHistoryRepositoryTest {
         Car car = new Car(myCarModel, localDate, "PO12345", "VIN1","brown",  100.00);
         carRepository.save(car);
 
-        Client client = new Client("King Julien XIII", "64th Street and Sixth Avenue", "10021", "New York", "0000000000", "cpzinfo@wcs.org", "(212) 439-6550");
+        Client client = new Client("King Julien XIII", "64th Street and Sixth Avenue", "10021", "New York", "0000000000", "cipsoft@wcs.org", "(212) 439-6550");
         clientRepository.save(client);
 
         RentPoint carRentPointStart = new RentPoint("Punkt testowy1", "testowa 1", "60-682", "Poznań");
@@ -74,7 +75,7 @@ public class RentHistoryRepositoryTest {
         Employee employeeEnd = new Employee("Maciej", "Kryger", employeeRentPoint2, "snowyman", employmentDate, role);
         employeeRepository.saveAll(Arrays.asList(employeeStart,employeeEnd));
 
-        LocalDate rentTimeStart = LocalDate.of(2017, 5, 4);
+        LocalDate rentTimeStart = LocalDate.of(2019, 10, 14);
         LocalDate rentTimeEnd = LocalDate.of(2017, 8, 13);
 
         int counterStateStart = 8000;
@@ -100,96 +101,96 @@ public class RentHistoryRepositoryTest {
     @Test
     public void shouldFindByCarModelMark() {
         //when
-        List<RentHistory> rentHistoryList = rentHistoryRepository.findByCar_CarModelMarkContainsIgnoreCase("sko");
+        Set<RentHistory> rentHistoryList = rentHistoryRepository.findByCar_CarModelMarkContainsIgnoreCase("sko");
         //then
-        Assert.assertEquals(rentHistoryList.get(0).getCar().getCarModel().getMark(), "Skoda");
+        Assert.assertEquals(1, rentHistoryList.size());
     }
 
     @Test
     public void shouldFindByClientName() {
         //when
-        List<RentHistory> rentHistoryList = rentHistoryRepository.findByClientNameContainsIgnoreCase("ki");
+        Set<RentHistory> rentHistoryList = rentHistoryRepository.findByClientNameContainsIgnoreCase("king");
         //then
-        Assert.assertEquals(rentHistoryList.get(0).getClient().getName(), "King Julien XIII");
+        Assert.assertEquals(1, rentHistoryList.size());
     }
 
     @Test
     public void shouldFindByPromotionName() {
         //when
-        List<RentHistory> rentHistoryList = rentHistoryRepository.findByPromotionNameContainsIgnoreCase("pr");
+        Set<RentHistory> rentHistoryList = rentHistoryRepository.findByPromotionNameContainsIgnoreCase("pr");
         //then
-        Assert.assertEquals(rentHistoryList.get(0).getPromotion().getName(), "promo1");
+        Assert.assertEquals(1, rentHistoryList.size());
     }
 
     @Test
     public void shouldFindByRentPointStartName() {
         //when
-        List<RentHistory> rentHistoryList = rentHistoryRepository.findByRentPointStartNameContainsIgnoreCase("wy1");
+        Set<RentHistory> rentHistoryList = rentHistoryRepository.findByRentPointStartNameContainsIgnoreCase("wy1");
         //then
-        Assert.assertEquals(rentHistoryList.get(0).getRentPointStart().getName(), "Punkt testowy1");
+        Assert.assertEquals(1, rentHistoryList.size());
     }
 
     @Test
     public void shouldFindByRentPointEndName() {
         //when
-        List<RentHistory> rentHistoryList = rentHistoryRepository.findByRentPointEndNameContainsIgnoreCase("wy2");
+        Set<RentHistory> rentHistoryList = rentHistoryRepository.findByRentPointEndNameContainsIgnoreCase("wy2");
         //then
-        Assert.assertEquals(rentHistoryList.get(0).getRentPointEnd().getName(), "Punkt testowy2");
+        Assert.assertEquals(1, rentHistoryList.size());
     }
 
     @Test
     public void shouldFindByEmployeeStartSurname() {
         //when
-        List<RentHistory> rentHistoryList = rentHistoryRepository.findByEmployeeStartSurnameContainsIgnoreCase("up");
+        Set<RentHistory> rentHistoryList = rentHistoryRepository.findByEmployeeStartSurnameContainsIgnoreCase("up");
         //then
-        Assert.assertEquals(rentHistoryList.get(0).getEmployeeStart().getSurname(), "Ciupek");
+        Assert.assertEquals(1, rentHistoryList.size());
     }
 
     @Test
     public void shouldFindByEmployeeEndSurname() {
         //when
-        List<RentHistory> rentHistoryList = rentHistoryRepository.findByEmployeeEndSurnameContainsIgnoreCase("yg");
+        Set<RentHistory> rentHistoryList = rentHistoryRepository.findByEmployeeEndSurnameContainsIgnoreCase("yg");
         //then
-        Assert.assertEquals(rentHistoryList.get(0).getEmployeeEnd().getSurname(), "Kryger");
+        Assert.assertEquals(1, rentHistoryList.size());
     }
 
     @Test
     public void shouldFindByInvoiceNumber() {
         //when
-        List<RentHistory> rentHistoryList = rentHistoryRepository.findByInvoiceNumberContainsIgnoreCase("y");
+        Set<RentHistory> rentHistoryList = rentHistoryRepository.findByInvoiceNumberContainsIgnoreCase("y");
         //then
-        Assert.assertEquals(rentHistoryList.get(0).getInvoice().getNumber(), "100XYZ");
+        Assert.assertEquals(1, rentHistoryList.size());
     }
 
     @Test
     public void shouldFindByCarPlateNr() {
         //when
-        List<RentHistory> rentHistoryList = rentHistoryRepository.findByCar_PlateNrContainsIgnoreCase("23");
+        Set<RentHistory> rentHistoryList = rentHistoryRepository.findByCar_PlateNrContainsIgnoreCase("23");
         //then
-        Assert.assertEquals(rentHistoryList.get(0).getCar().getPlateNr(), "PO12345");
+        Assert.assertEquals(1, rentHistoryList.size());
     }
 
     @Test
     public void shouldFindByCarModel() {
         //when
-        List<RentHistory> rentHistoryList = rentHistoryRepository.findByCar_CarModelModelContainsIgnoreCase("ia");
+        Set<RentHistory> rentHistoryList = rentHistoryRepository.findByCar_CarModelModelContainsIgnoreCase("ia");
         //then
-        Assert.assertEquals(rentHistoryList.get(0).getCar().getCarModel().getModel(), "Fabia");
+        Assert.assertEquals(1, rentHistoryList.size());
     }
 
     @Test
     public void shouldFindByClientEmail() {
         //when
-        List<RentHistory> rentHistoryList = rentHistoryRepository.findByClientEmailContainsIgnoreCase("inf");
+        Set<RentHistory> rentHistoryList = rentHistoryRepository.findByClientEmailContainsIgnoreCase("soft");
         //then
-        Assert.assertEquals(rentHistoryList.get(0).getClient().getEmail(), "cpzinfo@wcs.org");
+        Assert.assertEquals(1, rentHistoryList.size());
     }
 
     @Test
     public void shouldFindByRentTimeStartAfter() {
         //when
-        List<RentHistory> rentHistoryList = rentHistoryRepository.findByRentTimeStartAfter(LocalDate.of(2017, 4, 4));
+        Set<RentHistory> rentHistoryList = rentHistoryRepository.findByRentTimeStartAfter(LocalDate.of(2019, 4, 4));
         //then
-        Assert.assertEquals(rentHistoryList.get(0).getRentTimeStart(), LocalDate.of(2017, 5, 4));
+        Assert.assertEquals(1, rentHistoryList.size());
     }
 }

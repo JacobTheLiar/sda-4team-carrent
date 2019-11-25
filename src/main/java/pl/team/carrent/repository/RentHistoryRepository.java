@@ -3,7 +3,7 @@ package pl.team.carrent.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import pl.team.carrent.model.*;
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
 
 /**
  * @author: Łukasz C.  [https://github.com/lukasz-ciupek]
@@ -15,18 +15,18 @@ import java.util.List;
  ******************************************************/
 public interface RentHistoryRepository extends JpaRepository<RentHistory, Integer> {
 
-    List<RentHistory> findByCar_CarModelMarkContainsIgnoreCase(String mark);
-    List<RentHistory> findByCar_PlateNrContainsIgnoreCase(String plateNr);
-    List<RentHistory> findByCar_CarModelModelContainsIgnoreCase(String model);
-    List<RentHistory> findByClientNameContainsIgnoreCase(String name);
-    List<RentHistory> findByClientEmailContainsIgnoreCase(String email);
-    List<RentHistory> findByPromotionNameContainsIgnoreCase(String name);
-    List<RentHistory> findByRentPointStartNameContainsIgnoreCase(String name);
-    List<RentHistory> findByRentPointEndNameContainsIgnoreCase(String name);
-    List<RentHistory> findByEmployeeStartSurnameContainsIgnoreCase(String surname);
-    List<RentHistory> findByEmployeeEndSurnameContainsIgnoreCase(String surname);
-    List<RentHistory> findByInvoiceNumberContainsIgnoreCase(String number);
-    List<RentHistory> findByRentTimeStartAfter(LocalDate rentTimeStart);
-    List<RentHistory> findByRentTimeEnd(LocalDate rentTimeEnd);
+    Set<RentHistory> findByCar_CarModelMarkContainsIgnoreCase(String mark);
+    Set<RentHistory> findByCar_PlateNrContainsIgnoreCase(String plateNr);
+    Set<RentHistory> findByCar_CarModelModelContainsIgnoreCase(String model);
+    Set<RentHistory> findByClientNameContainsIgnoreCase(String name);
+    Set<RentHistory> findByClientEmailContainsIgnoreCase(String email);
+    Set<RentHistory> findByPromotionNameContainsIgnoreCase(String name);
+    Set<RentHistory> findByRentPointStartNameContainsIgnoreCase(String name);
+    Set<RentHistory> findByRentPointEndNameContainsIgnoreCase(String name);
+    Set<RentHistory> findByEmployeeStartSurnameContainsIgnoreCase(String surname);
+    Set<RentHistory> findByEmployeeEndSurnameContainsIgnoreCase(String surname);
+    Set<RentHistory> findByInvoiceNumberContainsIgnoreCase(String number);
+    Set<RentHistory> findByRentTimeStartAfter(LocalDate rentTimeStart);
+    Set<RentHistory> findByRentTimeEnd(LocalDate rentTimeEnd);
 
 }

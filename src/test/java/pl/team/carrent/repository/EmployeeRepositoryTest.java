@@ -34,13 +34,13 @@ public class EmployeeRepositoryTest {
     @Before
     public void setUp() throws Exception {
         Role role = new Role("admin");
-        LocalDate employmentDate = LocalDate.of(1999, 9, 1);
-        RentPoint rentPoint = new RentPoint("POZ", "Zmigrodzka", "61-244", "Poznan");
-        RentPoint rentPoint2 = new RentPoint("POZ", "Bulgarska", "61-244", "Poznan");
+        LocalDate employmentDate = LocalDate.of(2019, 11, 1);
+        RentPoint rentPoint = new RentPoint("test1", "Zmigrodzka", "61-244", "Poznan");
+        RentPoint rentPoint2 = new RentPoint("test2", "Bulgarska", "61-244", "Poznan");
         Employee employee = new Employee("Lukasz", "Ciupek", rentPoint, "ciupas", employmentDate, role);
         Employee employee2 = new Employee("Maciej", "Kryger", rentPoint2, "snowyman", employmentDate, role);
         roleRepository.save(role);
-        employee.setReleaseDate(LocalDate.of(1999, 9, 22));
+        employee.setReleaseDate(LocalDate.of(2019, 11, 22));
         rentPointRepository.saveAll(Arrays.asList(rentPoint,rentPoint2));
         employeeRepository.saveAll(Arrays.asList(employee, employee2));
     }
@@ -72,9 +72,9 @@ public class EmployeeRepositoryTest {
     @Test
     public void shouldFindByEmploymentDate() {
         //when
-        List<Employee> employeeList = employeeRepository.findByEmploymentDate(LocalDate.of(1999, 9, 1));
+        List<Employee> employeeList = employeeRepository.findByEmploymentDate(LocalDate.of(2019, 11, 1));
         //then
-        Assert.assertEquals(employeeList.get(0).getEmploymentDate(), LocalDate.of(1999, 9, 1));
+        Assert.assertEquals(employeeList.get(0).getEmploymentDate(), LocalDate.of(2019, 11, 1));
     }
 
     @Test
@@ -96,7 +96,7 @@ public class EmployeeRepositoryTest {
     @Test
     public void shouldFindByRentPointName() {
         //when
-        Set<Employee> employeeList = employeeRepository.findByRentPointNameContainsIgnoreCase("pOz");
+        Set<Employee> employeeList = employeeRepository.findByRentPointNameContainsIgnoreCase("test");
         //then
         Assert.assertEquals(2, employeeList.size());
     }
@@ -128,7 +128,7 @@ public class EmployeeRepositoryTest {
     @Test
     public void shouldFindByEmploymentDateAfter() {
         //when
-        Set<Employee> employeeList = employeeRepository.findByEmploymentDateAfter(LocalDate.of(1999, 8, 1));
+        Set<Employee> employeeList = employeeRepository.findByEmploymentDateAfter(LocalDate.of(2019, 8, 1));
         //then
         Assert.assertEquals(2, employeeList.size());
     }
@@ -136,15 +136,16 @@ public class EmployeeRepositoryTest {
     @Test
     public void shouldFindByEmploymentDateBefore() {
         //when
-        Set<Employee> employeeList = employeeRepository.findByEmploymentDateBefore(LocalDate.of(1999, 10, 1));
+        Set<Employee> employeeList = employeeRepository.findByEmploymentDateBefore(LocalDate.of(2020, 10, 1));
         //then
-        Assert.assertEquals(2, employeeList.size());
+        //2 + 1 z data.sql
+        Assert.assertEquals(3, employeeList.size());
     }
 
     @Test
     public void shouldFindByEmploymentDateBetween() {
         //when
-        List<Employee> employeeList = employeeRepository.findByEmploymentDateBetween(LocalDate.of(1999, 8, 1),LocalDate.of(1999,10, 1));
+        List<Employee> employeeList = employeeRepository.findByEmploymentDateBetween(LocalDate.of(2019, 8, 1),LocalDate.of(2019,12, 1));
         //then
         Assert.assertEquals(employeeList.get(0).getFirstname(), "Lukasz");
         Assert.assertEquals(employeeList.get(1).getFirstname(), "Maciej");
@@ -153,7 +154,7 @@ public class EmployeeRepositoryTest {
     @Test
     public void shouldFindByReleaseDateBetween() {
         //when
-        List<Employee> employeeList = employeeRepository.findByReleaseDateBetween(LocalDate.of(1999, 8, 1),LocalDate.of(1999,10, 1));
+        List<Employee> employeeList = employeeRepository.findByReleaseDateBetween(LocalDate.of(2018, 8, 1),LocalDate.of(2019,12, 1));
         //then
         Assert.assertNotEquals("employeeList size should not be 0", 0, employeeList.size());
         Assert.assertEquals(employeeList.get(0).getFirstname(), "Lukasz");
@@ -172,6 +173,7 @@ public class EmployeeRepositoryTest {
         //when
         Set<Employee> employeeList = employeeRepository.findByReleaseDateIsNull();
         //then
-        Assert.assertEquals(1, employeeList.size());
+        //1 + 1 z data.sql
+        Assert.assertEquals(2, employeeList.size());
     }
 }
