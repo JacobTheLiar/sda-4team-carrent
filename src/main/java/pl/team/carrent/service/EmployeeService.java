@@ -1,5 +1,7 @@
 package pl.team.carrent.service;
 
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import pl.team.carrent.employee.EmployeeNotExistException;
 import pl.team.carrent.model.Employee;
@@ -9,12 +11,17 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
-public class EmployeeService {
+public class EmployeeService implements org.springframework.security.core.userdetails.UserDetailsService {
 
     private final EmployeeRepository employeeRepository;
 
     public EmployeeService(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+        return employeeRepository.findByUsername(s).orElseThrow(() -> new UsernameNotFoundException("Could not find user with username: " + s));
     }
 
     public Employee addEmployee(Employee employee) {

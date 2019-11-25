@@ -26,9 +26,11 @@ INSERT INTO invoice (id, number, value, invoice_date, payment_date, sell_date) v
 INSERT INTO rent_point (id, name, address, post_code, city) values (nextval('car_rent_point_seq'), '4team Rent Point Poznań', 'Samochodowa 1','60-682', 'Poznań');
 INSERT INTO rent_point (id, name, address, post_code, city) values (nextval('car_rent_point_seq'), '4team Rent Point Warszawa', 'Poznańska 1','02-823', 'Warszawa');
 
-INSERT INTO role (id, authority) values (nextval('seq_Role'), 'user');
+INSERT INTO role (id, authority) values (nextval('seq_Role'), 'USER');
+INSERT INTO role (id, authority) values (nextval('seq_Role'), 'ADMIN');
 
-INSERT INTO employee (firstname, surname, rent_point_id, username, password, employment_date, release_date, role_id) values ('Jan', 'Pracownik', 1, 'pracownik', '123', '2018-09-01',null,1 );
+INSERT INTO employee (firstname, surname, rent_point_id, username, password, employment_date, release_date, role_id) values ('Jan', 'Pracownik', 1, 'user', '$2a$10$KvxPudrieuxpEgxw3e4yPOuYK59PgfQshx3RaVUTCpbKB82DC/0RC', '2018-09-01',null,1 );
+INSERT INTO employee (firstname, surname, rent_point_id, username, password, employment_date, release_date, role_id) values ('The', 'Administrator', 1, 'admin', '$2a$10$IPJizmA0rxJBq9incE/PWub6B2nIDGm3z/2cIz6hAs/hgvKlQ5F9q', '2018-09-01',null,2 );
 
 INSERT INTO promotion (id, name, discount_percentage, promo_start, promo_end) values (nextval('promo_Seq'), 'Opel 30%', 30, '2019-10-01', '2019-12-05');
 INSERT INTO promotion (id, name, discount_percentage, promo_start, promo_end) values (nextval('promo_Seq'), 'Segment B 20%', 20, '2019-10-15', '2019-12-15');
