@@ -1,4 +1,4 @@
-package pl.team.carrent.model;
+package pl.team.carrent.car_model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

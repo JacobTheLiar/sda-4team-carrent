@@ -1,7 +1,7 @@
 package pl.team.carrent.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.team.carrent.model.Role;
+import pl.team.carrent.employee.Role;
 
 import java.util.List;
 

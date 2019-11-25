@@ -1,9 +1,7 @@
 package pl.team.carrent.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import pl.team.carrent.model.Car;
-import pl.team.carrent.model.CarReview;
+import pl.team.carrent.car_review.CarReview;
 
 import java.time.LocalDate;
 import java.util.List;

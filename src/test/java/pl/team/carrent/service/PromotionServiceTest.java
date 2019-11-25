@@ -1,10 +1,11 @@
 package pl.team.carrent.service;
 
 import org.junit.Test;
-import pl.team.carrent.model.Car;
-import pl.team.carrent.model.CarModel;
-import pl.team.carrent.model.Promotion;
+import pl.team.carrent.car.Car;
+import pl.team.carrent.car_model.CarModel;
+import pl.team.carrent.promotion.Promotion;
 import pl.team.carrent.promotion.PromotionNotExistException;
+import pl.team.carrent.promotion.PromotionService;
 import pl.team.carrent.repository.PromotionRepository;
 
 import java.time.LocalDate;

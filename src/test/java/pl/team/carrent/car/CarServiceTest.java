@@ -1,8 +1,7 @@
 package pl.team.carrent.car;
 
 import org.junit.Test;
-import pl.team.carrent.model.Car;
-import pl.team.carrent.model.CarModel;
+import pl.team.carrent.car_model.CarModel;
 import pl.team.carrent.repository.CarRepository;
 
 import java.time.LocalDate;

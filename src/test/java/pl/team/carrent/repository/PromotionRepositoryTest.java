@@ -7,9 +7,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import pl.team.carrent.model.Car;
-import pl.team.carrent.model.CarModel;
-import pl.team.carrent.model.Promotion;
+import pl.team.carrent.car.Car;
+import pl.team.carrent.car_model.CarModel;
+import pl.team.carrent.promotion.Promotion;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;

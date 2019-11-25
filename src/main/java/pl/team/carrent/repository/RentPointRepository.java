@@ -1,7 +1,7 @@
 package pl.team.carrent.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.team.carrent.model.RentPoint;
+import pl.team.carrent.rent_point.RentPoint;
 
 import java.util.List;
 

@@ -1,8 +1,12 @@
 package pl.team.carrent.rent;
 
 import org.junit.Test;
+import pl.team.carrent.car.Car;
+import pl.team.carrent.car_model.CarModel;
 import pl.team.carrent.client.Client;
-import pl.team.carrent.model.*;
+import pl.team.carrent.employee.Employee;
+import pl.team.carrent.promotion.Promotion;
+import pl.team.carrent.rent_point.RentPoint;
 import pl.team.carrent.repository.RentRepository;
 
 import java.time.LocalDate;
@@ -37,7 +41,7 @@ public class RentServiceTest {
     Rent      rent1         = new Rent(car1, client1, prom1, rentPoint1, LocalDate.now().plusDays(-30), employee1, 7000, "xyz");
     Rent      rent2         = new Rent(car2, client1, null, rentPoint1, LocalDate.now().plusDays(-10), employee1, 100000, "www111");
     Rent      rent3         = new Rent(car2, client1, prom1, rentPoint1, LocalDate.now().plusDays(-100), employee1, 80000, "nowy");
-    Rent rent4 = new Rent(car2, client1, prom1, rentPoint1, LocalDate.now().plusDays(-100), employee1, 80000, "nowy");
+    Rent      rent4         = new Rent(car2, client1, prom1, rentPoint1, LocalDate.now().plusDays(-100), employee1, 80000, "nowy");
 
     public RentRepository getRentRepositoryMock() {
         RentRepository mock = mock(RentRepository.class);

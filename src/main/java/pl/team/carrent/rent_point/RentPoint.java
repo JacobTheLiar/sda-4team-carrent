@@ -1,4 +1,4 @@
-package pl.team.carrent.model;
+package pl.team.carrent.rent_point;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

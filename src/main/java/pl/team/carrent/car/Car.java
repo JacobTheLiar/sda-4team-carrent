@@ -1,9 +1,10 @@
-package pl.team.carrent.model;
+package pl.team.carrent.car;
 
+
+import pl.team.carrent.car_model.CarModel;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Objects;
 
 /**

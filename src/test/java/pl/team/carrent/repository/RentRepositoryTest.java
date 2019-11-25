@@ -5,9 +5,13 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import pl.team.carrent.car.Car;
+import pl.team.carrent.car_model.CarModel;
 import pl.team.carrent.client.Client;
 import pl.team.carrent.client.ClientRepository;
-import pl.team.carrent.model.*;
+import pl.team.carrent.promotion.Promotion;
+import pl.team.carrent.rent.Rent;
+import pl.team.carrent.rent_point.RentPoint;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
@@ -254,7 +258,7 @@ public class RentRepositoryTest {
         LocalDate rentDate = LocalDate.of(2019, 11, 11);
         Client client = new Client("Krzak", "OBCH 111/11", "60-682", "Poznań", "777-77-77-777", "kowalski@wp.pl", "666 777 888");
         clientRepository.save(client);
-        Promotion promotion = new Promotion("PROMO1",30,rentDate,LocalDate.now(),Arrays.asList(car1),null);
+        Promotion promotion = new Promotion("PROMO1", 30, rentDate, LocalDate.now(), Arrays.asList(car1), null);
         promotionRepository.save(promotion);
         Rent rent1 = new Rent(car1, client, promotion, rentPoint, rentDate, null, 10000, "search test 1");
         Rent rent2 = new Rent(car2, client, null, rentPoint, rentDate, null, 15000, "search test 2");

@@ -1,8 +1,9 @@
-package pl.team.carrent.model;
+package pl.team.carrent.employee;
 
 import org.springframework.lang.Nullable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import pl.team.carrent.rent_point.RentPoint;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

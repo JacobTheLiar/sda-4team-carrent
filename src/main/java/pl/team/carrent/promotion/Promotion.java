@@ -1,6 +1,7 @@
-package pl.team.carrent.model;
+package pl.team.carrent.promotion;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import pl.team.carrent.car.Car;
 import pl.team.carrent.client.Client;
 
 import javax.persistence.*;

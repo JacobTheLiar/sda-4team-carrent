@@ -1,7 +1,11 @@
-package pl.team.carrent.model;
+package pl.team.carrent.rent_history;
 
+import pl.team.carrent.car.Car;
 import pl.team.carrent.client.Client;
+import pl.team.carrent.employee.Employee;
 import pl.team.carrent.invoice.Invoice;
+import pl.team.carrent.rent_point.RentPoint;
+import pl.team.carrent.promotion.Promotion;
 
 import javax.persistence.*;
 import java.time.LocalDate;

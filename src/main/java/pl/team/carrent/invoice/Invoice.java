@@ -1,13 +1,10 @@
 package pl.team.carrent.invoice;
 
 
-import pl.team.carrent.model.RentHistory;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
-import java.util.Set;
 
 
 /**

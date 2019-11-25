@@ -1,7 +1,7 @@
-package pl.team.carrent.service;
+package pl.team.carrent.rent_history;
 
 import org.springframework.stereotype.Service;
-import pl.team.carrent.model.RentHistory;
+import pl.team.carrent.rent_history.RentHistory;
 import pl.team.carrent.repository.RentHistoryRepository;
 import java.time.LocalDate;
 import java.util.HashSet;

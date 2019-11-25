@@ -1,9 +1,7 @@
 package pl.team.carrent.car_review;
 
 import org.springframework.stereotype.Service;
-import pl.team.carrent.car.CarNotExistException;
-import pl.team.carrent.model.Car;
-import pl.team.carrent.model.CarReview;
+import pl.team.carrent.car.Car;
 import pl.team.carrent.repository.CarReviewRepository;
 
 import java.util.List;
