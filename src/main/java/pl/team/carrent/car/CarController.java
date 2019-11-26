@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.team.carrent.car_model.CarModelService;
-import pl.team.carrent.model.Car;
 
 import java.time.LocalDate;
 

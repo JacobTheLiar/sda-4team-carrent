@@ -1,22 +1,13 @@
 package pl.team.carrent.service;
 
-import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import pl.team.carrent.model.Car;
-import pl.team.carrent.model.CarModel;
-import pl.team.carrent.model.Promotion;
+import pl.team.carrent.car.Car;
+import pl.team.carrent.car_model.CarModel;
+import pl.team.carrent.promotion.Promotion;
 import pl.team.carrent.promotion.PromotionNotExistException;
-import pl.team.carrent.promotion.SearchPromotionOption;
-import pl.team.carrent.repository.CarModelRepository;
-import pl.team.carrent.repository.CarRepository;
-import pl.team.carrent.repository.ClientRepository;
+import pl.team.carrent.promotion.PromotionService;
 import pl.team.carrent.repository.PromotionRepository;
 
-import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;

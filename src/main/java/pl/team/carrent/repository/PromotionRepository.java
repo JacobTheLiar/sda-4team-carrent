@@ -2,12 +2,11 @@ package pl.team.carrent.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import pl.team.carrent.model.Car;
-import pl.team.carrent.model.CarModel;
-import pl.team.carrent.model.Promotion;
+import pl.team.carrent.car.Car;
+import pl.team.carrent.promotion.Promotion;
 
 import java.util.List;
-import java.util.Set;
+
 
 /******************************************************
  * @author: Michal S.  

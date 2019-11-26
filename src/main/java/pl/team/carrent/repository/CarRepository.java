@@ -1,8 +1,7 @@
 package pl.team.carrent.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.team.carrent.model.Car;
-import pl.team.carrent.model.CarModel;
+import pl.team.carrent.car.Car;
 
 import java.util.List;
 import java.util.Optional;

@@ -3,8 +3,6 @@ package pl.team.carrent.invoice;
 
 import org.junit.Test;
 import org.mockito.internal.util.collections.Sets;
-import pl.team.carrent.model.Invoice;
-import pl.team.carrent.repository.InvoiceRepository;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

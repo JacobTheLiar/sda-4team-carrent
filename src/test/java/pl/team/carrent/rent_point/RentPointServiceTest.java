@@ -2,7 +2,6 @@ package pl.team.carrent.rent_point;
 
 
 import org.junit.Test;
-import pl.team.carrent.model.RentPoint;
 import pl.team.carrent.repository.RentPointRepository;
 
 import java.util.Arrays;

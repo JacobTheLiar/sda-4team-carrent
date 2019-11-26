@@ -2,7 +2,16 @@ package pl.team.carrent.service;
 
 import org.assertj.core.util.Sets;
 import org.junit.Test;
-import pl.team.carrent.model.*;
+import pl.team.carrent.car.Car;
+import pl.team.carrent.car_model.CarModel;
+import pl.team.carrent.client.Client;
+import pl.team.carrent.employee.Employee;
+import pl.team.carrent.employee.Role;
+import pl.team.carrent.invoice.Invoice;
+import pl.team.carrent.promotion.Promotion;
+import pl.team.carrent.rent_history.RentHistory;
+import pl.team.carrent.rent_history.RentHistoryService;
+import pl.team.carrent.rent_point.RentPoint;
 import pl.team.carrent.repository.RentHistoryRepository;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -29,28 +38,28 @@ public class RentHistoryServiceTest {
     private static LocalDate FIND_RENTTIMESTART = LocalDate.of(2017, 5, 4);
     private static LocalDate FIND_RENTTIMEEND = LocalDate.of(2017, 8, 13);
 
-    private CarModel carModel = new CarModel("Skoda", "Fabia", "A", "Combi", 1999, 30000);
-    private LocalDate localDate = LocalDate.of(1999, 9, 1);
-    private Car car = new Car(carModel, localDate, "PO12345", "VIN1","brown",  100.00);
-    private Client client = new Client("King Julien XIII", "64th Street and Sixth Avenue", "10021", "New York", "0000000000", "cpzinfo@wcs.org", "(212) 439-6550");
-    private LocalDate rentTimeStart = LocalDate.of(2017, 5, 4);
-    private LocalDate rentTimeEnd = LocalDate.of(2017, 8, 13);
-    private List<Car> cars = Collections.singletonList(car);
-    private List<Client> clients = Collections.singletonList(client);
-    private Promotion promotion = new Promotion("promo1",10,rentTimeStart.minusDays(2),rentTimeStart,cars,clients);
-    private RentPoint employeeRentPoint = new RentPoint("POZ1", "Zmigrodzka", "61-244", "Poznan");
+    private CarModel     carModel      = new CarModel("Skoda", "Fabia", "A", "Combi", 1999, 30000);
+    private LocalDate    localDate     = LocalDate.of(1999, 9, 1);
+    private Car          car           = new Car(carModel, localDate, "PO12345", "VIN1", "brown", 100.00);
+    private Client       client        = new Client("King Julien XIII", "64th Street and Sixth Avenue", "10021", "New York", "0000000000", "cpzinfo@wcs.org", "(212) 439-6550");
+    private LocalDate    rentTimeStart = LocalDate.of(2017, 5, 4);
+    private LocalDate    rentTimeEnd   = LocalDate.of(2017, 8, 13);
+    private List<Car>    cars          = Collections.singletonList(car);
+    private List<Client> clients       = Collections.singletonList(client);
+    private Promotion    promotion     = new Promotion("promo1", 10, rentTimeStart.minusDays(2), rentTimeStart, cars, clients);
+    private RentPoint    employeeRentPoint  = new RentPoint("POZ1", "Zmigrodzka", "61-244", "Poznan");
     private RentPoint employeeRentPoint2 = new RentPoint("POZ2", "Bulgarska", "61-244", "Poznan");
-    private Role role = new Role("admin");
-    private LocalDate employmentDate = LocalDate.of(1999, 9, 1);
-    private Employee employeeStart = new Employee("Lukasz", "Ciupek", employeeRentPoint, "ciupas", employmentDate, role);
-    private Employee employeeEnd = new Employee("Maciej", "Kryger", employeeRentPoint2, "snowyman", employmentDate, role);
-    private Invoice invoice = new Invoice("100XYZ", BigDecimal.valueOf(800),rentTimeEnd,rentTimeEnd.plusDays(1),rentTimeEnd.plusDays(2));
-    private int counterStateStart = 8000;
-    private int counterStateEnd = 8600;
-    private String notesStart = "Odbiór 9 rano";
-    private String notesEnd = "Wszystko ok";
+    private Role      role               = new Role("admin");
+    private LocalDate employmentDate     = LocalDate.of(1999, 9, 1);
+    private Employee  employeeStart      = new Employee("Lukasz", "Ciupek", employeeRentPoint, "ciupas", employmentDate, role);
+    private Employee  employeeEnd        = new Employee("Maciej", "Kryger", employeeRentPoint2, "snowyman", employmentDate, role);
+    private Invoice   invoice            = new Invoice("100XYZ", BigDecimal.valueOf(800), rentTimeEnd, rentTimeEnd.plusDays(1), rentTimeEnd.plusDays(2));
+    private int       counterStateStart  = 8000;
+    private int       counterStateEnd    = 8600;
+    private String    notesStart         = "Odbiór 9 rano";
+    private String    notesEnd           = "Wszystko ok";
 
-    private RentHistory rentHistory1 = new RentHistory(1,car,client,promotion,employeeRentPoint,employeeRentPoint2,employeeStart,employeeEnd,rentTimeStart,rentTimeEnd,counterStateStart,counterStateEnd,notesStart,notesEnd,invoice);
+    private RentHistory rentHistory1 = new RentHistory(1, car, client, promotion, employeeRentPoint, employeeRentPoint2, employeeStart, employeeEnd, rentTimeStart, rentTimeEnd, counterStateStart, counterStateEnd, notesStart, notesEnd, invoice);
     private RentHistory rentHistory2 = new RentHistory(2,car,client,promotion,employeeRentPoint,employeeRentPoint2,employeeStart,employeeEnd,rentTimeStart,rentTimeEnd,counterStateStart,counterStateEnd,notesStart,notesEnd,invoice);
 
     private RentHistoryRepository getRentHistoryRepositoryMock() {

@@ -1,13 +1,12 @@
 package pl.team.carrent.car_model;
 
 import org.springframework.stereotype.Service;
-import pl.team.carrent.model.CarModel;
 import pl.team.carrent.repository.CarModelRepository;
 
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
+
 
 /**
  * @author: Maciej Kryger  [https://github.com/maciejkryger]

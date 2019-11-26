@@ -1,7 +1,7 @@
 package pl.team.carrent.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.team.carrent.model.Employee;
+import pl.team.carrent.employee.Employee;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;

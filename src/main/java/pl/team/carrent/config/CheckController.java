@@ -1,4 +1,4 @@
-package pl.team.carrent.test;
+package pl.team.carrent.config;
 
 
 import org.springframework.stereotype.Controller;

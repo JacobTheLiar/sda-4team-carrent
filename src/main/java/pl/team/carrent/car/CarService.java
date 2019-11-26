@@ -1,11 +1,8 @@
 package pl.team.carrent.car;
 
 import org.springframework.stereotype.Service;
-import pl.team.carrent.model.Car;
-import pl.team.carrent.model.CarModel;
 import pl.team.carrent.repository.CarRepository;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;

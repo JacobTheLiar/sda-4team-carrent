@@ -1,7 +1,7 @@
 package pl.team.carrent.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.team.carrent.model.Rent;
+import pl.team.carrent.rent.Rent;
 
 import java.time.LocalDate;
 import java.util.List;

@@ -4,8 +4,6 @@ package pl.team.carrent.client;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import pl.team.carrent.model.Client;
-import pl.team.carrent.service.ClientService;
 
 
 /**

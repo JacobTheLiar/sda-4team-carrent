@@ -7,7 +7,18 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import pl.team.carrent.model.*;
+import pl.team.carrent.car.Car;
+import pl.team.carrent.car_model.CarModel;
+import pl.team.carrent.client.Client;
+import pl.team.carrent.client.ClientRepository;
+import pl.team.carrent.employee.Employee;
+import pl.team.carrent.employee.Role;
+import pl.team.carrent.invoice.Invoice;
+import pl.team.carrent.invoice.InvoiceRepository;
+import pl.team.carrent.promotion.Promotion;
+import pl.team.carrent.rent_history.RentHistory;
+import pl.team.carrent.rent_point.RentPoint;
+
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -54,7 +65,7 @@ public class RentHistoryRepositoryTest {
         CarModel myCarModel = new CarModel("Skoda", "Fabia", "A", "Combi", 1999, 30000);
         carModelRepository.save(myCarModel);
 
-        Car car = new Car(myCarModel, localDate, "PO12345", "VIN1","brown",  100.00);
+        Car car = new Car(myCarModel, localDate, "PO12345", "VIN1", "brown", 100.00);
         carRepository.save(car);
 
         Client client = new Client("King Julien XIII", "64th Street and Sixth Avenue", "10021", "New York", "0000000000", "cipsoft@wcs.org", "(212) 439-6550");
@@ -84,17 +95,17 @@ public class RentHistoryRepositoryTest {
         String notesStart = "Odbiór 9 rano";
         String notesEnd = "Wszystko ok";
 
-        Invoice invoice = new Invoice("100XYZ", BigDecimal.valueOf(800),rentTimeEnd,rentTimeEnd.plusDays(1),rentTimeEnd.plusDays(2));
+        Invoice invoice = new Invoice("100XYZ", BigDecimal.valueOf(800), rentTimeEnd, rentTimeEnd.plusDays(1), rentTimeEnd.plusDays(2));
         invoiceRepository.save(invoice);
 
         List<Car> cars = Collections.singletonList(car);
         List<CarModel> carModels = Collections.singletonList(myCarModel);
         List<Client> clients = Collections.singletonList(client);
 
-        Promotion promotion = new Promotion("promo1",10,rentTimeStart.minusDays(2),rentTimeStart,cars,clients);
+        Promotion promotion = new Promotion("promo1", 10, rentTimeStart.minusDays(2), rentTimeStart, cars, clients);
         promotionRepository.save(promotion);
 
-        RentHistory rentHistory = new RentHistory(1,car,client,promotion,carRentPointStart,carRentPointEnd,employeeStart,employeeEnd,rentTimeStart,rentTimeEnd,counterStateStart,counterStateEnd,notesStart,notesEnd,invoice);
+        RentHistory rentHistory = new RentHistory(1, car, client, promotion, carRentPointStart, carRentPointEnd, employeeStart, employeeEnd, rentTimeStart, rentTimeEnd, counterStateStart, counterStateEnd, notesStart, notesEnd, invoice);
         rentHistoryRepository.save(rentHistory);
     }
 

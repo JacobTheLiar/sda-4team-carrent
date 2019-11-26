@@ -1,4 +1,4 @@
-package pl.team.carrent.model;
+package pl.team.carrent.client;
 
 
 import javax.persistence.*;

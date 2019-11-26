@@ -1,4 +1,4 @@
-package pl.team.carrent.exception;
+package pl.team.carrent.config;
 
 
 import org.springframework.web.bind.annotation.ControllerAdvice;

@@ -2,8 +2,6 @@ package pl.team.carrent.invoice;
 
 
 import org.springframework.stereotype.Service;
-import pl.team.carrent.model.Invoice;
-import pl.team.carrent.repository.InvoiceRepository;
 
 import java.util.HashSet;
 import java.util.Set;

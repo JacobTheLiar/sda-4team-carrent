@@ -3,7 +3,7 @@ package pl.team.carrent.car_model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import pl.team.carrent.model.CarModel;
+
 
 /**
  * @author: Maciej Kryger  [https://github.com/maciejkryger]

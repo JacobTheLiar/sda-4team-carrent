@@ -6,17 +6,15 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import pl.team.carrent.model.Car;
-import pl.team.carrent.model.CarModel;
-import pl.team.carrent.model.CarReview;
+import pl.team.carrent.car.Car;
+import pl.team.carrent.car_model.CarModel;
+import pl.team.carrent.car_review.CarReview;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.*;
 
 /**
  * @author: Maciej Kryger  [https://github.com/maciejkryger]

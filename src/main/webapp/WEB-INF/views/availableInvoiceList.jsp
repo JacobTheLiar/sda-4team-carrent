@@ -19,7 +19,7 @@
         <!-- dodatkowe opcje i szukanie -->
         <div class="w3-bar w3-light-grey w3-border">
 
-            <a href="${pageContext.request.contextPath}/client/add" class="w3-bar-item w3-button w3-green">dodaj</a>
+            <a href="${pageContext.request.contextPath}/client/${clientId}" class="w3-bar-item w3-button w3-green">faktury</a>
             <a href="${pageContext.request.contextPath}/client" class="w3-bar-item w3-button w3-theme-l2 w3-right w3-margin-left">usuń filtr</a>
             <form >
             <input type="submit" class="w3-bar-item w3-button w3-theme w3-right w3-margin-left" value="szukaj">
@@ -35,30 +35,30 @@
         ​<!-- dane -->
         <table class="w3-table w3-bordered w3-striped">
             <tr class="w3-theme-d4">
-                <th>nazwa</th>
-                <th>adres</th>
-                <th>kod pocztowy</th>
-                <th>miasto</th>
-                <th>nip</th>
-                <th>e-mail</th>
-                <th>nr telefonu</th>
-                <th>opcje</th>
+                <th>nazwa klienta</th>
+                <th>wypożyczony dnia</th>
+                <th>przez dni</th>
+                <th>zwrócony dnia</th>
+                <th>dystans</th>
+                <th>zastosowana promocja</th>
+                <th>samochód</th>
+                <th>wartość wypożyczenia</th>
+                <th>wartoś po zniżkach</th>
+                <th>zaznacz</th>
             </tr>
-            <c:forEach var="client" items="${clients}">
+            <c:forEach var="invoice" items="${available}">
             <tr class="w3-center">
-                <td>${client.name}</td>
-                <td>${client.address}</td>
-                <td>${client.postCode}</td>
-                <td>${client.city}</td>
-                <td>${client.taxNumber}</td>
-                <td>${client.email}</td>
-                <td>${client.telephoneNr}</td>
+                <td>${invoice.clientName}</td>
+                <td>${invoice.rentTimeStart}</td>
+                <td>${invoice.rentDays}</td>
+                <td>${invoice.rentTimeEnd}</td>
+                <td>${invoice.distance}</td>
+                <td>${invoice.promotionName}</td>
+                <td>${invoice.car}</td>
+                <td>${invoice.rentValue}</td>
+                <td>${invoice.value}</td>
 
-                <td><a href="${pageContext.request.contextPath}/client/${client.id}" class="w3-button w3-theme w3-tiny">edytuj</a>
-
-                    <a href="${pageContext.request.contextPath}/invoice/client/${client.id}" class="w3-button w3-theme w3-tiny">faktury</a>
-                    <a href="${pageContext.request.contextPath}/invoice/available/${client.id}" class="w3-button w3-theme w3-tiny">wystaw fakturę</a>
-                </td>
+                <td><input class="w3-check" type="checkbox" name="rentHistoryId" value="${invoice.id}">wybierz</td>
             </tr>
             </c:forEach>
         </table>
