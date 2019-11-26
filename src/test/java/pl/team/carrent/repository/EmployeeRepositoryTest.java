@@ -93,7 +93,8 @@ public class EmployeeRepositoryTest {
         //when
         Set<Employee> employeeList = employeeRepository.findByRoleAuthorityContainsIgnoreCase("ad");
         //then
-        Assert.assertEquals(2, employeeList.size());
+        //2 + 1 z data.sql
+        Assert.assertEquals(3, employeeList.size());
     }
 
     @Test
@@ -141,8 +142,8 @@ public class EmployeeRepositoryTest {
         //when
         Set<Employee> employeeList = employeeRepository.findByEmploymentDateBefore(LocalDate.of(2020, 10, 1));
         //then
-        //2 + 1 z data.sql
-        Assert.assertEquals(3, employeeList.size());
+        //2 + 2 z data.sql
+        Assert.assertEquals(4, employeeList.size());
     }
 
     @Test
@@ -176,7 +177,7 @@ public class EmployeeRepositoryTest {
         //when
         Set<Employee> employeeList = employeeRepository.findByReleaseDateIsNull();
         //then
-        //1 + 1 z data.sql
-        Assert.assertEquals(2, employeeList.size());
+        //1 + 2 z data.sql
+        Assert.assertEquals(3, employeeList.size());
     }
 }

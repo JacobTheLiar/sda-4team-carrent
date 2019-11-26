@@ -3,7 +3,6 @@ package pl.team.carrent.employee;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,7 +21,7 @@ public class EmployeeService implements org.springframework.security.core.userde
         return employeeRepository.findByUsername(s).orElseThrow(() -> new UsernameNotFoundException("Could not find user with username: " + s));
     }
 
-    public Employee addEmployee(Employee employee) {
+    public Employee saveEmployee(Employee employee) {
         return employeeRepository.save(employee);
     }
 
@@ -85,5 +84,25 @@ public class EmployeeService implements org.springframework.security.core.userde
 
     public Set<Employee> findEmployeesByReleaseDateBefore (LocalDate date) {
         return employeeRepository.findByReleaseDateBefore(date);
+    }
+
+    public Set<Employee> searchEmployees(String searchWhat, SearchEmployeeOption searchEmployeeOption) {
+
+        switch(searchEmployeeOption) {
+            case BY_FIRSTNAME:
+                return employeeRepository.findByFirstnameContainsIgnoreCase(searchWhat);
+            case BY_SURNAME:
+                return employeeRepository.findBySurnameContainsIgnoreCase(searchWhat);
+            case BY_ROLE:
+                return employeeRepository.findByRoleAuthorityContainsIgnoreCase(searchWhat);
+            case BY_RENTPOINTNAME:
+                return employeeRepository.findByRentPointNameContainsIgnoreCase(searchWhat);
+            case BY_EMPLOYMENTDATE:
+                return employeeRepository.findByEmploymentDateAfter(LocalDate.parse(searchWhat));
+            case BY_RELEASEDATE:
+                return employeeRepository.findByReleaseDateAfter(LocalDate.parse(searchWhat));
+        }
+
+        return new HashSet<>();
     }
 }

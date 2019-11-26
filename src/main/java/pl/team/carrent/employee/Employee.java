@@ -1,10 +1,10 @@
 package pl.team.carrent.employee;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import pl.team.carrent.rent_point.RentPoint;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -24,15 +24,18 @@ public class Employee implements UserDetails {
     @Id
     @NotNull
     private String username;
+
     private String password;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate employmentDate;
 
     @Nullable
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate releaseDate;
 
     @ManyToOne(targetEntity = Role.class)
     private Role role;
-
 
     public Employee() {
     }
