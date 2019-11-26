@@ -7,7 +7,6 @@ import pl.team.carrent.client.Client;
 import pl.team.carrent.employee.Employee;
 import pl.team.carrent.promotion.Promotion;
 import pl.team.carrent.rent_point.RentPoint;
-import pl.team.carrent.repository.RentRepository;
 
 import java.time.LocalDate;
 import java.util.Arrays;

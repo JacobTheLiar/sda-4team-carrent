@@ -1,10 +1,6 @@
 package pl.team.carrent.promotion;
 
 import org.springframework.stereotype.Service;
-import pl.team.carrent.promotion.Promotion;
-import pl.team.carrent.promotion.PromotionNotExistException;
-import pl.team.carrent.promotion.SearchPromotionOption;
-import pl.team.carrent.repository.PromotionRepository;
 
 import java.util.*;
 

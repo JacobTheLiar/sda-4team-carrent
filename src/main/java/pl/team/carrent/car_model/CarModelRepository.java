@@ -1,4 +1,4 @@
-package pl.team.carrent.repository;
+package pl.team.carrent.car_model;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import pl.team.carrent.car_model.CarModel;

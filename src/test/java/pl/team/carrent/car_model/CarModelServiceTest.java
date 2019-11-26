@@ -2,7 +2,6 @@ package pl.team.carrent.car_model;
 
 import org.junit.Assert;
 import org.junit.Test;
-import pl.team.carrent.repository.CarModelRepository;
 
 import java.util.Arrays;
 import java.util.List;

@@ -12,7 +12,7 @@ import pl.team.carrent.promotion.Promotion;
 import pl.team.carrent.rent_history.RentHistory;
 import pl.team.carrent.rent_history.RentHistoryService;
 import pl.team.carrent.rent_point.RentPoint;
-import pl.team.carrent.repository.RentHistoryRepository;
+import pl.team.carrent.rent_history.RentHistoryRepository;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Arrays;

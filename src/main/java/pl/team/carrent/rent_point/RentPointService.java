@@ -2,7 +2,6 @@ package pl.team.carrent.rent_point;
 
 
 import org.springframework.stereotype.Service;
-import pl.team.carrent.repository.RentPointRepository;
 
 import java.util.HashSet;
 import java.util.Set;

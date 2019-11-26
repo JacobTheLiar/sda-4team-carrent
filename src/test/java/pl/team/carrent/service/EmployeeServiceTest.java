@@ -8,7 +8,7 @@ import pl.team.carrent.employee.Employee;
 import pl.team.carrent.employee.EmployeeService;
 import pl.team.carrent.rent_point.RentPoint;
 import pl.team.carrent.employee.Role;
-import pl.team.carrent.repository.EmployeeRepository;
+import pl.team.carrent.employee.EmployeeRepository;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Optional;

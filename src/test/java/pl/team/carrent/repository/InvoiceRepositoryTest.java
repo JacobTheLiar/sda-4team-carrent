@@ -9,6 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import pl.team.carrent.client.ClientRepository;
 import pl.team.carrent.invoice.Invoice;
 import pl.team.carrent.invoice.InvoiceRepository;
+import pl.team.carrent.rent_history.RentHistoryRepository;
 
 import javax.transaction.Transactional;
 
