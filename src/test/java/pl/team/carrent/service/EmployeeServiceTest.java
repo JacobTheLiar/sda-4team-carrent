@@ -88,7 +88,7 @@ public class EmployeeServiceTest {
 
     @Test
     public void shouldAddEmployee() {
-        Employee actual = employeeService.addEmployee(employee4);
+        Employee actual = employeeService.saveEmployee(employee4);
         assertThat(actual).isEqualTo(employee4);
     }
 
@@ -185,7 +185,6 @@ public class EmployeeServiceTest {
     public void shouldReturnThreeActiveEmployees() {
         Set<Employee> actual = employeeService.getActiveEmployees();
         assertThat(actual).containsExactly(employee1,employee3,employee4);
-
     }
 
 }
