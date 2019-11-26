@@ -2,7 +2,6 @@ package pl.team.carrent.car_review;
 
 import org.springframework.stereotype.Service;
 import pl.team.carrent.car.Car;
-import pl.team.carrent.repository.CarReviewRepository;
 
 import java.util.List;
 import java.util.Optional;

@@ -3,9 +3,7 @@ package pl.team.carrent.employee;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import pl.team.carrent.employee.EmployeeNotExistException;
-import pl.team.carrent.employee.Employee;
-import pl.team.carrent.repository.EmployeeRepository;
+
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;

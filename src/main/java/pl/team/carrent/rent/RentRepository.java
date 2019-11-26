@@ -1,4 +1,4 @@
-package pl.team.carrent.repository;
+package pl.team.carrent.rent;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import pl.team.carrent.rent.Rent;

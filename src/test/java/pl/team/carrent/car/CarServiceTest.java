@@ -2,7 +2,6 @@ package pl.team.carrent.car;
 
 import org.junit.Test;
 import pl.team.carrent.car_model.CarModel;
-import pl.team.carrent.repository.CarRepository;
 
 import java.time.LocalDate;
 import java.util.Arrays;

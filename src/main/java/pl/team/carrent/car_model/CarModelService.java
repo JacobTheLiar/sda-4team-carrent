@@ -1,7 +1,6 @@
 package pl.team.carrent.car_model;
 
 import org.springframework.stereotype.Service;
-import pl.team.carrent.repository.CarModelRepository;
 
 import java.time.LocalDate;
 import java.util.Collections;

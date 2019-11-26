@@ -1,7 +1,6 @@
 package pl.team.carrent.rent;
 
 import org.springframework.stereotype.Service;
-import pl.team.carrent.repository.RentRepository;
 
 import java.time.LocalDate;
 import java.util.Arrays;

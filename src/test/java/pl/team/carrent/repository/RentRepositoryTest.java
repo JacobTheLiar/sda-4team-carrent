@@ -6,12 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import pl.team.carrent.car.Car;
+import pl.team.carrent.car.CarRepository;
 import pl.team.carrent.car_model.CarModel;
+import pl.team.carrent.car_model.CarModelRepository;
 import pl.team.carrent.client.Client;
 import pl.team.carrent.client.ClientRepository;
 import pl.team.carrent.promotion.Promotion;
+import pl.team.carrent.promotion.PromotionRepository;
 import pl.team.carrent.rent.Rent;
+import pl.team.carrent.rent.RentRepository;
 import pl.team.carrent.rent_point.RentPoint;
+import pl.team.carrent.rent_point.RentPointRepository;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;

@@ -1,4 +1,4 @@
-package pl.team.carrent.repository;
+package pl.team.carrent.promotion;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

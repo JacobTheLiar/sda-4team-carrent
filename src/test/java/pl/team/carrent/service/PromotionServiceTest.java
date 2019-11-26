@@ -6,7 +6,7 @@ import pl.team.carrent.car_model.CarModel;
 import pl.team.carrent.promotion.Promotion;
 import pl.team.carrent.promotion.PromotionNotExistException;
 import pl.team.carrent.promotion.PromotionService;
-import pl.team.carrent.repository.PromotionRepository;
+import pl.team.carrent.promotion.PromotionRepository;
 
 import java.time.LocalDate;
 import java.util.Arrays;
