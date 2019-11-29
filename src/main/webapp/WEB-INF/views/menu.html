@@ -16,7 +16,9 @@
     <a href="/employee" class="w3-bar-item w3-button">pracownikami</a>
     <a href="/rentPoint" class="w3-bar-item w3-button">punktami wypożyczalni</a>
     <br>
-    <h4 class="w3-bar-item w3-theme-d3">sesja</h4>
+    <h4 class="w3-bar-item w3-theme-d3">sesja - <b>${sessionScope.employee.fullUserName}</b></h4>
     <a href="/logout" class="w3-bar-item w3-button">wyloguj</a>
+    <a href="/employee/${sessionScope.employee.username}" class="w3-bar-item w3-button">o mnie</a>
+    <a href="/" class="w3-bar-item w3-button">zmień hasło</a>
 </div>
 <div class="w3-container" style="margin-left:25%;margin-top: -24px;">

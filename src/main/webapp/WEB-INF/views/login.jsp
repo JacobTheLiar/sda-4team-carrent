@@ -8,7 +8,9 @@
 <%@include file='head.html' %>
 <body class="w3-theme-light">
 <!-- ​nagłowek -->
-<%@include file='header.html' %>
+    <header class="w3-container w3-theme-dark">
+        <a href="/" class="w3-center w3-button w3-theme-dark w3-hover-indigo"><h1><b>Car rent</b></h1></a>
+    </header>
 ​
 <!-- menu po lewej -->
 <div class="w3-sidebar w3-large w3-bar-block w3-theme" style="width:25%;top: 0px;margin-top: 90px;">

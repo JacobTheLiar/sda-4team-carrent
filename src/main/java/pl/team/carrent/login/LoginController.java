@@ -1,10 +1,13 @@
-package pl.team.carrent.employee;
+package pl.team.carrent.login;
 
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import pl.team.carrent.config.SessionInfo;
+import pl.team.carrent.employee.Employee;
+import pl.team.carrent.employee.EmployeeService;
+
+import javax.servlet.http.HttpSession;
+import java.security.Principal;
 
 
 /**
@@ -19,6 +22,12 @@ import pl.team.carrent.config.SessionInfo;
 @RequestMapping("/login")
 public class LoginController {
 
+
+    private final EmployeeService employeeService;
+
+    public LoginController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
 
     @GetMapping("")
     public ModelAndView getLoginPage() {
