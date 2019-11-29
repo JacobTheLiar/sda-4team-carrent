@@ -21,9 +21,7 @@ import pl.team.carrent.config.SessionInfo;
 public class ClientController{
     
     private final ClientService clientService;
-    @Autowired
-    private SessionInfo sessionInfo;
-    
+
     public ClientController(ClientService clientService){
         this.clientService = clientService;
     }
@@ -39,7 +37,6 @@ public class ClientController{
         }
         model.addObject("options", SearchClientOption.values());
 
-        System.out.println("logged: "+sessionInfo.getCurrentEmployee().getFullUserName());
         return model;
     }
     

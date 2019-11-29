@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 import pl.team.carrent.employee.Employee;
 import pl.team.carrent.employee.EmployeeService;
 
+import java.security.Principal;
+
 /**
  * @author: Jakub O.  [https://github.com/JacobTheLiar]
  * @date : 28.11.2019 13:32
@@ -25,9 +27,9 @@ public class SessionInfo {
         this.employeeService = employeeService;
     }
 
-    public Employee getCurrentEmployee() {
+    public Employee getCurrentEmployee(Principal principal) {
         if (employee == null) {
-            employee = employeeService.getEmployeeByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+            employee = employeeService.getEmployeeByUsername(principal.getName());
         }
         return employee;
     }
