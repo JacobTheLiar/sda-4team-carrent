@@ -85,6 +85,12 @@ public class Employee implements UserDetails {
         return true;
     }
 
+    public String getFullUserName(){
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.firstname).append(" ").append(this.surname).append(" [").append(this.username).append("]");
+        return sb.toString();
+    }
+
     public void setUsername(String username) {
         this.username = username;
     }

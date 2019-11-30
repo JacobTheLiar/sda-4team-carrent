@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 
+
 /**
  * @author: Jakub O.  [https://github.com/JacobTheLiar]
  * @date : 2019-11-10 15:13
@@ -19,8 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class ClientController{
     
     private final ClientService clientService;
-    
-    
+
     public ClientController(ClientService clientService){
         this.clientService = clientService;
     }
@@ -35,6 +35,7 @@ public class ClientController{
             model.addObject("clients", clientService.searchClients(searchWhat, searchBy));
         }
         model.addObject("options", SearchClientOption.values());
+
         return model;
     }
     
