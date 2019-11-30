@@ -16,7 +16,7 @@
 
 <div class="w3-container w3-margin w3-card w3-border w3-theme-l4">
     <!-- tytuł -->
-    <div class="w3-container w3-theme w3-margin-top w3-center w3-margin-bottom">
+    <div class="w3-container w3-orange w3-margin-top w3-center w3-margin-bottom">
         <h2>brak dostępu</h2>
     </div>
 
