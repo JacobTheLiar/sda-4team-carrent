@@ -1,0 +1,47 @@
+body {
+  background: rgb(204, 204, 204);
+}
+
+page {
+  background: white;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0.5cm;
+  box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+  padding: 1.5cm;
+}
+
+page[size="A4"] {
+  width: 21cm;
+  height: 29.7cm;
+}
+
+@media print {
+
+  body,
+  page {
+    margin: 0;
+    box-shadow: 0;
+  }
+}
+
+
+div {
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+  padding: 4px;
+}
+
+.cr-invoice-nr {
+  text-align: center;
+}
+
+.cr-invoice-place {
+  text-align: right;
+}
+
+.cr-company-seller {
+  width: 50%;
+  float: left;
+}
