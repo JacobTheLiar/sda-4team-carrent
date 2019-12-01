@@ -16,12 +16,12 @@
 
 
 <!-- tytuł -->
-<h2 class="w3-bar w3-border w3-center w3-theme">zarządzanie samochodami</h2>
+<h2 class="w3-bar w3-border w3-center w3-theme">dodanie/edycja punktu wypożyczalni</h2>
 
 <!-- dodatkowe opcje i szukanie -->
 <div class="w3-bar w3-light-grey w3-border">
 
-    <a href="${pageContext.request.contextPath}/rentPoint//" class="w3-bar-item w3-button w3-green">anuluj</a>
+    <a href="${pageContext.request.contextPath}/rentPoint/" class="w3-bar-item w3-button w3-green">anuluj</a>
 
 </div>
 
@@ -32,7 +32,7 @@
         <th>address</th>
         <th>kod pocztowy</th>
         <th>miasto</th>
-
+        <th>opcje</th>
     </tr>
 
 

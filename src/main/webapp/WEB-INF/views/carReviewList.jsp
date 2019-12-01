@@ -31,15 +31,16 @@
         <th>samochód</th>
         <th>stan licznika</th>
         <th>data przeglądu</th>
+        <th>uwagi</th>
         <th>opcje</th>
-
     </tr>
+
     <c:forEach var="carReview" items="${carReviews}">
         <tr class="w3-center">
             <td>${carReview.car}</td>
             <td>${carReview.counterState}</td>
             <td>${carReview.reviewDate}</td>
-
+            <td>${carReview.notes}</td>
             <td><a href="${pageContext.request.contextPath}/carReview/edit/${carReview.id}" class="w3-button w3-theme w3-tiny">edytuj</a>
 
         </tr>

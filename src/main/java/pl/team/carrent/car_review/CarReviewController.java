@@ -58,14 +58,14 @@ public class CarReviewController {
     }
 
     @PostMapping("/save")
-    public String postCarReviewSave(@RequestParam int carId, @RequestParam(required = false) int id, @RequestParam int counterState, @RequestParam String reviewDate) {
+    public String postCarReviewSave(@RequestParam int carId, @RequestParam(required = false) int id, @RequestParam int counterState, @RequestParam String reviewDate, @RequestParam String notes) {
         if (id != 0) {
             CarReview carReview = carReviewService.getCarReviewById(id);
             carReview.setCounterState(counterState);
             carReview.setReviewDate(LocalDate.parse(reviewDate));
             carReviewService.addOrUpdateCarReview(carReview);
         } else {
-            carReviewService.addOrUpdateCarReview(new CarReview(carService.getCarById(carId), counterState, LocalDate.parse(reviewDate)));
+            carReviewService.addOrUpdateCarReview(new CarReview(carService.getCarById(carId), counterState, LocalDate.parse(reviewDate),notes));
         }
         return "redirect:/carReview/"+carId;
     }

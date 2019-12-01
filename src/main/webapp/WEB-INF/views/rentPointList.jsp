@@ -16,7 +16,7 @@
 
 
 <!-- tytuł -->
-<h2 class="w3-bar w3-border w3-center w3-theme">wykaz punktów wypożyczalni Rent Car</h2>
+<h2 class="w3-bar w3-border w3-center w3-theme">wykaz punktów wypożyczalni</h2>
 
 <!-- dodatkowe opcje i szukanie -->
 <div class="w3-bar w3-light-grey w3-border">

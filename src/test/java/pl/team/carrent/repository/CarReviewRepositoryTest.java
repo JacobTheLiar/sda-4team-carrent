@@ -49,7 +49,7 @@ public class CarReviewRepositoryTest {
         carModelRepository.save(myCarModel1);
         Car car1 = new Car(myCarModel1, localDate, "PO12346", "VIN0", "black",100.00);
         carRepository.save(car1);
-        CarReview carReview = new CarReview(car1, 30000, localDate);
+        CarReview carReview = new CarReview(car1, 30000, localDate,"test");
         carReviewRepository.save(carReview);
 
         //when
@@ -73,7 +73,7 @@ public class CarReviewRepositoryTest {
         carModelRepository.save(myCarModel1);
         Car car1 = new Car(myCarModel1, localDate, "PO1X345", "VIN10","black", 100.00);
         carRepository.save(car1);
-        CarReview carReview = new CarReview(car1, 30000, localDate);
+        CarReview carReview = new CarReview(car1, 30000, localDate,"test");
         carReviewRepository.save(carReview);
 
         //when
@@ -94,7 +94,7 @@ public class CarReviewRepositoryTest {
         carModelRepository.save(myCarModel1);
         Car car1 = new Car(myCarModel1, localDate, "PO12345", "VIN1","black", 100.00);
         carRepository.save(car1);
-        CarReview carReview = new CarReview(car1, 30000, localDateReview);
+        CarReview carReview = new CarReview(car1, 30000, localDateReview,"test");
         carReviewRepository.save(carReview);
 
         //when
@@ -114,7 +114,7 @@ public class CarReviewRepositoryTest {
         carModelRepository.save(myCarModel1);
         Car car1 = new Car(myCarModel1, localDate, "PO12345", "VIN1","black", 100.00);
         carRepository.save(car1);
-        CarReview carReview = new CarReview(car1, 30000, localDateReview);
+        CarReview carReview = new CarReview(car1, 30000, localDateReview,"test");
         carReviewRepository.save(carReview);
 
         //when
@@ -134,7 +134,7 @@ public class CarReviewRepositoryTest {
         carModelRepository.save(myCarModel1);
         Car car1 = new Car(myCarModel1, localDate, "PO12345", "VIN1","black", 100.00);
         carRepository.save(car1);
-        CarReview carReview = new CarReview(car1, 30000, localDateReview);
+        CarReview carReview = new CarReview(car1, 30000, localDateReview,"test");
         carReviewRepository.save(carReview);
 
         //when
