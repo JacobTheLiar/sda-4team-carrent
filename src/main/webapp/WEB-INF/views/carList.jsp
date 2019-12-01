@@ -47,6 +47,7 @@
         <th>typ</th>
         <th>kolor</th>
         <th>stawka za dzień</th>
+        <th>punkt początkowy</th>
         <th>czy aktywny</th>
         <th>opcje</th>
     </tr>
@@ -60,6 +61,7 @@
             <td>${car.carModel.type}</td>
             <td>${car.color}</td>
             <td>${car.pricePerDay}</td>
+            <td>${car.beginRentPoint}</td>
             <td>${car.active}</td>
 
             <td><a href="${pageContext.request.contextPath}/car/${car.id}" class="w3-button w3-theme w3-tiny">edytuj</a>

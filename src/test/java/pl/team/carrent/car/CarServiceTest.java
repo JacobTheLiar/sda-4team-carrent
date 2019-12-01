@@ -2,6 +2,7 @@ package pl.team.carrent.car;
 
 import org.junit.Test;
 import pl.team.carrent.car_model.CarModel;
+import pl.team.carrent.rent_point.RentPoint;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -27,9 +28,10 @@ public class CarServiceTest {
     private LocalDate localDate = LocalDate.of(1999, 9, 01);
     private CarModel myCarModel1 = new CarModel("Skoda", "Fabia", "A", "hatchback", 1999, 30000);
     private CarModel myCarModel2 = new CarModel("Renault", "Megane", "A", "hatchback", 1999, 30000);
-    private Car car1 = new Car(myCarModel1, localDate, "PO12345", "VIN1", "white", 100.00);
-    private Car car2 = new Car(myCarModel2, localDate, "PO12346", "VIN2", "black", 100.00);
-    private Car car3 = new Car(myCarModel2, localDate, "PO12347", "VIN3", "black", 100.00);
+    private RentPoint rentPoint1 = new RentPoint("Testowy","testowa 1","60-832","Luboń");
+    private Car car1 = new Car(myCarModel1, localDate, "PO12345", "VIN1", "white", 100.00,rentPoint1);
+    private Car car2 = new Car(myCarModel2, localDate, "PO12346", "VIN2", "black", 100.00, rentPoint1);
+    private Car car3 = new Car(myCarModel2, localDate, "PO12347", "VIN3", "black", 100.00,rentPoint1);
 
     private CarRepository getCarRepositoryMock() {
         car2.setActive(false);
