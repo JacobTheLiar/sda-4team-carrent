@@ -1,3 +1,6 @@
+INSERT INTO rent_point (id, name, address, post_code, city) values (nextval('car_rent_point_seq'), '4team Rent Point Poznań', 'Samochodowa 1','60-682', 'Poznań');
+INSERT INTO rent_point (id, name, address, post_code, city) values (nextval('car_rent_point_seq'), '4team Rent Point Warszawa', 'Poznańska 1','02-823', 'Warszawa');
+
 INSERT INTO car_Model (id, mark, model, segment, type, production_Year, review_Interval) VALUES (nextval('car_model_seq'), 'Opel', 'Corsa','B','hatchback','2001','30000');
 INSERT INTO car_Model (id, mark, model, segment, type, production_Year, review_Interval) VALUES (nextval('car_model_seq'), 'VW', 'Golf','C','hatchback','2011','30000');
 INSERT INTO car_Model (id, mark, model, segment, type, production_Year, review_Interval) VALUES (nextval('car_model_seq'), 'Opel', 'Astra','C','hatchback','2015','30000');
@@ -22,9 +25,6 @@ INSERT INTO invoice (id, number, value, invoice_date, payment_date, sell_date) v
 INSERT INTO invoice (id, number, value, invoice_date, payment_date, sell_date) values (nextval('seq_Invoice'), '2019/1', 34.56, '2019-01-01', '2019-02-01', '2019-01-01');
 INSERT INTO invoice (id, number, value, invoice_date, payment_date, sell_date) values (nextval('seq_Invoice'), '2019/2', 45.67, '2019-02-01', '2019-03-01', '2019-02-01');
 INSERT INTO invoice (id, number, value, invoice_date, payment_date, sell_date) values (nextval('seq_Invoice'), '2019/3', 56.78, '2019-04-01', '2019-05-01', '2019-04-01');
-
-INSERT INTO rent_point (id, name, address, post_code, city) values (nextval('car_rent_point_seq'), '4team Rent Point Poznań', 'Samochodowa 1','60-682', 'Poznań');
-INSERT INTO rent_point (id, name, address, post_code, city) values (nextval('car_rent_point_seq'), '4team Rent Point Warszawa', 'Poznańska 1','02-823', 'Warszawa');
 
 INSERT INTO role (id, authority) values (nextval('seq_Role'), 'ADMIN');
 INSERT INTO role (id, authority) values (nextval('seq_Role'), 'USER');
