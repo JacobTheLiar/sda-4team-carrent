@@ -31,7 +31,8 @@
         <th>samochód</th>
         <th>stan licznika</th>
         <th>data przeglądu</th>
-
+        <th>uwagi</th>
+        <th>opcje</th>
     </tr>
 
 
@@ -44,6 +45,7 @@
                        placeholder="wpisz stan licznika..."></td>
             <td><input type="date" name="reviewDate" value="${carReview.reviewDate}" max="${todayDate}"
                        placeholder="wpisz datę przeglądu..."></td>
+            <td><input type="text" name="notes" value="${carReview.notes}"></td>
             <td>
                 <input type="submit" value="zapisz" class="w4-button w3-theme"/>
             </td>

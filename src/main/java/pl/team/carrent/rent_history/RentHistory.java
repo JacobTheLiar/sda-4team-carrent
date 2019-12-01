@@ -1,5 +1,6 @@
 package pl.team.carrent.rent_history;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import pl.team.carrent.car.Car;
 import pl.team.carrent.client.Client;
 import pl.team.carrent.employee.Employee;
@@ -30,7 +31,9 @@ public class RentHistory {
     private Employee employeeStart;
     @ManyToOne(targetEntity = Employee.class)
     private Employee employeeEnd;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate rentTimeStart;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate rentTimeEnd;
     private int counterStateStart;
     private int counterStateEnd;

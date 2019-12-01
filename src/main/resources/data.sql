@@ -26,11 +26,11 @@ INSERT INTO invoice (id, number, value, invoice_date, payment_date, sell_date) v
 INSERT INTO rent_point (id, name, address, post_code, city) values (nextval('car_rent_point_seq'), '4team Rent Point Poznań', 'Samochodowa 1','60-682', 'Poznań');
 INSERT INTO rent_point (id, name, address, post_code, city) values (nextval('car_rent_point_seq'), '4team Rent Point Warszawa', 'Poznańska 1','02-823', 'Warszawa');
 
-INSERT INTO role (id, authority) values (nextval('seq_Role'), 'USER');
 INSERT INTO role (id, authority) values (nextval('seq_Role'), 'ADMIN');
+INSERT INTO role (id, authority) values (nextval('seq_Role'), 'USER');
 
-INSERT INTO employee (firstname, surname, rent_point_id, username, password, employment_date, release_date, role_id) values ('Jan', 'Pracownik', 1, 'user', '$2a$10$KvxPudrieuxpEgxw3e4yPOuYK59PgfQshx3RaVUTCpbKB82DC/0RC', '2018-09-01',null,1 );
-INSERT INTO employee (firstname, surname, rent_point_id, username, password, employment_date, release_date, role_id) values ('The', 'Administrator', 1, 'admin', '$2a$10$IPJizmA0rxJBq9incE/PWub6B2nIDGm3z/2cIz6hAs/hgvKlQ5F9q', '2018-09-01',null,2 );
+INSERT INTO employee (firstname, surname, rent_point_id, username, password, employment_date, release_date, role_id) values ('Jan', 'Pracownik', 1, 'user', '$2a$10$KvxPudrieuxpEgxw3e4yPOuYK59PgfQshx3RaVUTCpbKB82DC/0RC', '2018-09-01',null,2 );
+INSERT INTO employee (firstname, surname, rent_point_id, username, password, employment_date, release_date, role_id) values ('The', 'Administrator', 2, 'admin', '$2a$10$IPJizmA0rxJBq9incE/PWub6B2nIDGm3z/2cIz6hAs/hgvKlQ5F9q', '2018-09-01',null,1 );
 
 INSERT INTO promotion (id, name, discount_percentage, promo_start, promo_end) values (nextval('promo_Seq'), 'Opel 30%', 30, '2019-10-01', '2019-12-05');
 INSERT INTO promotion (id, name, discount_percentage, promo_start, promo_end) values (nextval('promo_Seq'), 'Segment B 20%', 20, '2019-10-15', '2019-12-15');
@@ -46,11 +46,13 @@ INSERT INTO promotion_cars(promotion_id, cars_id) values (3, 2);
 INSERT INTO promotion_cars(promotion_id, cars_id) values (3, 3);
 INSERT INTO promotion_cars(promotion_id, cars_id) values (3, 4);
 
+INSERT INTO rent (id, car_id, client_id, promotion_id, rent_point_start_id, rent_time_start, employee_start_username,  counter_state_start, notes)
+values (nextval('car_rent_seq'), 3, 1, 1, 1, '2019-08-01','user', 10020, 'wgniecenie drzwi kierowcy oraz zbita lampa');
 
 INSERT INTO rent_history (id, car_id, client_id, promotion_id, rent_point_start_id, rent_point_end_id, employee_start_username, employee_end_username, rent_time_start, rent_time_end, counter_state_start, counter_state_end, notes_start , notes_end      , invoice_id)
-values                   (1 , 1     , 1        , 1           , null               , null             , null                   , null                 , '2018-08-01'   , '2018-08-01' , 0                  , 100              , 'drive test','drive test end', 1);
+values                   (1 , 1     , 1        , 1           , 2               , 1             , 'user'                   , 'user'                 , '2018-08-01'   , '2018-08-01' , 100                  , 1000              , 'drive test','drive test end', 1);
 INSERT INTO rent_history (id, car_id, client_id, promotion_id, rent_point_start_id, rent_point_end_id, employee_start_username, employee_end_username, rent_time_start, rent_time_end, counter_state_start, counter_state_end, notes_start , notes_end      , invoice_id)
-values                   (2 , 2     , 1        , null        , null               , null             , null                   , null                 , '2018-08-01'   , '2018-08-01' , 0                  , 100              , 'drive test','drive test end', 1);
+values                   (2 , 2     , 1        , null        , 1               , 1             , 'admin'                   , 'user'                 , '2018-08-01'   , '2018-08-01' , 10000                  , 10010              , 'drive test','drive test end', 1);
 INSERT INTO rent_history (id, car_id, client_id, promotion_id, rent_point_start_id, rent_point_end_id, employee_start_username, employee_end_username, rent_time_start, rent_time_end, counter_state_start, counter_state_end, notes_start , notes_end      , invoice_id)
 values                   (3 , 3     , 2        , null        , null               , null             , null                   , null                 , '2018-08-01'   , '2018-08-01' , 0                  , 100              , 'drive test','drive test end', 2);
 INSERT INTO rent_history (id, car_id, client_id, promotion_id, rent_point_start_id, rent_point_end_id, employee_start_username, employee_end_username, rent_time_start, rent_time_end, counter_state_start, counter_state_end, notes_start , notes_end      , invoice_id)

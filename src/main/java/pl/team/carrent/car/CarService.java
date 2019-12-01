@@ -1,10 +1,12 @@
 package pl.team.carrent.car;
 
 import org.springframework.stereotype.Service;
+import pl.team.carrent.rent_point.RentPoint;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * @author: Maciej Kryger  [https://github.com/maciejkryger]
@@ -93,5 +95,9 @@ public class CarService {
 
     public Car getCarById(int id) {
         return carRepository.findById(id).orElseThrow(()->new CarNotExistException("carId "+id));
+    }
+
+    public Set<Car> getCarsByActualRentPoint(RentPoint rentPoint){
+        return carRepository.findByActualRentPoint(rentPoint.getId());
     }
 }

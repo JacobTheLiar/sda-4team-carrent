@@ -16,7 +16,7 @@
 
 
 <!-- tytuł -->
-<h2 class="w3-bar w3-border w3-center w3-theme">zarządzanie samochodami</h2>
+<h2 class="w3-bar w3-border w3-center w3-theme">dodanie/edycja samochodu</h2>
 
 <!-- dodatkowe opcje i szukanie -->
 <div class="w3-bar w3-light-grey w3-border">
@@ -34,6 +34,7 @@
         <th>VIN</th>
         <th>kolor</th>
         <th>stawka za dzień</th>
+        <th>opcje</th>
     </tr>
     <c:if test="${!update}">
         <tr>

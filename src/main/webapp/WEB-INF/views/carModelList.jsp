@@ -21,14 +21,14 @@
 <!-- dodatkowe opcje i szukanie -->
 <div class="w3-bar w3-light-grey w3-border">
 
-    <a href="${pageContext.request.contextPath}/car/model//add" class="w3-bar-item w3-button w3-green">dodaj</a>
+    <a href="${pageContext.request.contextPath}/car/model/add" class="w3-bar-item w3-button w3-green">dodaj</a>
     <c:if test="${isFiltered}">
-        <a href="${pageContext.request.contextPath}/car/model/" class="w3-bar-item w3-button w3-theme-l2  w3-right">usuń filtr</a>
+        <a href="${pageContext.request.contextPath}/car/model/" class="w3-bar-item w3-button w3-theme-l2 w3-right w3-margin-left">usuń filtr</a>
     </c:if>
     <form>
-        <input type="submit" class="w3-bar-item w3-button w3-theme w3-right" value="szukaj">
-        <input type="text" class="w3-bar-item w3-input w3-right" placeholder="szukaj..." name="searchWhat" value="${param.searchWhat}">
-        <select class="w3-bar-item w3-input w3-right" name="searchBy">
+        <input type="submit" class="w3-bar-item w3-button w3-theme w3-right w3-margin-left" value="szukaj">
+        <input type="text" class="w3-bar-item w3-input w3-border w3-right w3-margin-left" placeholder="szukaj..." name="searchWhat" value="${param.searchWhat}">
+        <select class="w3-bar-item w3-select w3-border w3-right" name="searchBy">
             <c:forEach var="option" items="${searchByOptions}">
                 <option value="${option.name()}" ${option.name()==param.searchBy ? ' selected' : ''}>${option.description}</option>
             </c:forEach>

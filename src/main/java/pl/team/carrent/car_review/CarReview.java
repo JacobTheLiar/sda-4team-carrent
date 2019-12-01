@@ -21,7 +21,7 @@ public class CarReview {
 
     @Id
     @GeneratedValue(generator = "carReviewSeq")
-    @SequenceGenerator(name = "carReviewSeq", sequenceName = "car_review_seq",allocationSize = 1)
+    @SequenceGenerator(name = "carReviewSeq", sequenceName = "car_review_seq", allocationSize = 1)
     private int id;
 
     @ManyToOne(targetEntity = Car.class)
@@ -29,14 +29,16 @@ public class CarReview {
 
     private int counterState;
     private LocalDate reviewDate;
+    private String notes;
 
     public CarReview() {
     }
 
-    public CarReview(Car car, int counterState, LocalDate reviewDate) {
+    public CarReview(Car car, int counterState, LocalDate reviewDate, String notes) {
         this.car = car;
         this.counterState = counterState;
         this.reviewDate = reviewDate;
+        this.notes = notes;
     }
 
     public int getId() {
@@ -69,6 +71,14 @@ public class CarReview {
 
     public void setReviewDate(LocalDate reviewDate) {
         this.reviewDate = reviewDate;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     @Override
