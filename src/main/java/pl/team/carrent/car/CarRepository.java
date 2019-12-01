@@ -1,10 +1,11 @@
 package pl.team.carrent.car;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.team.carrent.car.Car;
-
+import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+
 
 /**
  * @author: Maciej Kryger  [https://github.com/maciejkryger]
@@ -44,4 +45,7 @@ public interface CarRepository extends JpaRepository<Car, Integer> {
     List<Car> findByCarModelSegmentContainsIgnoreCaseAndActiveIs(String segment, boolean active);
 
     List<Car> findByCarModel_ModelContainsIgnoreCase(String model);
+
+    @Query(value = "select c.* from car c join rent_history rh on rh.car_id=c.id where rent_point_end_id=:rentPointId", nativeQuery = true)
+    Set<Car> findByActualRentPoint(int rentPointId);
 }

@@ -1,10 +1,13 @@
 package pl.team.carrent.rent;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import pl.team.carrent.invoice.Invoice;
 import pl.team.carrent.rent.Rent;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author: Maciej Kryger  [https://github.com/maciejkryger]
@@ -44,5 +47,6 @@ public interface RentRepository extends JpaRepository<Rent, Integer> {
     List<Rent> findByEmployeeStart_UsernameIgnoreCase(String username);
 
     List<Rent> findByNotesContainsIgnoreCase(String note);
+
 
 }

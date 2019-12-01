@@ -74,4 +74,8 @@ public class RentService {
     public Rent getRentByPlateNr(String plateNr) {
         return rentRepository.findByCar_PlateNr(plateNr);
     }
+
+    public void deleteRent(Rent rent) {
+        rentRepository.delete(rent);
+    }
 }
