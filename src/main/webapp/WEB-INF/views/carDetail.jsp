@@ -52,7 +52,6 @@
                 <td><input type="date" name="registrationDate" placeholder="wpisz data rejestracji"></td>
                 <td><input type="text" name="vin" placeholder="wpisz VIN"></td>
                 <td><input type="text" name="color" placeholder="wpisz kolor"></td>
-                <td><input type="number" name="pricePerDay" placeholder="wpisz stawkę za dzień"></td>
                 <td>
                     <select class="w3-bar-item w3-input w3-right" name="beginRentPoint">
                         <option selected="selected">przypisz punkt</option>
@@ -61,6 +60,7 @@
                         </c:forEach>
                     </select>
                 </td>
+                <td><input type="number" name="pricePerDay" placeholder="wpisz stawkę za dzień"></td>
                 <td>
                     <input type="submit" value="zapisz" class="w4-button w3-theme"/>
                 </td>
@@ -83,7 +83,6 @@
                 <td><input type="date" name="registrationDate" value="${car.registrationDate}"></td>
                 <td><input type="text" name="vin" value="${car.vin}"></td>
                 <td><input type="text" name="color" value="${car.color}"></td>
-                <td><input type="number" name="pricePerDay" value="${car.pricePerDay}"></td>
                 <td>
                     <select class="w3-bar-item w3-input w3-right" name="beginRentPoint">
                         <option selected="selected" value="${car.beginRentPoint.id}">${car.beginRentPoint}</option>
@@ -92,6 +91,7 @@
                         </c:forEach>
                     </select>
                 </td>
+                <td><input type="number" name="pricePerDay" value="${car.pricePerDay}"></td>
                 <td>
                     <input type="submit" value="zapisz" class="w4-button w3-theme"/>
                 </td>

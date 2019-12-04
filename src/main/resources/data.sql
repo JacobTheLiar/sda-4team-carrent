@@ -7,12 +7,12 @@ INSERT INTO car_Model (id, mark, model, segment, type, production_Year, review_I
 INSERT INTO car_Model (id, mark, model, segment, type, production_Year, review_Interval) VALUES (nextval('car_model_seq'), 'Renault', 'Megane','C','hatchback','2017','40000');
 INSERT INTO car_Model (id, mark, model, segment, type, production_Year, review_Interval) VALUES (nextval('car_model_seq'), 'Renault', 'Clio','B','hatchback','2019','40000');
 
-INSERT INTO car (id, car_model_id, registration_Date, plate_Nr, vin, color, price_Per_Day, rent_point_id, active) VALUES (nextval('car_seq'), '5', '2019-09-27', 'PO00001','VIN1','black','100','2','true');
-INSERT INTO car (id, car_model_id, registration_Date, plate_Nr, vin, color, price_Per_Day, rent_point_id, active) VALUES (nextval('car_seq'), '4', '2017-10-27', 'PO00002','VIN2','black','100','2','true');
-INSERT INTO car (id, car_model_id, registration_Date, plate_Nr, vin, color, price_Per_Day, rent_point_id, active) VALUES (nextval('car_seq'), '3', '2015-07-27', 'PO00003','VIN3','black','100','2','true');
-INSERT INTO car (id, car_model_id, registration_Date, plate_Nr, vin, color, price_Per_Day, rent_point_id, active) VALUES (nextval('car_seq'), '2', '2011-05-27', 'PO00004','VIN4','black','100','2','true');
-INSERT INTO car (id, car_model_id, registration_Date, plate_Nr, vin, color, price_Per_Day, rent_point_id, active) VALUES (nextval('car_seq'), '1', '2001-01-27', 'PO00005','WIN5','black','100','2','true');
-INSERT INTO car (id, car_model_id, registration_Date, plate_Nr, vin, color, price_Per_Day, rent_point_id, active) VALUES (nextval('car_seq'), '1', '2001-01-27', 'PO00006','WIN5','black','100','2','false');
+INSERT INTO car (id, car_model_id, registration_Date, plate_Nr, vin, color, price_Per_Day, begin_rent_point_id, active) VALUES (nextval('car_seq'), '5', '2019-09-27', 'PO00001','VIN1','black','100','2','true');
+INSERT INTO car (id, car_model_id, registration_Date, plate_Nr, vin, color, price_Per_Day, begin_rent_point_id, active) VALUES (nextval('car_seq'), '4', '2017-10-27', 'PO00002','VIN2','black','100','2','true');
+INSERT INTO car (id, car_model_id, registration_Date, plate_Nr, vin, color, price_Per_Day, begin_rent_point_id, active) VALUES (nextval('car_seq'), '3', '2015-07-27', 'PO00003','VIN3','black','100','2','true');
+INSERT INTO car (id, car_model_id, registration_Date, plate_Nr, vin, color, price_Per_Day, begin_rent_point_id, active) VALUES (nextval('car_seq'), '2', '2011-05-27', 'PO00004','VIN4','black','100','2','true');
+INSERT INTO car (id, car_model_id, registration_Date, plate_Nr, vin, color, price_Per_Day, begin_rent_point_id, active) VALUES (nextval('car_seq'), '1', '2001-01-27', 'PO00005','VIN5','black','100','2','true');
+INSERT INTO car (id, car_model_id, registration_Date, plate_Nr, vin, color, price_Per_Day, begin_rent_point_id, active) VALUES (nextval('car_seq'), '1', '2001-01-27', 'PO00006','VIN6','black','100','2','false');
 
 
 INSERT INTO client (id, name, address, post_code, city, tax_number, email, telephone_nr) values (nextval('seq_Client'), 'Skipper', '64th Street and Fifth Avenue', '10021', 'New York', '0000000000', 'cpzinfo@wcs.org', '(212) 439-6500');
@@ -50,13 +50,13 @@ INSERT INTO rent (id, car_id, client_id, promotion_id, rent_point_start_id, rent
 values (nextval('car_rent_seq'), 3, 1, 1, 1, '2019-08-01','user', 10020, 'wgniecenie drzwi kierowcy oraz zbita lampa');
 
 INSERT INTO rent_history (id, car_id, client_id, promotion_id, rent_point_start_id, rent_point_end_id, employee_start_username, employee_end_username, rent_time_start, rent_time_end, counter_state_start, counter_state_end, notes_start , notes_end      , invoice_id)
-values                   (1 , 1     , 1        , 1           , 2               , 1             , 'user'                   , 'user'                 , '2018-08-01'   , '2018-08-01' , 100                  , 1000              , 'drive test','drive test end', 1);
+values                   (1 , 1     , 1        , 1           , null               , 1             , 'user'                   , 'user'                 , '2018-08-01'   , '2018-08-01' , 100                  , 1000              , 'drive test','drive test end', 1);
 INSERT INTO rent_history (id, car_id, client_id, promotion_id, rent_point_start_id, rent_point_end_id, employee_start_username, employee_end_username, rent_time_start, rent_time_end, counter_state_start, counter_state_end, notes_start , notes_end      , invoice_id)
-values                   (2 , 2     , 1        , null        , 1               , 1             , 'admin'                   , 'user'                 , '2018-08-01'   , '2018-08-01' , 10000                  , 10010              , 'drive test','drive test end', 1);
+values                   (2 , 2     , 1        , null        , null          , 1           , 'admin'                   , 'user'                 , '2018-08-01'   , '2018-08-01' , 10000                  , 10010              , 'drive test','drive test end', 1);
 INSERT INTO rent_history (id, car_id, client_id, promotion_id, rent_point_start_id, rent_point_end_id, employee_start_username, employee_end_username, rent_time_start, rent_time_end, counter_state_start, counter_state_end, notes_start , notes_end      , invoice_id)
-values                   (3 , 3     , 2        , null        , null               , null             , null                   , null                 , '2018-08-01'   , '2018-08-01' , 0                  , 100              , 'drive test','drive test end', 2);
+values                   (3 , 3     , 2        , null        , null               , 1            , null                   , null                 , '2018-08-01'   , '2018-08-01' , 0                  , 100              , 'drive test','drive test end', 2);
 INSERT INTO rent_history (id, car_id, client_id, promotion_id, rent_point_start_id, rent_point_end_id, employee_start_username, employee_end_username, rent_time_start, rent_time_end, counter_state_start, counter_state_end, notes_start , notes_end      , invoice_id)
-values                   (4 , 4     , 3        , null        , null               , null             , null                   , null                 , '2018-08-01'   , '2018-08-01' , 0                  , 100              , 'drive test','drive test end', null);
+values                   (4 , 4     , 3        , null        , null               , 1             , null                   , null                 , '2018-08-01'   , '2018-08-01' , 0                  , 100              , 'drive test','drive test end', null);
 
 
 -- invoice list view @JacobTheLiar

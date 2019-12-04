@@ -46,6 +46,10 @@ public interface CarRepository extends JpaRepository<Car, Integer> {
 
     List<Car> findByCarModel_ModelContainsIgnoreCase(String model);
 
-    @Query(value = "select c.* from car c join rent_history rh on rh.car_id=c.id where rent_point_end_id=:rentPointId", nativeQuery = true)
+    @Query(value = "select c.* \n" +
+            "from car c \n" +
+            "left join rent_history rh on rh.car_id=c.id \n" +
+            "left join rent r on r.car_id=c.id\n" +
+            "where (rh.rent_point_end_id=:rentPointId or (c.begin_rent_point_id =:rentPointId and rh.car_id<>c.id)) and c.active=true and r.car_id is null;", nativeQuery = true)
     Set<Car> findByActualRentPoint(int rentPointId);
 }

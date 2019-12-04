@@ -23,11 +23,13 @@
 
     <a href="${pageContext.request.contextPath}/car/add" class="w3-bar-item w3-button w3-green">dodaj</a>
     <c:if test="${isFiltered}">
-        <a href="${pageContext.request.contextPath}/car/" class="w3-bar-item w3-button w3-theme-l2 w3-right w3-margin-left">usuń filtr</a>
+        <a href="${pageContext.request.contextPath}/car/"
+           class="w3-bar-item w3-button w3-theme-l2 w3-right w3-margin-left">usuń filtr</a>
     </c:if>
     <form>
         <input type="submit" class="3-bar-item w3-button w3-theme w3-right w3-margin-left" value="szukaj">
-        <input type="text" class="w3-bar-item w3-input w3-border w3-right w3-margin-left" placeholder="szukaj..." name="searchWhat" value="${param.searchWhat}">
+        <input type="text" class="w3-bar-item w3-input w3-border w3-right w3-margin-left" placeholder="szukaj..."
+               name="searchWhat" value="${param.searchWhat}">
         <select class="w3-bar-item w3-select w3-border w3-right" name="searchBy">
             <c:forEach var="option" items="${searchByOptions}">
                 <option value="${option.name()}" ${option.name()==param.searchBy ? ' selected' : ''}>${option.description}</option>
@@ -46,8 +48,8 @@
         <th>segment</th>
         <th>typ</th>
         <th>kolor</th>
-        <th>stawka za dzień</th>
         <th>punkt początkowy</th>
+        <th>stawka za dzień</th>
         <th>czy aktywny</th>
         <th>opcje</th>
     </tr>
@@ -60,13 +62,15 @@
             <td>${car.carModel.segment}</td>
             <td>${car.carModel.type}</td>
             <td>${car.color}</td>
-            <td>${car.pricePerDay}</td>
             <td>${car.beginRentPoint}</td>
+            <td>${car.pricePerDay}</td>
             <td>${car.active}</td>
 
             <td><a href="${pageContext.request.contextPath}/car/${car.id}" class="w3-button w3-theme w3-tiny">edytuj</a>
-                <a href="${pageContext.request.contextPath}/carReview/add/${car.id}" class="w3-button w3-theme w3-tiny">dodaj przegląd</a>
-                <a href="${pageContext.request.contextPath}/carReview/${car.id}" class="w3-button w3-theme w3-tiny">Lista przeglądów</a>
+                <a href="${pageContext.request.contextPath}/carReview/add/${car.id}" class="w3-button w3-theme w3-tiny">dodaj
+                    przegląd</a>
+                <a href="${pageContext.request.contextPath}/carReview/${car.id}" class="w3-button w3-theme w3-tiny">Lista
+                    przeglądów</a>
             </td>
         </tr>
     </c:forEach>

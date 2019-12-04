@@ -36,20 +36,20 @@ public class Car {
     private double pricePerDay;
 
     @ManyToOne(targetEntity = RentPoint.class)
-    private RentPoint rentPoint;
+    private RentPoint beginRentPoint;
     private boolean active;
 
     public Car() {
     }
 
-    public Car(CarModel carModel, LocalDate registrationDate, String plateNr, String vin, String color, double pricePerDay, RentPoint rentPoint) {
+    public Car(CarModel carModel, LocalDate registrationDate, String plateNr, String vin, String color, double pricePerDay, RentPoint beginRentPoint) {
         this.carModel = carModel;
         this.registrationDate = registrationDate;
         this.plateNr = plateNr;
         this.vin = vin;
         this.color = color;
         this.pricePerDay = pricePerDay;
-        this.rentPoint=rentPoint;
+        this.beginRentPoint =beginRentPoint;
         this.active = true;
     }
 
@@ -117,12 +117,12 @@ public class Car {
         this.active = active;
     }
 
-    public RentPoint getRentPoint(){
-        return rentPoint;
+    public RentPoint getBeginRentPoint(){
+        return beginRentPoint;
     }
 
-    public void setRentPoint(RentPoint beginRentPoint) {
-        this.rentPoint = rentPoint;
+    public void setBeginRentPoint(RentPoint beginRentPoint) {
+        this.beginRentPoint = beginRentPoint;
     }
 
     @Override
