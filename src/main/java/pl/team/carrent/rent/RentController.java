@@ -62,7 +62,8 @@ public class RentController {
     }
 
     @GetMapping("/borrow")
-    public ModelAndView getRentBorrow(@PathVariable(required = false) Integer id, @SessionAttribute Employee employee) {
+    public ModelAndView getRentBorrow(@PathVariable(required = false) Integer id, @SessionAttribute Employee employee,
+                                      @PathVariable(required = false) Integer clientId, @PathVariable(required = false) Integer carId) {
         Rent rent = new Rent();
         rent.setRentTimeStart(LocalDate.now());
         username = employee.getUsername();
@@ -71,17 +72,21 @@ public class RentController {
         }
         ModelAndView modelAndView = new ModelAndView("rentDetail");
         modelAndView.addObject("todayDate", LocalDate.now());
-        modelAndView.addObject("maxDate",LocalDate.now().plusDays(5));
+        modelAndView.addObject("maxDate", LocalDate.now().plusDays(5));
         modelAndView.addObject("rent", rent);
         modelAndView.addObject("rentPoint", employeeService.getEmployeeByUsername(username).getRentPoint());
         modelAndView.addObject("cars", carService.getCarsByActualRentPoint(employeeService.getEmployeeByUsername(username).getRentPoint()));
         modelAndView.addObject("clients", clientService.getAllClients());
-        modelAndView.addObject("promotions", promotionService.getAllPromotions());
+        if (carId == null && clientId == null) {
+            modelAndView.addObject("promotions", promotionService.getAllPromotions());
+        } else {
+            modelAndView.addObject("promotions", promotionService.getAllMatchedPromotions(carId, clientId));
+        }
         return modelAndView;
     }
 
     @GetMapping("/{id}")
-    public ModelAndView getRentEdit(@PathVariable Integer id,@SessionAttribute Employee employee) {
+    public ModelAndView getRentEdit(@PathVariable Integer id, @SessionAttribute Employee employee) {
         username = employee.getUsername();
         ModelAndView modelAndView = new ModelAndView("rentDetail");
         modelAndView.addObject("todayDate", LocalDate.now());
@@ -108,7 +113,7 @@ public class RentController {
     }
 
     @GetMapping("/return/{id}")
-    public ModelAndView getRentReturnById(@PathVariable(required = false) Integer id,@SessionAttribute Employee employee) {
+    public ModelAndView getRentReturnById(@PathVariable(required = false) Integer id, @SessionAttribute Employee employee) {
         ModelAndView modelAndView = new ModelAndView("rentReturnDetail");
         RentHistory rentHistory = new RentHistory();
         rentHistory.setRentTimeEnd(LocalDate.now());
@@ -119,7 +124,7 @@ public class RentController {
         }
         modelAndView.addObject("rentHistory", rentHistory);
         modelAndView.addObject("todayDate", LocalDate.now());
-        modelAndView.addObject("minCounter",rentService.getRentById(id).getCounterStateStart());
+        modelAndView.addObject("minCounter", rentService.getRentById(id).getCounterStateStart());
         modelAndView.addObject("rentPoint", employeeService.getEmployeeByUsername(username).getRentPoint());
         return modelAndView;
     }
@@ -141,7 +146,7 @@ public class RentController {
 
     @PostMapping("/return/{id}")
     public String postRentReturnProcedure(@PathVariable int id, @ModelAttribute Rent rent, @ModelAttribute RentHistory rentHistory,
-                                          @RequestParam RentPoint rentPointEnd,  @SessionAttribute Employee employee) {
+                                          @RequestParam RentPoint rentPointEnd, @SessionAttribute Employee employee) {
         rentHistory.setId(id);
         rentHistory.setCar(rent.getCar());
         rentHistory.setClient(rent.getClient());
