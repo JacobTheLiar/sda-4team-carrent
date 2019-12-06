@@ -23,9 +23,10 @@
 
     <!-- dane -->
     <input type="hidden" name="id" value="${rent.id}">
+    <%--    <form id="getRentForm">--%>
     <p>
         <label><b>wypożyczany samochód</b></label>
-        <select class="w3-input w3-border" name="car" form="rentForm">
+        <select class="w3-input w3-border" name="car" form="rentForm" form="getRentForm">
             <option selected="selected" placeholder="wybierz samochód" value="${rent.car.id}">${rent.car}</option>
             <c:forEach var="car" items="${cars}">
                 <option value="${car.id}">${car}</option>
@@ -34,7 +35,7 @@
     </p>
     <p>
         <label><b>komu jest wypożyczany</b></label>
-        <select name="client" class="w3-input w3-border" form="rentForm">
+        <select name="client" class="w3-input w3-border" form="rentForm" form="getRentForm">
             <option selected="selected" placeholder="wybierz klienta"
                     value="${rent.client.id}">${rent.client.name}</option>
             <c:forEach var="client" items="${clients}">
@@ -42,6 +43,10 @@
             </c:forEach>
         </select>
     </p>
+
+    <%--        <input type="submit" class="w3-button w3-red w3-right w3-large" value="filtruj promocje">--%>
+    <%--    </form>--%>
+
     <p>
         <label><b>promocja</b></label>
         <select class="w3-input w3-border" name="promotion" form="rentForm">
@@ -55,12 +60,12 @@
     <p>
         <label><b>punkt wypożyczenia</b></label>
         <input type="hidden" name="rentPointStart" value="${rentPoint.id}">
-        <input type="text" name="rentPointStart"  class="w3-input w3-border"
+        <input type="text" name="rentPointStart" class="w3-input w3-border"
                value="${rentPoint.name}" readonly form="rentForm">
     </p>
     <p>
         <label><b>identyfikator pracownika</b></label>
-        <input type="text" name="employeeStart"  class="w3-input w3-border"
+        <input type="text" name="employeeStart" class="w3-input w3-border"
                value="${sessionScope.employee.username}" readonly form="rentForm">
     </p>
     <p>
