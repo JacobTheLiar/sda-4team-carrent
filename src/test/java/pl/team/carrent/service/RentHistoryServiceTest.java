@@ -40,7 +40,8 @@ public class RentHistoryServiceTest {
 
     private CarModel     carModel      = new CarModel("Skoda", "Fabia", "A", "Combi", 1999, 30000);
     private LocalDate    localDate     = LocalDate.of(1999, 9, 1);
-    private Car          car           = new Car(carModel, localDate, "PO12345", "VIN1", "brown", 100.00);
+    private RentPoint rentPoint= new RentPoint();
+    private Car          car           = new Car(carModel, localDate, "PO12345", "VIN1", "brown", 100.00,rentPoint);
     private Client       client        = new Client("King Julien XIII", "64th Street and Sixth Avenue", "10021", "New York", "0000000000", "cpzinfo@wcs.org", "(212) 439-6550");
     private LocalDate    rentTimeStart = LocalDate.of(2017, 5, 4);
     private LocalDate    rentTimeEnd   = LocalDate.of(2017, 8, 13);

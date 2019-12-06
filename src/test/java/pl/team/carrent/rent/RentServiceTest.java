@@ -28,12 +28,13 @@ import static pl.team.carrent.rent.SearchRentOption.*;
 public class RentServiceTest {
 
     Promotion prom1         = new Promotion();
+    RentPoint rentPoint     = new RentPoint();
     CarModel  opelCorsa2001 = new CarModel("Opel", "Corsa", "B", "hatchback", 2001, 30000);
     CarModel  operAstra2019 = new CarModel("Opel", "Astra", "C", "hatchback", 2019, 30000);
     Car       car1          = new Car(opelCorsa2001
-            , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500);
+            , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500,rentPoint);
     Car       car2          = new Car(operAstra2019
-            , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red", 500);
+            , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red", 500,rentPoint);
     Client    client1       = new Client("KRZAK COMPANY", "testowa 1", "02-823", "Warszawa", "777-777-77-77", "test@test.pl", "61 6666666");
     RentPoint rentPoint1    = new RentPoint();
     Employee  employee1     = new Employee();
