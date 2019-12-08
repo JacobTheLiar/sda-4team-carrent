@@ -1,12 +1,17 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--Expression language jest włączony--%>
+<%@ page isELIgnored="false" %>
+<%--JSTL jest włączony--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-<!-- source A4 page css https://codepen.io/rafaelcastrocouto/pen/LFAes -->
 
+<!-- source A4 page css https://codepen.io/rafaelcastrocouto/pen/LFAes -->
 <head>
     <title>podgląd faktury</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="invoice.css">
+    <link rel="stylesheet" href="../invoice.css">
 </head>
 
 <body>

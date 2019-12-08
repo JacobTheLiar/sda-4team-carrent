@@ -46,7 +46,7 @@ public class InvoiceController{
         allClientInvoices.addObject("clientId", clientId);
         return allClientInvoices;
     }
-    @GetMapping("available/{clientId}")
+    @GetMapping("/available/{clientId}")
     public ModelAndView getAllClientAvailableInvoices(@PathVariable Integer clientId){
         ModelAndView allClientInvoices = new ModelAndView("availableInvoiceList");
         allClientInvoices.addObject("available", availableInvoiceService.getAllClientInvoices(clientId));
@@ -55,4 +55,9 @@ public class InvoiceController{
     }
     
     
+    @GetMapping("/{invoiceId}")
+    public ModelAndView getInvoice(@PathVariable Integer invoiceId){
+        ModelAndView invoice = new ModelAndView("invoice");
+        return invoice;
+    }
 }
