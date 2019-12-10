@@ -40,13 +40,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .authorizeRequests()
                 .antMatchers("/login")
                 .permitAll()
-                .antMatchers("/favicon.ico")
-                .permitAll()
+//                .antMatchers("/favicon.ico")
+//                .permitAll()
                 .antMatchers("/h2-console/**")
                 .permitAll()
                 .antMatchers("/")
-                .hasAnyAuthority("ADMIN", "SUPERUSER", "USER")
-                .antMatchers("/css/**")
                 .hasAnyAuthority("ADMIN", "SUPERUSER", "USER")
                 .antMatchers("/client")
                 .hasAnyAuthority("ADMIN", "SUPERUSER", "USER")
@@ -96,7 +94,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     
     @Override
     public void configure(WebSecurity web){
-        web.ignoring().antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
+        web.ignoring().antMatchers("/resources/**", "/static/**", "/static/css/**", "/js/**", "/images/**");
     }
     
 
