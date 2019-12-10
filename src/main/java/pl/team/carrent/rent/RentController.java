@@ -3,7 +3,9 @@ package pl.team.carrent.rent;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import pl.team.carrent.car.Car;
 import pl.team.carrent.car.CarService;
+import pl.team.carrent.client.Client;
 import pl.team.carrent.employee.Employee;
 import pl.team.carrent.rent_history.RentHistory;
 import pl.team.carrent.rent_history.RentHistoryService;
@@ -61,9 +63,18 @@ public class RentController {
         return modelAndView;
     }
 
+    @GetMapping("/borrow/promo")
+    public ModelAndView getRentPromoBorrow(@SessionAttribute Employee employee) {
+        username = employee.getUsername();
+        ModelAndView modelAndView = new ModelAndView("rentDetailFirstStep");
+        modelAndView.addObject("cars", carService.getCarsByActualRentPoint(employeeService.getEmployeeByUsername(username).getRentPoint()));
+        modelAndView.addObject("clients", clientService.getAllClients());
+        return modelAndView;
+    }
+
     @GetMapping("/borrow")
     public ModelAndView getRentBorrow(@PathVariable(required = false) Integer id, @SessionAttribute Employee employee,
-                                      @PathVariable(required = false) Integer clientId, @PathVariable(required = false) Integer carId) {
+                                      @ModelAttribute Client client, @ModelAttribute Car car) {
         Rent rent = new Rent();
         rent.setRentTimeStart(LocalDate.now());
         username = employee.getUsername();
@@ -75,13 +86,9 @@ public class RentController {
         modelAndView.addObject("maxDate", LocalDate.now().plusDays(5));
         modelAndView.addObject("rent", rent);
         modelAndView.addObject("rentPoint", employeeService.getEmployeeByUsername(username).getRentPoint());
-        modelAndView.addObject("cars", carService.getCarsByActualRentPoint(employeeService.getEmployeeByUsername(username).getRentPoint()));
-        modelAndView.addObject("clients", clientService.getAllClients());
-        if (carId == null && clientId == null) {
-            modelAndView.addObject("promotions", promotionService.getAllPromotions());
-        } else {
-            modelAndView.addObject("promotions", promotionService.getAllMatchedPromotions(carId, clientId));
-        }
+        modelAndView.addObject("car", car);
+        modelAndView.addObject("client", client);
+        modelAndView.addObject("promotions", promotionService.getAllMatchedPromotions(car.getId(), client.getId()));
         return modelAndView;
     }
 
@@ -103,7 +110,7 @@ public class RentController {
         if (id != null) {
             rent.setId(id);
         }
-        rentService.addOrUpdateRent(rent);
+                rentService.addOrUpdateRent(rent);
         return "redirect:/rent";
     }
 

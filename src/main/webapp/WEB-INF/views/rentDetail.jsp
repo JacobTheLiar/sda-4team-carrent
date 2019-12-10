@@ -26,32 +26,22 @@
     <%--    <form id="getRentForm">--%>
     <p>
         <label><b>wypożyczany samochód</b></label>
-        <select class="w3-input w3-border" name="car" form="rentForm" form="getRentForm">
-            <option selected="selected" placeholder="wybierz samochód" value="${rent.car.id}">${rent.car}</option>
-            <c:forEach var="car" items="${cars}">
-                <option value="${car.id}">${car}</option>
-            </c:forEach>
-        </select
+        <input type="hidden" name="car" value="${car.id}">
+        <input type="text" name="car" class="w3-input w3-border"
+               value="${car}" readonly form="rentForm">
     </p>
     <p>
         <label><b>komu jest wypożyczany</b></label>
-        <select name="client" class="w3-input w3-border" form="rentForm" form="getRentForm">
-            <option selected="selected" placeholder="wybierz klienta"
-                    value="${rent.client.id}">${rent.client.name}</option>
-            <c:forEach var="client" items="${clients}">
-                <option value="${client.id}">${client.name}</option>
-            </c:forEach>
-        </select>
+        <input type="hidden" name="client" value="${client.id}">
+        <input type="text" name="client" class="w3-input w3-border"
+               value="${client.name}" readonly form="rentForm">
     </p>
-
-    <%--        <input type="submit" class="w3-button w3-red w3-right w3-large" value="filtruj promocje">--%>
-    <%--    </form>--%>
 
     <p>
         <label><b>promocja</b></label>
         <select class="w3-input w3-border" name="promotion" form="rentForm">
             <option selected="selected" placeholder="wybierz promocję"
-                    value="${rent.promotion.id}">${rent.promotion.name}</option>
+                    value="${rent.promotion}">${rent.promotion.name}</option>
             <c:forEach var="promotion" items="${promotions}">
                 <option value="${promotion.id}">${promotion.name}</option>
             </c:forEach>
@@ -88,10 +78,11 @@
         <a href="${pageContext.request.contextPath}/rent/" class="w3-button w3-theme-l2">anuluj</a>
     </p>
 
-    ​
-    <%@include file='footer.html' %>
-    ​
-    ​
+</form>
+​
+<%@include file='footer.html' %>
+​
+​
 </body>
 
 </html>

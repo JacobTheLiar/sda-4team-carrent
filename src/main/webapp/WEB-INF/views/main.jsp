@@ -32,7 +32,7 @@
 
                     <footer class="w3-container w3-theme w3-padding w3-cell-row">
                         <div class="w3-cell w3-padding">
-                            <a href="${pageContext.request.contextPath}/rent/borrow" class="w3-button w3-theme-dark">wypożycz</a>
+                            <a href="${pageContext.request.contextPath}/rent/borrow/promo" class="w3-button w3-theme-dark">wypożycz</a>
                         </div>
                         <div class="w3-cell w3-padding">
                             <a href="${pageContext.request.contextPath}/rent/return" class="w3-button w3-theme-dark">zwrot</a>
