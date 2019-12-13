@@ -34,5 +34,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, String> {
     Set<Employee> findByReleaseDateBefore(LocalDate releaseDatee);
     List<Employee> findByReleaseDateBetween(LocalDate releaseDate1, LocalDate releaseDate2);
     Set<Employee> findByReleaseDateIsNull();
+    Set<Employee> findByReleaseDateIsNotNull();
 
 }
