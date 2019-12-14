@@ -8,7 +8,7 @@
 
 <!-- source A4 page css https://codepen.io/rafaelcastrocouto/pen/LFAes -->
 <head>
-    <title>podgląd faktury</title>
+    <title>podgląd rachunku - ${invoice.invoiceNumber}</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/css/invoice.css">
@@ -19,53 +19,60 @@
     <page size="A4">
 
         <div class="cr-invoice-nr">
-            <h1>FAKTURA VAT nr <b>xxx/x</b></h1>
+            <h1>RACHUNEK nr <b>${invoice.invoiceNumber}</b></h1>
         </div>
 
         <div class="cr-invoice-place">
-            Poznań, 88-88-8888
+            ${invoice.invoiceCity}, ${invoice.invoiceDate}
         </div>
 
 
         <div class="cr-company-seller">
             <b>sprzedający</b><br />
-            mieczysław prędki<br />
-            ul. Niewidoma 44 <br />
-            00-000 Wygwizdajewo
+            ${invoice.sellerName}<br />
+            ${invoice.sellerAddress}<br />
+            ${invoice.sellerPostCode} ${invoice.sellerCity}
 
         </div>
         <div class="cr-company-buyer">
             <b>kupujący</b><br />
-            mieczysław prędki<br />
-            ul. Niewidoma 44 <br />
-            00-000 Wygwizdajewo
+            ${invoice.clientName}<br />
+            ${invoice.clientAddress}<br />
+            ${invoice.clientPostCode} ${invoice.clientCity}
 
         </div>
 
         <div>
-            termin płatności:<b> 88-88-8888</b><br />
-            metoda płatności:<b> przelew</b><br />
-            przelew na rachunek: <b>PL888888888888</b>
+            termin płatności: <b>${invoice.paymentDate}</b><br />
+            metoda płatności: <b>${invoice.paymentMethod}</b><br />
+            przelew na rachunek: <b>${invoice.paymentAccount}</b>
         </div>
 
         <div class="ct-table-div">
             <table class="cr-table">
                 <tr class="cr-center-text">
-                    <th class="cr-table-cell-1">lp.</th>
-                    <th class="cr-table-cell-rest">opis</th>
-                    <th class="cr-table-cell-1">zniżka</th>
+                    <th class="cr-table-cell-rest">wypożyczony samochód</th>
+                    <th class="cr-table-cell-2">dystans</th>
+                    <th class="cr-table-cell-1">ilość dni</th>
+                    <th class="cr-table-cell-3 ">zastosowana promocja</th>
                     <th class="cr-table-cell-2 ">wartość</th>
                 </tr>
+
+                <c:forEach var="item" items="${items}">
+
                 <tr>
-                    <td class="cr-right-text">1.</td>
-                    <td class="cr-left-text">wypożyczenie Opla</td>
-                    <td class="cr-center-text">30%</td>
-                    <td class="cr-right-text">12.34</td>
+                    <td class="cr-left-text">${item.car}</td>
+                    <td class="cr-right-text">${item.distance}</td>
+                    <td class="cr-center-text">${item.rentDays}</td>
+                    <td class="cr-left-text">${item.promotionName}</td>
+                    <td class="cr-right-text">${item.value}</td>
                 </tr>
+
+                </c:forEach>
             </table>
         </div>
 
-        <div>razem do zapłaty: <b>12.23</b><br /><br /></div>
+        <div>razem do zapłaty: <b>${invoice.paymentValue}</b><br /><br /></div>
 
         <div class="cr-seller-sign">podpis wystawcy</div>
 

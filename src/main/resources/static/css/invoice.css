@@ -80,6 +80,11 @@ td {
   width: 72px;
 }
 
+
+.cr-table-cell-3 {
+  width: 144px;
+}
+
 .cr-table-cell-rest {
   width: auto;
 }
