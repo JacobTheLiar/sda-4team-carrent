@@ -39,13 +39,13 @@ import static org.junit.Assert.*;
 public class RentRepositoryTest {
 
     @Autowired
-    private RentRepository      rentRepository;
+    private RentRepository rentRepository;
     @Autowired
-    private CarRepository       carRepository;
+    private CarRepository carRepository;
     @Autowired
-    private CarModelRepository  carModelRepository;
+    private CarModelRepository carModelRepository;
     @Autowired
-    private ClientRepository    clientRepository;
+    private ClientRepository clientRepository;
     @Autowired
     private RentPointRepository rentPointRepository;
     @Autowired
@@ -58,18 +58,20 @@ public class RentRepositoryTest {
         CarModel opelCorsa2001 = new CarModel("Opel", "Corsa", "B", "hatchback", 2001, 30000);
         CarModel operAstra2019 = new CarModel("Opel", "Astra", "C", "hatchback", 2019, 30000);
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, operAstra2019));
-        Car car1 = new Car(opelCorsa2001
-                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500);
-        Car car2 = new Car(operAstra2019
-                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "yellow", 500);
-        carRepository.saveAll(Arrays.asList(car1, car2));
-        RentPoint rentPoint = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        RentPoint rentPoint = new RentPoint();
         rentPointRepository.save(rentPoint);
+        Car car1 = new Car(opelCorsa2001
+                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500, rentPoint);
+        Car car2 = new Car(operAstra2019
+                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "yellow", 500, rentPoint);
+        carRepository.saveAll(Arrays.asList(car1, car2));
+        RentPoint rentPoint1 = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        rentPointRepository.save(rentPoint1);
         LocalDate rentDate = LocalDate.of(2019, 11, 11);
         Client client = new Client("Jan Kowalski", "OBCH 111/11", "60-682", "Poznań", "777-77-77-777", "kowalski@wp.pl", "666 777 888");
         clientRepository.save(client);
 //        Employee employee = new Employee("Jan", "Nowak", 1, "jnowak", "qwerty123", LocalDate.of(2001, 9, 16), null, new Role());
-        Rent rent1 = new Rent(car1, client, null, rentPoint, rentDate, null, 10000, "search test 1");
+        Rent rent1 = new Rent(car1, client, null, rentPoint1, rentDate, null, 10000, "search test 1");
 
         rentRepository.save(rent1);
 
@@ -86,18 +88,20 @@ public class RentRepositoryTest {
         CarModel opelCorsa2001 = new CarModel("Opel", "Corsa", "B", "hatchback", 2001, 30000);
         CarModel operAstra2019 = new CarModel("Opel", "Astra", "C", "hatchback", 2019, 30000);
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, operAstra2019));
-        Car car1 = new Car(opelCorsa2001
-                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500);
-        Car car2 = new Car(operAstra2019
-                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red", 500);
-        carRepository.saveAll(Arrays.asList(car1, car2));
-        RentPoint rentPoint = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        RentPoint rentPoint = new RentPoint();
         rentPointRepository.save(rentPoint);
+        Car car1 = new Car(opelCorsa2001
+                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500, rentPoint);
+        Car car2 = new Car(operAstra2019
+                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red", 500, rentPoint);
+        carRepository.saveAll(Arrays.asList(car1, car2));
+        RentPoint rentPoint1 = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        rentPointRepository.save(rentPoint1);
         LocalDate rentDate = LocalDate.of(2019, 11, 11);
         Client client = new Client("Jan Kowalski", "OBCH 111/11", "60-682", "Poznań", "777-77-77-777", "kowalski@wp.pl", "666 777 888");
         clientRepository.save(client);
 //        Employee employee = new Employee("Jan", "Nowak", 1, "jnowak", "qwerty123", LocalDate.of(2001, 9, 16), null, new Role());
-        Rent rent1 = new Rent(car1, client, null, rentPoint, rentDate, null, 10000, "search test 1");
+        Rent rent1 = new Rent(car1, client, null, rentPoint1, rentDate, null, 10000, "search test 1");
         rentRepository.save(rent1);
 
         //when
@@ -113,19 +117,21 @@ public class RentRepositoryTest {
         CarModel opelCorsa2001 = new CarModel("Opel", "Corsa", "B", "hatchback", 2001, 30000);
         CarModel operAstra2019 = new CarModel("Opel", "Astra", "C", "hatchback", 2019, 30000);
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, operAstra2019));
-        Car car1 = new Car(opelCorsa2001
-                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500);
-        Car car2 = new Car(operAstra2019
-                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red", 500);
-        carRepository.saveAll(Arrays.asList(car1, car2));
-        RentPoint rentPoint = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        RentPoint rentPoint = new RentPoint();
         rentPointRepository.save(rentPoint);
+        Car car1 = new Car(opelCorsa2001
+                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500, rentPoint);
+        Car car2 = new Car(operAstra2019
+                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red", 500, rentPoint);
+        carRepository.saveAll(Arrays.asList(car1, car2));
+        RentPoint rentPoint1 = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        rentPointRepository.save(rentPoint1);
         LocalDate rentDate = LocalDate.of(2019, 11, 11);
         Client client = new Client("Krzak", "OBCH 111/11", "60-682", "Poznań", "777-77-77-777", "kowalski@wp.pl", "666 777 888");
         clientRepository.save(client);
 //        Employee employee = new Employee("Jan", "Nowak", 1, "jnowak", "qwerty123", LocalDate.of(2001, 9, 16), null, new Role());
-        Rent rent1 = new Rent(car1, client, null, rentPoint, rentDate, null, 10000, "search test 1");
-        Rent rent2 = new Rent(car2, client, null, rentPoint, rentDate, null, 15000, "search test 2");
+        Rent rent1 = new Rent(car1, client, null, rentPoint1, rentDate, null, 10000, "search test 1");
+        Rent rent2 = new Rent(car2, client, null, rentPoint1, rentDate, null, 15000, "search test 2");
         rentRepository.saveAll(Arrays.asList(rent1, rent2));
 
         //when
@@ -141,19 +147,21 @@ public class RentRepositoryTest {
         CarModel opelCorsa2001 = new CarModel("Opel", "Corsa", "B", "hatchback", 2001, 30000);
         CarModel operAstra2019 = new CarModel("Opel", "Astra", "C", "hatchback", 2019, 30000);
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, operAstra2019));
-        Car car1 = new Car(opelCorsa2001
-                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500);
-        Car car2 = new Car(operAstra2019
-                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "yellow", 500);
-        carRepository.saveAll(Arrays.asList(car1, car2));
-        RentPoint rentPoint = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        RentPoint rentPoint = new RentPoint();
         rentPointRepository.save(rentPoint);
+        Car car1 = new Car(opelCorsa2001
+                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500, rentPoint);
+        Car car2 = new Car(operAstra2019
+                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "yellow", 500, rentPoint);
+        carRepository.saveAll(Arrays.asList(car1, car2));
+        RentPoint rentPoint1 = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        rentPointRepository.save(rentPoint1);
         LocalDate rentDate = LocalDate.of(2019, 11, 11);
         Client client = new Client("Krzak", "OBCH 111/11", "60-682", "Poznań", "777-77-77-777", "kowalski@wp.pl", "666 777 888");
         clientRepository.save(client);
 //        Employee employee = new Employee("Jan", "Nowak", 1, "jnowak", "qwerty123", LocalDate.of(2001, 9, 16), null, new Role());
-        Rent rent1 = new Rent(car1, client, null, rentPoint, rentDate, null, 10000, "search test 1");
-        Rent rent2 = new Rent(car2, client, null, rentPoint, rentDate, null, 15000, "search test 2");
+        Rent rent1 = new Rent(car1, client, null, rentPoint1, rentDate, null, 10000, "search test 1");
+        Rent rent2 = new Rent(car2, client, null, rentPoint1, rentDate, null, 15000, "search test 2");
         rentRepository.saveAll(Arrays.asList(rent1, rent2));
 
         //when
@@ -169,19 +177,21 @@ public class RentRepositoryTest {
         CarModel opelCorsa2001 = new CarModel("Opel", "Corsa", "B", "hatchback", 2001, 30000);
         CarModel operAstra2019 = new CarModel("Opel", "Astra", "C", "hatchback", 2019, 30000);
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, operAstra2019));
-        Car car1 = new Car(opelCorsa2001
-                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "black", 500);
-        Car car2 = new Car(operAstra2019
-                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red", 500);
-        carRepository.saveAll(Arrays.asList(car1, car2));
-        RentPoint rentPoint = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        RentPoint rentPoint = new RentPoint();
         rentPointRepository.save(rentPoint);
+        Car car1 = new Car(opelCorsa2001
+                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "black", 500, rentPoint);
+        Car car2 = new Car(operAstra2019
+                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red", 500, rentPoint);
+        carRepository.saveAll(Arrays.asList(car1, car2));
+        RentPoint rentPoint1 = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        rentPointRepository.save(rentPoint1);
         LocalDate rentDate = LocalDate.of(2019, 11, 11);
         Client client = new Client("Krzak", "OBCH 111/11", "60-682", "Poznań", "777-77-77-777", "kowalski@wp.pl", "666 777 888");
         clientRepository.save(client);
 //        Employee employee = new Employee("Jan", "Nowak", 1, "jnowak", "qwerty123", LocalDate.of(2001, 9, 16), null, new Role());
-        Rent rent1 = new Rent(car1, client, null, rentPoint, rentDate, null, 10000, "search test 1");
-        Rent rent2 = new Rent(car2, client, null, rentPoint, rentDate, null, 15000, "search test 2");
+        Rent rent1 = new Rent(car1, client, null, rentPoint1, rentDate, null, 10000, "search test 1");
+        Rent rent2 = new Rent(car2, client, null, rentPoint1, rentDate, null, 15000, "search test 2");
         rentRepository.saveAll(Arrays.asList(rent1, rent2));
 
         //when
@@ -197,19 +207,21 @@ public class RentRepositoryTest {
         CarModel opelCorsa2001 = new CarModel("Opel", "Corsa", "B", "hatchback", 2001, 30000);
         CarModel operAstra2019 = new CarModel("Opel", "Astra", "C", "hatchback", 2019, 30000);
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, operAstra2019));
-        Car car1 = new Car(opelCorsa2001
-                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500);
-        Car car2 = new Car(operAstra2019
-                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red", 500);
-        carRepository.saveAll(Arrays.asList(car1, car2));
-        RentPoint rentPoint = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        RentPoint rentPoint = new RentPoint();
         rentPointRepository.save(rentPoint);
+        Car car1 = new Car(opelCorsa2001
+                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500, rentPoint);
+        Car car2 = new Car(operAstra2019
+                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red", 500, rentPoint);
+        carRepository.saveAll(Arrays.asList(car1, car2));
+        RentPoint rentPoint1 = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        rentPointRepository.save(rentPoint1);
         LocalDate rentDate = LocalDate.of(2019, 11, 11);
         Client client = new Client("Krzak", "OBCH 111/11", "60-682", "Poznań", "777-77-77-777", "kowalski@wp.pl", "666 777 888");
         clientRepository.save(client);
 //        Employee employee = new Employee("Jan", "Nowak", 1, "jnowak", "qwerty123", LocalDate.of(2001, 9, 16), null, new Role());
-        Rent rent1 = new Rent(car1, client, null, rentPoint, rentDate, null, 10000, "search test 1");
-        Rent rent2 = new Rent(car2, client, null, rentPoint, rentDate, null, 15000, "search test 2");
+        Rent rent1 = new Rent(car1, client, null, rentPoint1, rentDate, null, 10000, "search test 1");
+        Rent rent2 = new Rent(car2, client, null, rentPoint1, rentDate, null, 15000, "search test 2");
         rentRepository.saveAll(Arrays.asList(rent1, rent2));
 
         //when
@@ -225,19 +237,21 @@ public class RentRepositoryTest {
         CarModel opelCorsa2001 = new CarModel("Opel", "Corsa", "B", "hatchback", 2001, 30000);
         CarModel operAstra2019 = new CarModel("Opel", "Astra", "C", "hatchback", 2019, 30000);
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, operAstra2019));
-        Car car1 = new Car(opelCorsa2001
-                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500);
-        Car car2 = new Car(operAstra2019
-                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red", 500);
-        carRepository.saveAll(Arrays.asList(car1, car2));
-        RentPoint rentPoint = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        RentPoint rentPoint = new RentPoint();
         rentPointRepository.save(rentPoint);
+        Car car1 = new Car(opelCorsa2001
+                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500, rentPoint);
+        Car car2 = new Car(operAstra2019
+                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red", 500, rentPoint);
+        carRepository.saveAll(Arrays.asList(car1, car2));
+        RentPoint rentPoint1 = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        rentPointRepository.save(rentPoint1);
         LocalDate rentDate = LocalDate.of(2019, 11, 11);
         Client client = new Client("Krzak", "OBCH 111/11", "60-682", "Poznań", "777-77-77-777", "kowalski@wp.pl", "666 777 888");
         clientRepository.save(client);
 //        Employee employee = new Employee("Jan", "Nowak", 1, "jnowak", "qwerty123", LocalDate.of(2001, 9, 16), null, new Role());
-        Rent rent1 = new Rent(car1, client, null, rentPoint, rentDate, null, 10000, "search test 1");
-        Rent rent2 = new Rent(car2, client, null, rentPoint, rentDate, null, 15000, "search test 2");
+        Rent rent1 = new Rent(car1, client, null, rentPoint1, rentDate, null, 10000, "search test 1");
+        Rent rent2 = new Rent(car2, client, null, rentPoint1, rentDate, null, 15000, "search test 2");
         rentRepository.saveAll(Arrays.asList(rent1, rent2));
 
         //when
@@ -253,20 +267,22 @@ public class RentRepositoryTest {
         CarModel opelCorsa2001 = new CarModel("Opel", "Corsa", "B", "hatchback", 2001, 30000);
         CarModel operAstra2019 = new CarModel("Opel", "Astra", "C", "hatchback", 2019, 30000);
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, operAstra2019));
-        Car car1 = new Car(opelCorsa2001
-                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500);
-        Car car2 = new Car(operAstra2019
-                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red", 500);
-        carRepository.saveAll(Arrays.asList(car1, car2));
-        RentPoint rentPoint = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        RentPoint rentPoint = new RentPoint();
         rentPointRepository.save(rentPoint);
+        Car car1 = new Car(opelCorsa2001
+                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500, rentPoint);
+        Car car2 = new Car(operAstra2019
+                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red", 500, rentPoint);
+        carRepository.saveAll(Arrays.asList(car1, car2));
+        RentPoint rentPoint1 = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        rentPointRepository.save(rentPoint1);
         LocalDate rentDate = LocalDate.of(2019, 11, 11);
         Client client = new Client("Krzak", "OBCH 111/11", "60-682", "Poznań", "777-77-77-777", "kowalski@wp.pl", "666 777 888");
         clientRepository.save(client);
         Promotion promotion = new Promotion("PROMO1", 30, rentDate, LocalDate.now(), Arrays.asList(car1), null);
         promotionRepository.save(promotion);
-        Rent rent1 = new Rent(car1, client, promotion, rentPoint, rentDate, null, 10000, "search test 1");
-        Rent rent2 = new Rent(car2, client, null, rentPoint, rentDate, null, 15000, "search test 2");
+        Rent rent1 = new Rent(car1, client, promotion, rentPoint1, rentDate, null, 10000, "search test 1");
+        Rent rent2 = new Rent(car2, client, null, rentPoint1, rentDate, null, 15000, "search test 2");
         rentRepository.saveAll(Arrays.asList(rent1, rent2));
 
         //when
@@ -282,20 +298,22 @@ public class RentRepositoryTest {
         CarModel opelCorsa2001 = new CarModel("Opel", "Corsa", "B", "hatchback", 2001, 30000);
         CarModel operAstra2019 = new CarModel("Opel", "Astra", "C", "hatchback", 2019, 30000);
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, operAstra2019));
-        Car car1 = new Car(opelCorsa2001
-                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500);
-        Car car2 = new Car(operAstra2019
-                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red", 500);
-        carRepository.saveAll(Arrays.asList(car1, car2));
-        RentPoint rentPoint = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        RentPoint rentPoint = new RentPoint();
         rentPointRepository.save(rentPoint);
+        Car car1 = new Car(opelCorsa2001
+                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500, rentPoint);
+        Car car2 = new Car(operAstra2019
+                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red", 500, rentPoint);
+        carRepository.saveAll(Arrays.asList(car1, car2));
+        RentPoint rentPoint1 = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        rentPointRepository.save(rentPoint1);
         LocalDate rentDate = LocalDate.of(2019, 11, 11);
         Client client = new Client("Krzak", "OBCH 111/11", "60-682", "Poznań", "777-77-77-777", "kowalski@wp.pl", "666 777 888");
         clientRepository.save(client);
-        Promotion promotion = new Promotion("PROMO1",30,rentDate,LocalDate.now(),Arrays.asList(car1),null);
+        Promotion promotion = new Promotion("PROMO1", 30, rentDate, LocalDate.now(), Arrays.asList(car1), null);
         promotionRepository.save(promotion);
-        Rent rent1 = new Rent(car1, client, promotion, rentPoint, rentDate, null, 10000, "search test 1");
-        Rent rent2 = new Rent(car2, client, null, rentPoint, rentDate, null, 15000, "search test 2");
+        Rent rent1 = new Rent(car1, client, promotion, rentPoint1, rentDate, null, 10000, "search test 1");
+        Rent rent2 = new Rent(car2, client, null, rentPoint1, rentDate, null, 15000, "search test 2");
         rentRepository.saveAll(Arrays.asList(rent1, rent2));
 
         //when
@@ -311,23 +329,25 @@ public class RentRepositoryTest {
         CarModel opelCorsa2001 = new CarModel("Opel", "Corsa", "B", "hatchback", 2001, 30000);
         CarModel operAstra2019 = new CarModel("Opel", "Astra", "C", "hatchback", 2019, 30000);
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, operAstra2019));
-        Car car1 = new Car(opelCorsa2001
-                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500);
-        Car car2 = new Car(operAstra2019
-                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red", 500);
-        carRepository.saveAll(Arrays.asList(car1, car2));
-        RentPoint rentPoint = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        RentPoint rentPoint = new RentPoint();
         rentPointRepository.save(rentPoint);
+        Car car1 = new Car(opelCorsa2001
+                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500, rentPoint);
+        Car car2 = new Car(operAstra2019
+                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red", 500, rentPoint);
+        carRepository.saveAll(Arrays.asList(car1, car2));
+        RentPoint rentPoint1 = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        rentPointRepository.save(rentPoint1);
         LocalDate rentDate = LocalDate.of(2019, 11, 11);
         Client client = new Client("Krzak", "OBCH 111/11", "60-682", "Poznań", "777-77-77-777", "kowalski@wp.pl", "666 777 888");
         clientRepository.save(client);
 //        Employee employee = new Employee("Jan", "Nowak", 1, "jnowak", "qwerty123", LocalDate.of(2001, 9, 16), null, new Role());
-        Rent rent1 = new Rent(car1, client, null, rentPoint, rentDate, null, 10000, "search test 1");
-        Rent rent2 = new Rent(car2, client, null, rentPoint, rentDate, null, 15000, "search test 2");
+        Rent rent1 = new Rent(car1, client, null, rentPoint1, rentDate, null, 10000, "search test 1");
+        Rent rent2 = new Rent(car2, client, null, rentPoint1, rentDate, null, 15000, "search test 2");
         rentRepository.saveAll(Arrays.asList(rent1, rent2));
 
         //when
-        List<Rent> rents = rentRepository.findByRentPointStart_Id(rentPoint.getId());
+        List<Rent> rents = rentRepository.findByRentPointStart_Id(rentPoint1.getId());
 
         //then
         assertEquals(2, rents.size());
@@ -339,19 +359,21 @@ public class RentRepositoryTest {
         CarModel opelCorsa2001 = new CarModel("Opel", "Corsa", "B", "hatchback", 2001, 30000);
         CarModel operAstra2019 = new CarModel("Opel", "Astra", "C", "hatchback", 2019, 30000);
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, operAstra2019));
-        Car car1 = new Car(opelCorsa2001
-                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500);
-        Car car2 = new Car(operAstra2019
-                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red", 500);
-        carRepository.saveAll(Arrays.asList(car1, car2));
-        RentPoint rentPoint = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        RentPoint rentPoint = new RentPoint();
         rentPointRepository.save(rentPoint);
+        Car car1 = new Car(opelCorsa2001
+                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500, rentPoint);
+        Car car2 = new Car(operAstra2019
+                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red", 500, rentPoint);
+        carRepository.saveAll(Arrays.asList(car1, car2));
+        RentPoint rentPoint1 = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        rentPointRepository.save(rentPoint1);
         LocalDate rentDate = LocalDate.of(2019, 11, 11);
         Client client = new Client("Krzak", "OBCH 111/11", "60-682", "Poznań", "777-77-77-777", "kowalski@wp.pl", "666 777 888");
         clientRepository.save(client);
 //        Employee employee = new Employee("Jan", "Nowak", 1, "jnowak", "qwerty123", LocalDate.of(2001, 9, 16), null, new Role());
-        Rent rent1 = new Rent(car1, client, null, rentPoint, rentDate, null, 10000, "search test 1");
-        Rent rent2 = new Rent(car2, client, null, rentPoint, rentDate, null, 15000, "search test 2");
+        Rent rent1 = new Rent(car1, client, null, rentPoint1, rentDate, null, 10000, "search test 1");
+        Rent rent2 = new Rent(car2, client, null, rentPoint1, rentDate, null, 15000, "search test 2");
         rentRepository.saveAll(Arrays.asList(rent1, rent2));
 
         //when
@@ -367,19 +389,21 @@ public class RentRepositoryTest {
         CarModel opelCorsa2001 = new CarModel("Opel", "Corsa", "B", "hatchback", 2001, 30000);
         CarModel operAstra2019 = new CarModel("Opel", "Astra", "C", "hatchback", 2019, 30000);
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, operAstra2019));
-        Car car1 = new Car(opelCorsa2001
-                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500);
-        Car car2 = new Car(operAstra2019
-                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red", 500);
-        carRepository.saveAll(Arrays.asList(car1, car2));
-        RentPoint rentPoint = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        RentPoint rentPoint = new RentPoint();
         rentPointRepository.save(rentPoint);
+        Car car1 = new Car(opelCorsa2001
+                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500, rentPoint);
+        Car car2 = new Car(operAstra2019
+                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red", 500, rentPoint);
+        carRepository.saveAll(Arrays.asList(car1, car2));
+        RentPoint rentPoint1 = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        rentPointRepository.save(rentPoint1);
         LocalDate rentDate = LocalDate.of(2019, 11, 11);
         Client client = new Client("Krzak", "OBCH 111/11", "60-682", "Poznań", "777-77-77-777", "kowalski@wp.pl", "666 777 888");
         clientRepository.save(client);
 //        Employee employee = new Employee("Jan", "Nowak", 1, "jnowak", "qwerty123", LocalDate.of(2001, 9, 16), null, new Role());
-        Rent rent1 = new Rent(car1, client, null, rentPoint, rentDate, null, 10000, "search test 1");
-        Rent rent2 = new Rent(car2, client, null, rentPoint, rentDate, null, 15000, "search test 2");
+        Rent rent1 = new Rent(car1, client, null, rentPoint1, rentDate, null, 10000, "search test 1");
+        Rent rent2 = new Rent(car2, client, null, rentPoint1, rentDate, null, 15000, "search test 2");
         rentRepository.saveAll(Arrays.asList(rent1, rent2));
 
         //when
@@ -395,19 +419,21 @@ public class RentRepositoryTest {
         CarModel opelCorsa2001 = new CarModel("Opel", "Corsa", "B", "hatchback", 2001, 30000);
         CarModel operAstra2019 = new CarModel("Opel", "Astra", "C", "hatchback", 2019, 30000);
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, operAstra2019));
-        Car car1 = new Car(opelCorsa2001
-                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500);
-        Car car2 = new Car(operAstra2019
-                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red", 500);
-        carRepository.saveAll(Arrays.asList(car1, car2));
-        RentPoint rentPoint = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        RentPoint rentPoint = new RentPoint();
         rentPointRepository.save(rentPoint);
+        Car car1 = new Car(opelCorsa2001
+                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500, rentPoint);
+        Car car2 = new Car(operAstra2019
+                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red", 500, rentPoint);
+        carRepository.saveAll(Arrays.asList(car1, car2));
+        RentPoint rentPoint1 = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        rentPointRepository.save(rentPoint1);
         LocalDate rentDate = LocalDate.of(2019, 11, 11);
         Client client = new Client("Krzak", "OBCH 111/11", "60-682", "Poznań", "777-77-77-777", "kowalski@wp.pl", "666 777 888");
         clientRepository.save(client);
 //        Employee employee = new Employee("Jan", "Nowak", 1, "jnowak", "qwerty123", LocalDate.of(2001, 9, 16), null, new Role());
-        Rent rent1 = new Rent(car1, client, null, rentPoint, rentDate, null, 10000, "search test 1");
-        Rent rent2 = new Rent(car2, client, null, rentPoint, rentDate, null, 15000, "search test 2");
+        Rent rent1 = new Rent(car1, client, null, rentPoint1, rentDate, null, 10000, "search test 1");
+        Rent rent2 = new Rent(car2, client, null, rentPoint1, rentDate, null, 15000, "search test 2");
         rentRepository.saveAll(Arrays.asList(rent1, rent2));
 
         //when
@@ -423,19 +449,21 @@ public class RentRepositoryTest {
         CarModel opelCorsa2001 = new CarModel("Opel", "Corsa", "B", "hatchback", 2001, 30000);
         CarModel operAstra2019 = new CarModel("Opel", "Astra", "C", "hatchback", 2019, 30000);
         carModelRepository.saveAll(Arrays.asList(opelCorsa2001, operAstra2019));
-        Car car1 = new Car(opelCorsa2001
-                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500);
-        Car car2 = new Car(operAstra2019
-                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red", 500);
-        carRepository.saveAll(Arrays.asList(car1, car2));
-        RentPoint rentPoint = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        RentPoint rentPoint = new RentPoint();
         rentPointRepository.save(rentPoint);
+        Car car1 = new Car(opelCorsa2001
+                , LocalDate.of(2001, 9, 16), "PO11111", "VIN101", "red", 500, rentPoint);
+        Car car2 = new Car(operAstra2019
+                , LocalDate.of(2019, 1, 6), "PO11112", "VIN102", "red", 500, rentPoint);
+        carRepository.saveAll(Arrays.asList(car1, car2));
+        RentPoint rentPoint1 = new RentPoint("Punkt Test", "testowa 1", "60-682", "Poznań");
+        rentPointRepository.save(rentPoint1);
         LocalDate rentDate = LocalDate.of(2019, 11, 11);
         Client client = new Client("Krzak", "OBCH 111/11", "60-682", "Poznań", "777-77-77-777", "kowalski@wp.pl", "666 777 888");
         clientRepository.save(client);
 //        Employee employee = new Employee("Jan", "Nowak", 1, "jnowak", "qwerty123", LocalDate.of(2001, 9, 16), null, new Role());
-        Rent rent1 = new Rent(car1, client, null, rentPoint, rentDate, null, 10000, "search test 1");
-        Rent rent2 = new Rent(car2, client, null, rentPoint, rentDate, null, 15000, "search test 2");
+        Rent rent1 = new Rent(car1, client, null, rentPoint1, rentDate, null, 10000, "search test 1");
+        Rent rent2 = new Rent(car2, client, null, rentPoint1, rentDate, null, 15000, "search test 2");
         rentRepository.saveAll(Arrays.asList(rent1, rent2));
 
         //when

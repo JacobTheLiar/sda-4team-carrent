@@ -7,6 +7,7 @@ import pl.team.carrent.promotion.Promotion;
 import pl.team.carrent.promotion.PromotionNotExistException;
 import pl.team.carrent.promotion.PromotionService;
 import pl.team.carrent.promotion.PromotionRepository;
+import pl.team.carrent.rent_point.RentPoint;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -41,13 +42,13 @@ public class PromotionServiceTest {
             "B","null",2019, 30000);
     private CarModel opelAstra2005 = new CarModel("Opel", "Astra",
             "C","null", 2010, 30000);
-
+    private RentPoint rentPoint = new RentPoint();
     private Car newCar1 = new Car(opelCorsa2001,LocalDate.of(2001,6,22),
-            "ZDR55555","WAUZZZ8E343453","Red",20);
+            "ZDR55555","WAUZZZ8E343453","Red",20,rentPoint);
     private Car newCar2 = new Car(renualtClio2019,LocalDate.of(2005,11,22),
-            "ZDR55654","WAUZZZ8E356466","Blue",20);
+            "ZDR55654","WAUZZZ8E356466","Blue",20,rentPoint);
     private Car newCar3 = new Car(opelAstra2005,LocalDate.of(2005,11,22),
-            "ZDR20250","WAUZZZ8E3466","Blue",20);
+            "ZDR20250","WAUZZZ8E3466","Blue",20,rentPoint);
 
     private Promotion promoOpel30 = new Promotion("Opel 30%", 30,
             LocalDate.now(), LocalDate.now().plusDays(30),

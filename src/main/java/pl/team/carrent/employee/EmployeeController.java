@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/employee")
@@ -31,14 +32,25 @@ public class EmployeeController {
     }
 
     @GetMapping
-    public ModelAndView getEmployeeList(@RequestParam(required = false) String searchWhat, @RequestParam(required = false) SearchEmployeeOption searchBy) {
+    public ModelAndView getEmployeeList(@RequestParam(required = false) String searchWhat, @RequestParam(required = false) SearchEmployeeOption searchBy, @RequestParam(required = false) ChooseEmployeeOption choose) {
         ModelAndView model = new ModelAndView("employeeList");
-        if (searchWhat == null) {
-            model.addObject("employees", employeeService.getAllEmployees());
-        } else {
+        model.addObject("employees", employeeService.getAllEmployees().stream().filter(e -> e.getReleaseDate() == null).collect(Collectors.toSet()));
+        if (choose == ChooseEmployeeOption.ALL) {
             model.addObject("employees", employeeService.searchEmployees(searchWhat,searchBy));
         }
+        else if (choose == ChooseEmployeeOption.ACTIVE)
+        {
+            model.addObject("employees", employeeService.searchEmployees(searchWhat,searchBy).stream().
+                    filter(e -> e.getReleaseDate() == null).collect(Collectors.toSet()));
+        }
+        else if (choose == ChooseEmployeeOption.RELEASED)
+        {
+            model.addObject("employees", employeeService.searchEmployees(searchWhat,searchBy).stream().
+                    filter(e -> e.getReleaseDate() != null).collect(Collectors.toSet()));
+        }
+
         model.addObject("options", SearchEmployeeOption.values());
+        model.addObject("choose", ChooseEmployeeOption.values());
         return model;
     }
 
@@ -65,7 +77,6 @@ public class EmployeeController {
         if (username != null) {
             employee.setUsername(username);
         }
-
         employeeService.saveEmployee(employee);
 
         return "redirect:/employee";

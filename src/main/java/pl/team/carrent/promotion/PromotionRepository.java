@@ -5,7 +5,9 @@ import org.springframework.data.jpa.repository.Query;
 import pl.team.carrent.car.Car;
 import pl.team.carrent.promotion.Promotion;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 
 /******************************************************
@@ -47,4 +49,9 @@ public interface PromotionRepository extends JpaRepository<Promotion, Integer> {
             " where UPPER(cm.segment) = UPPER(:segment)", nativeQuery = true)
     List<Promotion> findPromotionByCarSegment(String segment);
 
+    @Query(value = "select p.* from promotion p\n" +
+            "left join promotion_cars pca on p.id=pca.promotion_id\n" +
+            "left join promotion_clients pci on p.id=pci.promotion_id\n" +
+            "where (pca.cars_id=:carId or pci.clients_id=:clientId) and (:date between p.promo_start and p.promo_end);", nativeQuery = true)
+    List<Promotion> findAllMatchedPromotions(LocalDate date, int carId, int clientId);
 }

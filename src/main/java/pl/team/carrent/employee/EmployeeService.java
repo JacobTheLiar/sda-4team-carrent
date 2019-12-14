@@ -5,7 +5,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeService implements org.springframework.security.core.userdetails.UserDetailsService {
@@ -22,6 +24,10 @@ public class EmployeeService implements org.springframework.security.core.userde
     }
 
     public Employee saveEmployee(Employee employee) {
+        if (employee.getUsername().equals(""))
+        {
+            throw new EmployeeNotExistException("Could not create user without details. Please fill out the required fields");
+        }
         return employeeRepository.save(employee);
     }
 
@@ -40,6 +46,10 @@ public class EmployeeService implements org.springframework.security.core.userde
 
     public Set<Employee> getActiveEmployees() {
         return employeeRepository.findByReleaseDateIsNull();
+    }
+
+    public Set<Employee> getReleasedEmployees() {
+        return employeeRepository.findByReleaseDateIsNotNull();
     }
 
     public Set<Employee> findEmployeesByFirstname (String firstname) {
@@ -102,7 +112,17 @@ public class EmployeeService implements org.springframework.security.core.userde
             case BY_RELEASEDATE:
                 return employeeRepository.findByReleaseDateAfter(LocalDate.parse(searchWhat));
         }
-
         return new HashSet<>();
+    }
+
+    private Set<Employee> displayEmployees (ChooseEmployeeOption chooseEmployeeOption) {
+        switch(chooseEmployeeOption) {
+            case RELEASED:
+                return employeeRepository.findByReleaseDateIsNull();
+            case ACTIVE:
+                return employeeRepository.findByReleaseDateIsNotNull();
+            default:
+                return new HashSet<>(employeeRepository.findAll());
+        }
     }
 }

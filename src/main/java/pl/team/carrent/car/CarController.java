@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.team.carrent.car_model.CarModelService;
+import pl.team.carrent.rent_point.RentPoint;
+import pl.team.carrent.rent_point.RentPointService;
 
 import java.time.LocalDate;
 
@@ -21,10 +23,12 @@ public class CarController {
 
     private final CarService carService;
     private final CarModelService carModelService;
+    private final RentPointService rentPointService;
 
-    public CarController(CarService carService, CarModelService carModelService) {
+    public CarController(CarService carService, CarModelService carModelService, RentPointService rentPointService) {
         this.carService = carService;
         this.carModelService=carModelService;
+        this.rentPointService=rentPointService;
     }
 
     @GetMapping("")
@@ -45,6 +49,7 @@ public class CarController {
     public ModelAndView getCarDetailsToAdd() {
         ModelAndView modelAndViewDetails = new ModelAndView("carDetail");
         modelAndViewDetails.addObject("carModels",carModelService.getAllCarModels());
+        modelAndViewDetails.addObject("rentPoints",rentPointService.getAllRentPoints());
         modelAndViewDetails.addObject("update", false);
         return modelAndViewDetails;
     }
@@ -53,6 +58,7 @@ public class CarController {
     public ModelAndView getCarDetailsToUpdate(@PathVariable int id) {
         ModelAndView modelAndViewDetails = new ModelAndView("carDetail");
         modelAndViewDetails.addObject("carModels",carModelService.getAllCarModels());
+        modelAndViewDetails.addObject("rentPoints",rentPointService.getAllRentPoints());
         modelAndViewDetails.addObject("update",true);
         modelAndViewDetails.addObject("car", carService.getCarById(id));
         return modelAndViewDetails;
@@ -61,8 +67,8 @@ public class CarController {
     @PostMapping("/save")
     public String saveCarDetails(@RequestParam int carModelId, @RequestParam String plateNr, @RequestParam String registrationDate,
                                  @RequestParam String vin, @RequestParam String color, @RequestParam double pricePerDay,
-                                 @RequestParam(required = false) Integer id){
-        Car car = new Car(carModelService.getCarModelById(carModelId), LocalDate.parse(registrationDate), plateNr, vin, color, pricePerDay);
+                                 @RequestParam(required = false) Integer id, @RequestParam RentPoint beginRentPoint){
+        Car car = new Car(carModelService.getCarModelById(carModelId), LocalDate.parse(registrationDate), plateNr, vin, color, pricePerDay, beginRentPoint);
         if(id!=null){
             car.setId(id);
         }

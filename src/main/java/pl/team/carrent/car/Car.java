@@ -2,6 +2,7 @@ package pl.team.carrent.car;
 
 
 import pl.team.carrent.car_model.CarModel;
+import pl.team.carrent.rent_point.RentPoint;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -33,18 +34,22 @@ public class Car {
     private String vin;
     private String color;
     private double pricePerDay;
+
+    @ManyToOne(targetEntity = RentPoint.class)
+    private RentPoint beginRentPoint;
     private boolean active;
 
     public Car() {
     }
 
-    public Car(CarModel carModel, LocalDate registrationDate, String plateNr, String vin, String color, double pricePerDay) {
+    public Car(CarModel carModel, LocalDate registrationDate, String plateNr, String vin, String color, double pricePerDay, RentPoint beginRentPoint) {
         this.carModel = carModel;
         this.registrationDate = registrationDate;
         this.plateNr = plateNr;
         this.vin = vin;
         this.color = color;
         this.pricePerDay = pricePerDay;
+        this.beginRentPoint =beginRentPoint;
         this.active = true;
     }
 
@@ -110,6 +115,14 @@ public class Car {
 
     public void setActive(Boolean active) {
         this.active = active;
+    }
+
+    public RentPoint getBeginRentPoint(){
+        return beginRentPoint;
+    }
+
+    public void setBeginRentPoint(RentPoint beginRentPoint) {
+        this.beginRentPoint = beginRentPoint;
     }
 
     @Override

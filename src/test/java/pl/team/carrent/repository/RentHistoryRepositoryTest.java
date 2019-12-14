@@ -72,7 +72,10 @@ public class RentHistoryRepositoryTest {
         CarModel myCarModel = new CarModel("Skoda", "Fabia", "A", "Combi", 1999, 30000);
         carModelRepository.save(myCarModel);
 
-        Car car = new Car(myCarModel, localDate, "PO12345", "VIN1", "brown", 100.00);
+        RentPoint rentPoint = new RentPoint();
+        rentPointRepository.save(rentPoint);
+
+        Car car = new Car(myCarModel, localDate, "PO12345", "VIN1", "brown", 100.00,rentPoint);
         carRepository.save(car);
 
         Client client = new Client("King Julien XIII", "64th Street and Sixth Avenue", "10021", "New York", "0000000000", "cipsoft@wcs.org", "(212) 439-6550");

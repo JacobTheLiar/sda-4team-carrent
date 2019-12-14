@@ -12,6 +12,8 @@ import pl.team.carrent.car_model.CarModel;
 import pl.team.carrent.car_model.CarModelRepository;
 import pl.team.carrent.car_review.CarReview;
 import pl.team.carrent.car_review.CarReviewRepository;
+import pl.team.carrent.rent_point.RentPoint;
+import pl.team.carrent.rent_point.RentPointRepository;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
@@ -41,13 +43,18 @@ public class CarReviewRepositoryTest {
     @Autowired
     private CarRepository carRepository;
 
+    @Autowired
+    private RentPointRepository rentPointRepository;
+
     @Test
     public void shouldFindByCar_PlateNr() {
         //given
         LocalDate localDate = LocalDate.of(1999, 9, 01);
         CarModel myCarModel1 = new CarModel("Skoda", "Fabia", "A","combi",1999, 30000);
         carModelRepository.save(myCarModel1);
-        Car car1 = new Car(myCarModel1, localDate, "PO12346", "VIN0", "black",100.00);
+        RentPoint rentPoint = new RentPoint();
+        rentPointRepository.save(rentPoint);
+        Car car1 = new Car(myCarModel1, localDate, "PO12346", "VIN0", "black",100.00,rentPoint);
         carRepository.save(car1);
         CarReview carReview = new CarReview(car1, 30000, localDate,"test");
         carReviewRepository.save(carReview);
@@ -71,7 +78,9 @@ public class CarReviewRepositoryTest {
         LocalDate localDate = LocalDate.of(1999, 9, 01);
         CarModel myCarModel1 = new CarModel("Skoda", "Fabia", "A","combi",1999, 30000);
         carModelRepository.save(myCarModel1);
-        Car car1 = new Car(myCarModel1, localDate, "PO1X345", "VIN10","black", 100.00);
+        RentPoint rentPoint = new RentPoint();
+        rentPointRepository.save(rentPoint);
+        Car car1 = new Car(myCarModel1, localDate, "PO1X345", "VIN10","black", 100.00, rentPoint);
         carRepository.save(car1);
         CarReview carReview = new CarReview(car1, 30000, localDate,"test");
         carReviewRepository.save(carReview);
@@ -92,7 +101,9 @@ public class CarReviewRepositoryTest {
         LocalDate localDateTo = LocalDate.of(1911, 9, 01);
         CarModel myCarModel1 = new CarModel("Skoda", "Fabia", "A","combi",1999, 30000);
         carModelRepository.save(myCarModel1);
-        Car car1 = new Car(myCarModel1, localDate, "PO12345", "VIN1","black", 100.00);
+        RentPoint rentPoint = new RentPoint();
+        rentPointRepository.save(rentPoint);
+        Car car1 = new Car(myCarModel1, localDate, "PO12345", "VIN1","black", 100.00,rentPoint);
         carRepository.save(car1);
         CarReview carReview = new CarReview(car1, 30000, localDateReview,"test");
         carReviewRepository.save(carReview);
@@ -112,7 +123,9 @@ public class CarReviewRepositoryTest {
         LocalDate localDateFrom = LocalDate.of(1850, 9, 01);
         CarModel myCarModel1 = new CarModel("Skoda", "Fabia","A","combi", 1999, 30000);
         carModelRepository.save(myCarModel1);
-        Car car1 = new Car(myCarModel1, localDate, "PO12345", "VIN1","black", 100.00);
+        RentPoint rentPoint = new RentPoint();
+        rentPointRepository.save(rentPoint);
+        Car car1 = new Car(myCarModel1, localDate, "PO12345", "VIN1","black", 100.00,rentPoint);
         carRepository.save(car1);
         CarReview carReview = new CarReview(car1, 30000, localDateReview,"test");
         carReviewRepository.save(carReview);
@@ -132,7 +145,9 @@ public class CarReviewRepositoryTest {
         LocalDate localDateAfter = LocalDate.of(2016, 9, 01);
         CarModel myCarModel1 = new CarModel("Skoda", "Fabia","A","combi", 1999, 30000);
         carModelRepository.save(myCarModel1);
-        Car car1 = new Car(myCarModel1, localDate, "PO12345", "VIN1","black", 100.00);
+        RentPoint rentPoint = new RentPoint();
+        rentPointRepository.save(rentPoint);
+        Car car1 = new Car(myCarModel1, localDate, "PO12345", "VIN1","black", 100.00,rentPoint);
         carRepository.save(car1);
         CarReview carReview = new CarReview(car1, 30000, localDateReview,"test");
         carReviewRepository.save(carReview);
