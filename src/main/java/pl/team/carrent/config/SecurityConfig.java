@@ -40,6 +40,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .authorizeRequests()
                 .antMatchers("/login")
                 .permitAll()
+//                .antMatchers("/favicon.ico")
+//                .permitAll()
                 .antMatchers("/h2-console/**")
                 .permitAll()
                 .antMatchers("/")
@@ -69,7 +71,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .loginPage("/login")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                //.successHandler(successHandler())
                 .successHandler(successHandler)
                 .and()
                 .exceptionHandling()
@@ -93,15 +94,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     
     @Override
     public void configure(WebSecurity web){
-        web.ignoring().antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
+        web.ignoring().antMatchers("/resources/**", "/static/**", "/static/css/**", "/js/**", "/images/**");
     }
     
-    //    @Bean
-    //    AuthenticationSuccessHandler successHandler() {
-    //        return new SavedRequestAwareAuthenticationSuccessHandler();
-    //    }
-    
-    
+
     @Bean
     PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
