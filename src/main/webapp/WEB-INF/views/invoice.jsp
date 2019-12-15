@@ -8,7 +8,7 @@
 
 <!-- source A4 page css https://codepen.io/rafaelcastrocouto/pen/LFAes -->
 <head>
-    <title>podgląd rachunku - ${invoice.invoiceNumber}</title>
+    <title>podgląd faktury - ${invoice.invoiceNumber}</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/css/invoice.css">
@@ -19,7 +19,7 @@
     <page size="A4">
 
         <div class="cr-invoice-nr">
-            <h1>RACHUNEK nr <b>${invoice.invoiceNumber}</b></h1>
+            <h1>FAKTURA nr <b>${invoice.invoiceNumber}</b></h1>
         </div>
 
         <div class="cr-invoice-place">
@@ -31,14 +31,16 @@
             <b>sprzedający</b><br />
             ${invoice.sellerName}<br />
             ${invoice.sellerAddress}<br />
-            ${invoice.sellerPostCode} ${invoice.sellerCity}
+            ${invoice.sellerPostCode} ${invoice.sellerCity}<br /><br />
+            <b>NIP:</b> ${invoice.sellerTaxNumber}
 
         </div>
         <div class="cr-company-buyer">
             <b>kupujący</b><br />
             ${invoice.clientName}<br />
             ${invoice.clientAddress}<br />
-            ${invoice.clientPostCode} ${invoice.clientCity}
+            ${invoice.clientPostCode} ${invoice.clientCity}<br /><br />
+            <b>NIP:</b> ${invoice.clientTaxNumber}
 
         </div>
 

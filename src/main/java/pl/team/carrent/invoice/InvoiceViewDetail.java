@@ -30,11 +30,13 @@ public class InvoiceViewDetail{
     private String clientAddress;
     private String clientPostCode;
     private String clientCity;
+    private String clientTaxNumber;
     
     private String sellerName;
     private String sellerAddress;
     private String sellerPostCode;
     private String sellerCity;
+    private String sellerTaxNumber;
     
     private LocalDate paymentDate;
     private String paymentMethod;
@@ -123,5 +125,15 @@ public class InvoiceViewDetail{
     
     public BigDecimal getPaymentValue(){
         return paymentValue;
+    }
+    
+    
+    public String getClientTaxNumber(){
+        return clientTaxNumber;
+    }
+    
+    
+    public String getSellerTaxNumber(){
+        return sellerTaxNumber;
     }
 }
