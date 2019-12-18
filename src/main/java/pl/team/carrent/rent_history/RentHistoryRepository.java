@@ -29,5 +29,7 @@ public interface RentHistoryRepository extends JpaRepository<RentHistory, Intege
     Set<RentHistory> findByInvoiceNumberContainsIgnoreCase(String number);
     Set<RentHistory> findByRentTimeStartAfter(LocalDate rentTimeStart);
     Set<RentHistory> findByRentTimeEnd(LocalDate rentTimeEnd);
+    Set<RentHistory> findByEmployeeStartUsernameContainsIgnoreCase(String username);
+    Set<RentHistory> findByEmployeeEndUsernameContainsIgnoreCase(String username);
 
 }

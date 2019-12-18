@@ -1,0 +1,102 @@
+body {
+  background: rgb(204, 204, 204);
+}
+
+page {
+  background: white;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0.5cm;
+  box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+  padding: 1.5cm;
+}
+
+page[size="A4"] {
+  width: 21cm;
+  height: 29.7cm;
+}
+
+@media print {
+
+  body,
+  page {
+    margin: 0;
+    box-shadow: 0;
+  }
+}
+
+
+div {
+  border-color: black;
+  border-width: 1px;
+  border-style: hidden;
+  padding: 8px;
+}
+
+.cr-invoice-nr {
+  text-align: center;
+}
+
+.cr-invoice-place {
+  text-align: right;
+}
+
+.cr-company-seller {
+  width: 50%;
+  float: left;
+}
+
+.cr-seller-sign {
+  width: 50%;
+  float: left;
+}
+
+.cr-table-div {
+  padding: 0px;
+}
+
+.cr-table {
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+
+.cr-table th,
+td {
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+  padding: 4px;
+}
+
+.cr-table-cell-1 {
+  width: 56px;
+}
+
+.cr-table-cell-2 {
+  width: 72px;
+}
+
+
+.cr-table-cell-3 {
+  width: 144px;
+}
+
+.cr-table-cell-rest {
+  width: auto;
+}
+
+.cr-center-text {
+  text-align: center;
+}
+
+.cr-right-text {
+  text-align: right;
+}
+
+.cr-left-text {
+  text-align: left;
+}

@@ -82,4 +82,26 @@ public class RentHistoryService {
     public Set<RentHistory> getRentHistoryByRentTimeEnd(LocalDate rentTimeEnd) {
         return rentHistoryRepository.findByRentTimeEnd(rentTimeEnd);
     }
+
+    public Set<RentHistory> searchRentHistory(String searchWhat, SearchRentHistoryOption searchRentHistoryOption){
+
+        switch(searchRentHistoryOption){
+            case BY_CAR_PLATE_NR:
+                return rentHistoryRepository.findByCar_PlateNrContainsIgnoreCase(searchWhat);
+            case BY_CLIENT_EMAIL:
+                return rentHistoryRepository.findByClientEmailContainsIgnoreCase(searchWhat);
+            case BY_INVOICE_NUMBER:
+                return rentHistoryRepository.findByInvoiceNumberContainsIgnoreCase(searchWhat);
+            case BY_EMPLOYEESTART_USERNAME:
+                return rentHistoryRepository.findByEmployeeStartUsernameContainsIgnoreCase(searchWhat);
+            case BY_EMPLOYEEEND_USERNAME:
+                return rentHistoryRepository.findByEmployeeEndUsernameContainsIgnoreCase(searchWhat);
+            case BY_RENTPOINTSTART_NAME:
+                return rentHistoryRepository.findByRentPointStartNameContainsIgnoreCase(searchWhat);
+            case BY_RENTPOINTEND_NAME:
+                return rentHistoryRepository.findByRentPointEndNameContainsIgnoreCase(searchWhat);
+        }
+
+        return new HashSet<>();
+    }
 }

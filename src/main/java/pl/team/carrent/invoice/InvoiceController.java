@@ -6,6 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import pl.team.carrent.rent_history.RentHistoryService;
+
+import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -19,15 +23,19 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("invoice")
 public class InvoiceController{
-
     
-    private InvoiceViewItemService invoiceViewItemService;
-    private AvailableInvoiceService availableInvoiceService;
+    private final InvoiceService          invoiceService;
+    private final InvoiceViewItemService  invoiceViewItemService;
+    private final AvailableInvoiceService availableInvoiceService;
+    private final InvoiceViewDetailService invoiceViewDetailService;
+    private final InvoiceViewDetailItemsService invoiceViewDetailItemsService;
     
-    
-    public InvoiceController(InvoiceViewItemService invoiceViewItemService, AvailableInvoiceService availableInvoiceService){
+    public InvoiceController(InvoiceViewItemService invoiceViewItemService, AvailableInvoiceService availableInvoiceService, InvoiceService invoiceService, RentHistoryService rentHistoryService, InvoiceViewDetailService invoiceViewDetailService, InvoiceViewDetailItemsService invoiceViewDetailItemsService){
         this.invoiceViewItemService = invoiceViewItemService;
         this.availableInvoiceService = availableInvoiceService;
+        this.invoiceService = invoiceService;
+        this.invoiceViewDetailService = invoiceViewDetailService;
+        this.invoiceViewDetailItemsService = invoiceViewDetailItemsService;
     }
     
     
@@ -46,7 +54,9 @@ public class InvoiceController{
         allClientInvoices.addObject("clientId", clientId);
         return allClientInvoices;
     }
-    @GetMapping("available/{clientId}")
+    
+    
+    @GetMapping("/available/{clientId}")
     public ModelAndView getAllClientAvailableInvoices(@PathVariable Integer clientId){
         ModelAndView allClientInvoices = new ModelAndView("availableInvoiceList");
         allClientInvoices.addObject("available", availableInvoiceService.getAllClientInvoices(clientId));
@@ -55,4 +65,16 @@ public class InvoiceController{
     }
     
     
+    @GetMapping("/{invoiceId}")
+    public ModelAndView getInvoice(@PathVariable Integer invoiceId){
+        ModelAndView invoiceView = new ModelAndView("invoice");
+        
+        InvoiceViewDetail invoiceById = invoiceViewDetailService.getInvoiceDetail(invoiceId);
+        List<InvoiceViewDetailItem> invoiceItems = invoiceViewDetailItemsService.getInvoiceItems(invoiceId);
+    
+        invoiceView.addObject("invoice", invoiceById);
+        invoiceView.addObject("items", invoiceItems);
+        
+        return invoiceView;
+    }
 }
