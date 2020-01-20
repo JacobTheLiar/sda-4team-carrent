@@ -11,7 +11,7 @@
     <groupId>pl.4team</groupId>
     <artifactId>carrent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <name>carrent</name>
     <description>Demo project for Car Rent</description>
 
@@ -70,10 +70,10 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
-        </dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>jstl</artifactId>
+        <version>1.2</version>
+    </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -95,6 +95,7 @@
     </dependencies>
 
     <build>
+        <finalName>car-rent</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
