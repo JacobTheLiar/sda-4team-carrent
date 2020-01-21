@@ -1,25 +1,25 @@
 ﻿<div class="w3-sidebar w3-large w3-bar-block w3-theme" style="width:25%;top: 0px;margin-top: 90px;">
 
     <h4 class="w3-bar-item w3-theme-d3">wypożyczenie</h4>
-    <a href="/rent/borrow" class="w3-bar-item w3-button">wypożycz</a>
-    <a href="/rent/return" class="w3-bar-item w3-button">zwróć</a>
-    <a href="/rent" class="w3-bar-item w3-button">bieżące wypożyczenia</a>
-    <a href="/rent/history" class="w3-bar-item w3-button">historia wypożyczeń</a>
-    <a href="/client" class="w3-bar-item w3-button">klienci</a>
-    <a href="/invoice" class="w3-bar-item w3-button">faktury</a>
+    <a href="${pageContext.request.contextPath}/rent/borrow" class="w3-bar-item w3-button">wypożycz</a>
+    <a href="${pageContext.request.contextPath}/rent/return" class="w3-bar-item w3-button">zwróć</a>
+    <a href="${pageContext.request.contextPath}/rent" class="w3-bar-item w3-button">bieżące wypożyczenia</a>
+    <a href="${pageContext.request.contextPath}/rent/history" class="w3-bar-item w3-button">historia wypożyczeń</a>
+    <a href="${pageContext.request.contextPath}/client" class="w3-bar-item w3-button">klienci</a>
+    <a href="${pageContext.request.contextPath}/invoice" class="w3-bar-item w3-button">faktury</a>
     <br>
     <h4 class="w3-bar-item w3-theme-d3">zarządzanie</h4>
-    <a href="/promotion" class="w3-bar-item w3-button">promocjami</a>
-    <a href="/car" class="w3-bar-item w3-button">samochodami</a>
-    <a href="/car/model" class="w3-bar-item w3-button">modelami samochodów</a>
-    <a href="/client" class="w3-bar-item w3-button">klientami</a>
-    <a href="/employee" class="w3-bar-item w3-button">pracownikami</a>
-    <a href="/rentPoint" class="w3-bar-item w3-button">punktami wypożyczalni</a>
-    <a href="/company" class="w3-bar-item w3-button">dane firmy</a>
+    <a href="${pageContext.request.contextPath}/promotion" class="w3-bar-item w3-button">promocjami</a>
+    <a href="${pageContext.request.contextPath}/car" class="w3-bar-item w3-button">samochodami</a>
+    <a href="${pageContext.request.contextPath}/car/model" class="w3-bar-item w3-button">modelami samochodów</a>
+    <a href="${pageContext.request.contextPath}/client" class="w3-bar-item w3-button">klientami</a>
+    <a href="${pageContext.request.contextPath}/employee" class="w3-bar-item w3-button">pracownikami</a>
+    <a href="${pageContext.request.contextPath}/rentPoint" class="w3-bar-item w3-button">punktami wypożyczalni</a>
+    <a href="${pageContext.request.contextPath}/company" class="w3-bar-item w3-button">dane firmy</a>
     <br>
     <h4 class="w3-bar-item w3-theme-d3">sesja - <b>${sessionScope.employee.fullUserName}</b></h4>
-    <a href="/logout" class="w3-bar-item w3-button">wyloguj</a>
-    <a href="/employee/${sessionScope.employee.username}" class="w3-bar-item w3-button">o mnie</a>
+    <a href="${pageContext.request.contextPath}/logout" class="w3-bar-item w3-button">wyloguj</a>
+    <a href="${pageContext.request.contextPath}/employee/${sessionScope.employee.username}" class="w3-bar-item w3-button">o mnie</a>
     <a href="/" class="w3-bar-item w3-button">zmień hasło</a>
 </div>
 <div class="w3-container" style="margin-left:25%;margin-top: -24px;">

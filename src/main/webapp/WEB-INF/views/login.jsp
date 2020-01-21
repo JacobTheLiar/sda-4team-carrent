@@ -9,7 +9,7 @@
 <body class="w3-theme-light">
 <!-- ​nagłowek -->
     <header class="w3-container w3-theme-dark">
-        <a href="/" class="w3-center w3-button w3-theme-dark w3-hover-indigo"><h1><b>Car rent</b></h1></a>
+        <a href="${pageContext.request.contextPath}/" class="w3-center w3-button w3-theme-dark w3-hover-indigo"><h1><b>Car rent</b></h1></a>
     </header>
 ​
 <!-- menu po lewej -->
@@ -17,7 +17,7 @@
 
 
     <h4 class="w3-bar-item w3-theme-d3">sesja</h4>
-    <a href="/login" class="w3-bar-item w3-button">zaloguj się</a>
+    <a href="${pageContext.request.contextPath}/login" class="w3-bar-item w3-button">zaloguj się</a>
 </div>
 <div class="w3-container" style="margin-left:25%;margin-top: -24px;">
 ​
