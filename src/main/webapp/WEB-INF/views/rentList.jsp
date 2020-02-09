@@ -21,7 +21,7 @@
 <!-- dodatkowe opcje i szukanie -->
 <div class="w3-bar w3-light-grey w3-border">
 
-    <a href="${pageContext.request.contextPath}/rent/borrow/promo" class="w3-bar-item w3-button w3-green">wypożycz</a>
+    <a href="${pageContext.request.contextPath}/rent/borrow/" class="w3-bar-item w3-button w3-green">wypożycz</a>
     <c:if test="${isFiltered}">
         <a href="${pageContext.request.contextPath}/rent/" class="w3-bar-item w3-button w3-theme-l2 w3-right w3-margin-left">usuń filtr</a>
     </c:if>

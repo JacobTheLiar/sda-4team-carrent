@@ -92,7 +92,7 @@ public class Rent {
         return promotion;
     }
 
-    public void setPromotionId(Promotion promotion) {
+    public void setPromotion(Promotion promotion) {
         this.promotion = promotion;
     }
 

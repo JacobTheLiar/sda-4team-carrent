@@ -7,6 +7,7 @@ import pl.team.carrent.car.Car;
 import pl.team.carrent.car.CarService;
 import pl.team.carrent.client.Client;
 import pl.team.carrent.employee.Employee;
+import pl.team.carrent.promotion.Promotion;
 import pl.team.carrent.rent_history.RentHistory;
 import pl.team.carrent.rent_history.RentHistoryService;
 import pl.team.carrent.rent_point.RentPoint;
@@ -37,6 +38,7 @@ public class RentController {
     private final EmployeeService employeeService;
     private final RentHistoryService rentHistoryService;
     private String username;
+    private Rent rent = new Rent();
 
     public RentController(RentService rentService, CarService carService, ClientService clientService, PromotionService promotionService,
                           RentPointService rentPointService, EmployeeService employeeService, RentHistoryService rentHistoryService) {
@@ -63,38 +65,53 @@ public class RentController {
         return modelAndView;
     }
 
-    @GetMapping("/borrow/promo")
-    public ModelAndView getRentPromoBorrow(@SessionAttribute Employee employee) {
-        username = employee.getUsername();
-        ModelAndView modelAndView = new ModelAndView("rentDetailFirstStep");
-        modelAndView.addObject("cars", carService.getCarsByActualRentPoint(employeeService.getEmployeeByUsername(username).getRentPoint()));
-        modelAndView.addObject("clients", clientService.getAllClients());
-        return modelAndView;
-    }
 
     @GetMapping("/borrow")
-    public ModelAndView getRentBorrow(@PathVariable(required = false) Integer id, @SessionAttribute Employee employee,
-                                      @ModelAttribute Client client, @ModelAttribute Car car) {
-        Rent rent = new Rent();
+    public ModelAndView getRentBorrow(@SessionAttribute Employee employee, @RequestParam(required = false) Integer id,
+                                      @RequestParam(required = false) Integer carId,
+                                      @RequestParam(required = false) Integer clientId,
+                                      @RequestParam(required = false) Integer promotionId) {
+
         rent.setRentTimeStart(LocalDate.now());
         username = employee.getUsername();
+
         if (id != null) {
-            rent.setId(id);
-        }
+            rent = rentService.getRentById(id);
+        }else
+        if (carId != null) {
+            rent.setCar(carService.getCarById(carId));
+        }else
+        if (clientId != null) {
+            rent.setClient(clientService.getClient(clientId));
+        }else
+        if (promotionId != null) {
+            rent.setPromotion(promotionService.getPromotion(promotionId));
+        }else {rent=new Rent();}
         ModelAndView modelAndView = new ModelAndView("rentDetail");
         modelAndView.addObject("todayDate", LocalDate.now());
         modelAndView.addObject("maxDate", LocalDate.now().plusDays(5));
         modelAndView.addObject("rent", rent);
         modelAndView.addObject("rentPoint", employeeService.getEmployeeByUsername(username).getRentPoint());
-        modelAndView.addObject("car", car);
-        modelAndView.addObject("client", client);
-        modelAndView.addObject("promotions", promotionService.getAllMatchedPromotions(car.getId(), client.getId()));
+        modelAndView.addObject("cars", carService.getCarsByActualRentPoint(employeeService.getEmployeeByUsername(username).getRentPoint()));
+        modelAndView.addObject("clients", clientService.getAllClients());
+        if (rent.getClient() == null && rent.getCar() == null) {
+            modelAndView.addObject("promotions",null);
+        } else if (rent.getClient() != null && rent.getCar() == null) {
+            modelAndView.addObject("promotions", promotionService.getAllMatchedPromotionsByClientId(rent.getClient().getId()));
+        } else if (rent.getClient() == null && rent.getCar() != null) {
+            modelAndView.addObject("promotions", promotionService.getAllMatchedPromotionsByCarId(rent.getCar().getId()));
+        } else {
+            modelAndView.addObject("promotions", promotionService.getAllMatchedPromotions(rent.getCar().getId(), rent.getClient().getId()));
+        }
         return modelAndView;
     }
 
     @GetMapping("/{id}")
-    public ModelAndView getRentEdit(@PathVariable Integer id, @SessionAttribute Employee employee) {
+    public ModelAndView getRentEdit(@PathVariable Integer id,  @SessionAttribute Employee employee) {
         username = employee.getUsername();
+        if (id != null) {
+            rent.setId(id);
+        }
         ModelAndView modelAndView = new ModelAndView("rentDetail");
         modelAndView.addObject("todayDate", LocalDate.now());
         modelAndView.addObject("rent", rentService.getRentById(id));
@@ -107,10 +124,7 @@ public class RentController {
 
     @PostMapping("/borrow")
     public String postRentBorrow(@ModelAttribute Rent rent, @RequestParam(required = false) Integer id) {
-        if (id != null) {
-            rent.setId(id);
-        }
-                rentService.addOrUpdateRent(rent);
+        rentService.addOrUpdateRent(rent);
         return "redirect:/rent";
     }
 

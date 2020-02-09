@@ -10,5 +10,5 @@ package pl.team.carrent.promotion;
  ******************************************************/
 public enum SearchPromotionOption {
 
-    BY_PROMOTION_NAME, BY_MARK, BY_MODEL, BY_SEGMENT;
+    BY_PROMOTION_NAME, BY_MARK, BY_MODEL, BY_SEGMENT, BY_CLIENT;
 }

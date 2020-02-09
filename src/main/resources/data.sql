@@ -32,9 +32,10 @@ INSERT INTO role (id, authority) values (nextval('seq_Role'), 'USER');
 INSERT INTO employee (firstname, surname, rent_point_id, username, password, employment_date, release_date, role_id) values ('Jan', 'Pracownik', 1, 'user', '$2a$10$KvxPudrieuxpEgxw3e4yPOuYK59PgfQshx3RaVUTCpbKB82DC/0RC', '2018-09-01',null,2 );
 INSERT INTO employee (firstname, surname, rent_point_id, username, password, employment_date, release_date, role_id) values ('The', 'Administrator', 2, 'admin', '$2a$10$IPJizmA0rxJBq9incE/PWub6B2nIDGm3z/2cIz6hAs/hgvKlQ5F9q', '2018-09-01',null,1 );
 
-INSERT INTO promotion (id, name, discount_percentage, promo_start, promo_end) values (nextval('promo_Seq'), 'Opel 30%', 30, '2019-10-01', '2019-12-05');
-INSERT INTO promotion (id, name, discount_percentage, promo_start, promo_end) values (nextval('promo_Seq'), 'Segment B 20%', 20, '2019-10-15', '2019-12-15');
-INSERT INTO promotion (id, name, discount_percentage, promo_start, promo_end) values (nextval('promo_Seq'), 'Segment C 10%', 10, '2019-10-12', '2019-12-20');
+INSERT INTO promotion (id, name, discount_percentage, promo_start, promo_end) values (nextval('promo_Seq'), 'Opel 30%', 30, '2019-10-01', '2020-12-05');
+INSERT INTO promotion (id, name, discount_percentage, promo_start, promo_end) values (nextval('promo_Seq'), 'Segment B 20%', 20, '2019-10-15', '2020-12-15');
+INSERT INTO promotion (id, name, discount_percentage, promo_start, promo_end) values (nextval('promo_Seq'), 'Segment C 10%', 10, '2019-10-12', '2020-12-20');
+INSERT INTO promotion (id, name, discount_percentage, promo_start, promo_end) values (nextval('promo_Seq'), 'Client Rico 50%', 50, '2019-10-12', '2020-12-20');
 
 
 INSERT INTO promotion_cars(promotion_id, cars_id) values (1, 3);
@@ -44,7 +45,9 @@ INSERT INTO promotion_cars(promotion_id, cars_id) values (2, 5);
 INSERT INTO promotion_cars(promotion_id, cars_id) values (2, 6);
 INSERT INTO promotion_cars(promotion_id, cars_id) values (3, 2);
 INSERT INTO promotion_cars(promotion_id, cars_id) values (3, 3);
-INSERT INTO promotion_cars(promotion_id, cars_id) values (3, 4);
+
+
+INSERT INTO promotion_clients(promotion_id, clients_id) values (4, 3);
 
 INSERT INTO rent (id, car_id, client_id, promotion_id, rent_point_start_id, rent_time_start, employee_start_username,  counter_state_start, notes)
 values (nextval('car_rent_seq'), 3, 1, 1, 1, '2019-08-01','user', 10020, 'wgniecenie drzwi kierowcy oraz zbita lampa');

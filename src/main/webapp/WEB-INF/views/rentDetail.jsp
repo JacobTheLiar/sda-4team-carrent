@@ -12,41 +12,72 @@
 ​
 <!-- menu po lewej -->
 <%@include file='menu.html' %>
-​
-​
-<form method="post" class="w3-container w3-margin w3-card w3-border w3-theme-l4"
-      action="${pageContext.request.contextPath}/rent/borrow" id="rentForm">
-    <!-- tytuł -->
-    <div class="w3-container w3-theme w3-margin-top w3-center">
-        <h2>${rent.id==0 ? 'nowe wypożyczenie samochodu' : 'dokonaj zmian w danych tego wypożyczenia'}</h2>
-    </div>
 
-    <!-- dane -->
-    <input type="hidden" name="id" value="${rent.id}">
-    <%--    <form id="getRentForm">--%>
+
+<!-- tytuł -->
+<div class="w3-container w3-theme w3-margin-top w3-center">
+    <h2>${rent.id==0 ? 'nowe wypożyczenie samochodu' : 'dokonaj zmian w danych tego wypożyczenia'}</h2>
+</div>
+
+<!-- dane -->
+
+
+
+<form method="get" class="w3-container w3-margin w3-card w3-border w3-theme-l4"
+      action="${pageContext.request.contextPath}/rent/borrow/" id="carForm">
     <p>
         <label><b>wypożyczany samochód</b></label>
-        <input type="hidden" name="car" value="${car.id}">
-        <input type="text" name="car" class="w3-input w3-border"
-               value="${car}" readonly form="rentForm">
-    </p>
-    <p>
-        <label><b>komu jest wypożyczany</b></label>
-        <input type="hidden" name="client" value="${client.id}">
-        <input type="text" name="client" class="w3-input w3-border"
-               value="${client.name}" readonly form="rentForm">
-    </p>
-
-    <p>
-        <label><b>promocja</b></label>
-        <select class="w3-input w3-border" name="promotion" form="rentForm">
-            <option selected="selected" placeholder="wybierz promocję"
-                    value="${rent.promotion}">${rent.promotion.name}</option>
-            <c:forEach var="promotion" items="${promotions}">
-                <option value="${promotion.id}">${promotion.name}</option>
+        <select name="carId" class="w3-input w3-border" form="carForm" onchange="this.form.submit()">
+            <option selected="selected"
+                    value="${rent.car.id}">
+                ${rent.car}
+            </option>
+            <c:forEach var="car" items="${cars}">
+                <option value="${car.id}">${car}</option>
             </c:forEach>
         </select>
     </p>
+</form>
+
+<form method="get" class="w3-container w3-margin w3-card w3-border w3-theme-l4"
+      action="${pageContext.request.contextPath}/rent/borrow/" id="clientForm">
+    <p>
+        <label><b>komu jest wypożyczany</b></label>
+        <select name="clientId" class="w3-input w3-border" form="clientForm" onchange="this.form.submit()">
+            <option selected="selected"
+                    value="${rent.client}">
+                ${rent.client.name}
+            </option>
+            <c:forEach var="client" items="${clients}">
+                <option  value="${client.id}">${client.name}</option>
+            </c:forEach>
+        </select>
+    </p>
+</form>
+
+<form method="get" class="w3-container w3-margin w3-card w3-border w3-theme-l4"
+      action="${pageContext.request.contextPath}/rent/borrow/" id="promotionForm">
+    <p>
+        <label><b>dostępna promocja</b></label>
+        <select name="promotionId" class="w3-input w3-border" form="promotionForm" onchange="this.form.submit()">
+            <option selected="selected"
+                    value="${rent.promotion}">
+                ${rent.promotion.name}
+            </option>
+            <c:forEach var="promotion" items="${promotions}">
+                <option  value="${promotion.id}">${promotion.name}</option>
+            </c:forEach>
+        </select>
+    </p>
+</form>
+
+
+<form method="post" class="w3-container w3-margin w3-card w3-border w3-theme-l4"
+      action="${pageContext.request.contextPath}/rent/borrow" id="rentForm">
+    <input type="hidden" name="id" value="${rent.id}">
+    <input type="hidden" name="car" value="${rent.car.id}">
+    <input type="hidden" name="client" value="${rent.client.id}">
+    <input type="hidden" name="promotion" value="${rent.promotion.id}">
     <p>
         <label><b>punkt wypożyczenia</b></label>
         <input type="hidden" name="rentPointStart" value="${rentPoint.id}">
@@ -73,6 +104,10 @@
         <input type="text" name="notes" placeholder="wpisz uwagi" class="w3-input w3-border" value="${rent.notes}"
                form="rentForm">
     </p>
+    <%--    <p>--%>
+    <%--        <label><b>Cena za wypożyczenie za dzień po rabacie</b></label>--%>
+    <%--        <input type="number" class="w3-input w3-border" value="${prize}">--%>
+    <%--    </p>--%>
     <p>
         <input type="submit" class="w3-button w3-red w3-right w3-large" value="zatwierdź">
         <a href="${pageContext.request.contextPath}/rent/" class="w3-button w3-theme-l2">anuluj</a>
