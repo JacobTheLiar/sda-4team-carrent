@@ -37,6 +37,8 @@ public class PromotionService {
                 return promotionRepository.findPromotionByCarModel(byWhat);
             case BY_SEGMENT:
                 return promotionRepository.findPromotionByCarSegment(byWhat);
+            case BY_CLIENT:
+                return promotionRepository.findPromotionByClientName(byWhat);
         }
         return Collections.emptyList();
     }
@@ -53,4 +55,13 @@ public class PromotionService {
     public List<Promotion> getAllMatchedPromotions(int carId, int clientId) {
         return promotionRepository.findAllMatchedPromotions(LocalDate.now(), carId, clientId);
     }
+
+    public List<Promotion> getAllMatchedPromotionsByCarId(int carId) {
+        return promotionRepository.findAllMatchedPromotionsByCarId(LocalDate.now(), carId);
+    }
+
+    public List<Promotion> getAllMatchedPromotionsByClientId(int clientId) {
+        return promotionRepository.findAllMatchedPromotionsByClientId(LocalDate.now(), clientId);
+    }
+
 }
